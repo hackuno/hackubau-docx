@@ -7,6 +7,12 @@
     <groupId>hackubau</groupId>
     <artifactId>hackubau-docs</artifactId>
     <version>1.0-SNAPSHOT</version>
+    <packaging>jar</packaging>
+    <name>docx-template-processor</name>
+
+
+
+
     <build>
         <plugins>
             <plugin>
