@@ -23,8 +23,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 /**
- * ATTENZIONE - LA PARTE CORE DEL SERVIZIO (quella che interagisce direttamente col file word)
- * E' STATA COPIATA DAL SEGUENTE PROGETTO OPENSOURCE IN DATA 15/03/2019:
+ * 15/03/2019 - ATTENTION! The steps in this page marked with comments that start with 1. or 2. or 3. or 4. are copied by the following project:
  * https://github.com/ErisoHV/docx4jExample.git
  */
 
@@ -34,6 +33,8 @@ public class DocxService {
 
     private final static String FORMAT = ".docx";
     private final static String MIME_TYPE = "application/vnd.openxmlformats-officedocument.wordprocessingml.document";
+
+    //aggiunto compatibilita' docx salvati con open office
     private static final String MIME_TYPE_OPEN_OFFICE = "application/zip";
 
     public static String getMimeType(File file) {
@@ -49,6 +50,10 @@ public class DocxService {
         return null;
     }
 
+
+    /**
+     * This method was copied by https://github.com/ErisoHV/docx4jExample.git on 15/03/2019 and i used it as base for my project
+     */
     public File generateDocument(File template, HashMap<String, String> replace,
                                  String outputDocument) {
 
@@ -113,6 +118,7 @@ public class DocxService {
                         wordMLPackage = WordprocessingMLPackage.load(template);
                         MainDocumentPart documentPart = wordMLPackage.getMainDocumentPart();
 
+                        //check for placeHolders
                         List<String> placeHolders = Lists.newArrayList();
                         for (Object o : documentPart.getContent()) {
                             Pattern pattern = Pattern.compile("(\\$\\{[^\\$^\\{^\\}]*\\})");
