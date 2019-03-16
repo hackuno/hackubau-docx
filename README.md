@@ -5,7 +5,7 @@
 <h1><b>What is this?</b></h1>
 This is a Service to perform susbstitution of placeholders in .docx files (templates) writing simply something like this in the word template:
 <br>
-<code> ${yourObject.yourField} </code> <i> You have just to pass to the service a List containing &#60;YourObject extends HckReflect&#62;</i>
+<code> ${yourObject.yourField} </code> <i> You have just to pass to the service params a List containing &#60;YourObject extends HckReflect&#62;</i>
 <br>
 <code> ${yourPlaceholder} </code> <i> passing in params a HashMap&#60;String,String&#62;</i>
 <br>
