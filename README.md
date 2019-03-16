@@ -1,5 +1,5 @@
 # Hackubau Word Generator by template.docx
-# maven: hackubau-docx <h5><b> Mircrosoft Word (.docx) & OpenOffice (.docx) compatibility</b></h5><br>
+<h1 class="inline"><b>maven: hackubau-docx</b></h1> <h5 class="inline"><b> Mircrosoft Word (.docx) & OpenOffice (.docx) compatibility</b></h5><br>
 <h1><b>What is this?</b></h1>
 This is a Service to perform susbstitution of placeholders in .docx files (templates) writing simply something like this in the word template:
 <br><br>
