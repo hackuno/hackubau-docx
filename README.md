@@ -5,15 +5,15 @@
 <h1><b>What is this?</b></h1>
 This is a Service to perform susbstitution of placeholders in .docx files (templates) writing simply something like this in the word template:
 <br><BR><BR>
-<code> ${yourObject.yourField} </code> <i> You have just to pass to the service params a List containing &#60;YourObject extends HckReflect&#62;</i>
+<kbd> ${yourObject.yourField} </kbd> <i> You have just to pass to the service params a List containing &#60;YourObject extends HckReflect&#62;</i>
 <br>
-<code> ${yourPlaceholder} </code> <i> passing in params a HashMap&#60;String,String&#62;</i>
+<kbd> ${yourPlaceholder} </kbd> <i> passing in params a HashMap&#60;String,String&#62;</i>
 <br>
-<code> ${today} </code> <i> special keyword</i>
+<kbd> ${today} </kbd> <i> special keyword</i>
 <br>
-<code> ${yourObject.yourField.yourEventuallyNestedField} </code>  <i> passing in params a List&#60;? extends HckReflect&#62;</i>
+<kbd> ${yourObject.yourField.yourEventuallyNestedField} </kbd>  <i> passing in params a List&#60;? extends HckReflect&#62;</i>
 <br>
-<code> ${list_yourObject.yourField1@separator#yourField2.nestedField} </code><i> passing a list containing a <i>List&#60;? extends HckReflect&#62;</i>
+<kbd> ${list_yourObject.yourField1@separator#yourField2.nestedField} </kbd><i> passing a list containing a <i>List&#60;? extends HckReflect&#62;</i>
 <h5>Where:</h5
  
  <kbd><u>yourObject</u></kbd> 
