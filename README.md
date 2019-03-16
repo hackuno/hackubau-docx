@@ -18,6 +18,7 @@ This is a Service to perform susbstitution of placeholders in .docx files (templ
  
  <p><u>yourObject=</u><p> 
   <p class="lead">&#62;&emsp;Your Object (extending HckReflect) className <i>(es. Dogs.class -> dogs)</i></p>
+  <p>&emsp;&emsp;or<p>
   <p class="lead">&#62;&emsp;The specified HckReflect.identifier property for every passed object <i>(Es. Dogs d = new Dogs(); d.setIdentifier("customName")</i></p>
  <br>
  <p><u>list_yourObject=</u><p> 
