@@ -1,4 +1,5 @@
 import com.google.common.collect.Lists;
+import com.google.common.collect.Maps;
 import hck.interfaces.HckReflect;
 import hck.services.DocxService;
 import org.apache.commons.lang3.StringUtils;
@@ -11,6 +12,7 @@ import org.junit.jupiter.api.Test;
 
 import java.io.File;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 public class PlayTest {
@@ -31,6 +33,8 @@ public class PlayTest {
 
     @Test
     public void test() {
+
+        //just instantiate a random (HckReflect)  object
         Anagrafica a = new Anagrafica();
         a.setNome("gigi");
         a.setCognome("alla cremeria");
@@ -38,7 +42,7 @@ public class PlayTest {
         i.setCompleto("alla pizzeria perchè sbaglia sempre");
         a.setIndirizzo(i);
 
-
+        //just instantiate a random (HckReflect) object
         Anagrafica b = new Anagrafica();
         b.setNome("nando");
         b.setCognome("bartolazzi");
@@ -47,27 +51,60 @@ public class PlayTest {
         b.setIndirizzo(i2);
 
 
+        //just loading input template (.docx) and output file, plus the control file for assertions
         ClassLoader classLoader = getClass().getClassLoader();
-
         File f = new File("src/test/resources/template.docx");
         File control = new File("src/test/resources/expectedResult.docx");
+        File failingControl = new File("src/test/resources/differentResult.docx");
         File fout = new File("src/test/resources/out.docx");
 
-        List<Anagrafica> lemieAnagrafiche = Lists.newArrayList(a, b);
+        //just setting a random list of object (extending HckRelfect) that i will call back from the word
+        List<Anagrafica> myListOfObj1 = Lists.newArrayList(a, b);
 
+        //adding the list of objects to the list
         List<List<? extends HckReflect>> listaDiListeDiOggetti = new ArrayList<>();
-        listaDiListeDiOggetti.add(lemieAnagrafiche);
+        listaDiListeDiOggetti.add(myListOfObj1);
 
+        //preparing extra fixed mappings
+        HashMap<String,String> myFixedValues = Maps.newHashMap();
+        myFixedValues.put("dogName","bau");
+
+        //instantiate the service
         DocxService serv = new DocxService();
-        fout = serv.generateDocument(f, fout, Lists.newArrayList(a), listaDiListeDiOggetti, null);
-        boolean result = false;
 
-        WordprocessingMLPackage wordMLPackage1;
-        WordprocessingMLPackage wordMLPackage2;
+        /*calling the service. i am passing:
+        template .docx
+        output destination
+        List of the (HckReflect)objects that i will call back from the .docx template (optional)
+        List of the List<(HckReflect)objects> that i will call back from the .docx template (optional)
+        Eventually extra fixed mappings. (optional)
+        */
+
+        fout = serv.generateDocument(f, fout, Lists.newArrayList(a), listaDiListeDiOggetti, myFixedValues);
+
+        logger.info("OUTPUT PATH: "+fout.getAbsolutePath());
+
+        Assertions.assertTrue(checkEqualWords(fout,control));
+        Assertions.assertFalse(checkEqualWords(fout,failingControl));
+
+    }
+
+
+    /**
+     *
+     * @param fout - first file .docx
+     * @param fctrl - control file .docx
+     * @return true if equals
+     */
+    public boolean checkEqualWords(File fout, File fctrl)
+    {
         try {
 
+            WordprocessingMLPackage wordMLPackage1;
+            WordprocessingMLPackage wordMLPackage2;
+
             wordMLPackage1 = WordprocessingMLPackage.load(fout);
-            wordMLPackage2 = WordprocessingMLPackage.load(fout);
+            wordMLPackage2 = WordprocessingMLPackage.load(fctrl);
 
             MainDocumentPart documentPart1 = wordMLPackage1.getMainDocumentPart();
             MainDocumentPart documentPart2 = wordMLPackage2.getMainDocumentPart();
@@ -81,17 +118,16 @@ public class PlayTest {
                     break;
                 }
             }
-            result = equals;
+            return equals;
 
         } catch (Exception e) {
             e.printStackTrace();
         }
-
-        logger.info("OUTPUT PATH: "+fout.getAbsolutePath());
-
-        Assertions.assertTrue(result);
+        return false;
 
     }
+
+    //HERE I AM CREATING SOME SIMPLE EXAMPLE CLASS THAT EXTENDS HckReflect JUST TO USE THEM IN THE PLAY TEST//
 
     public class Indirizzo extends HckReflect {
         String completo;
