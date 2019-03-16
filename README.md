@@ -4,10 +4,12 @@
 Service to perform susbstitution of placeholders in .docx files (templates) writing simply something like this in the word template:
 <br>
 <code> ${yourObject.yourField} </code>
+<p>yourObject= your (HckReflect)Object.class Name or the specified HckReflect.identifier property for every passed object</p>
 <br>
 <code> ${yourObject.yourField.yourEventuallyNestedField} </code>
 <br>
 <code> ${list_yourObject.yourField1@separator#yourField2.yourEventuallyNestedField@separator#yourfield3} </code>
+<br>
 <br>You can pass easly your custom Object/List of objects and the engine will retrieve everything!
 
 
