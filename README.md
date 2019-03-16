@@ -1,7 +1,7 @@
-# Hackubau Word Generator by template.docx 
-# Mircrosoft Word (.docx) & OpenOffice (.docx) compatibility
-# maven: hackubau-docx
-Service to perform susbstitution of placeholders in .docx files (templates) writing simply something like this in the word template:
+# Hackubau Word Generator by template.docx - maven: hackubau-docx
+<h5><b> Mircrosoft Word (.docx) & OpenOffice (.docx) compatibility</b></h5><br>
+# What is
+It is a Service to perform susbstitution of placeholders in .docx files (templates) writing simply something like this in the word template:
 <br><br>
 <code> ${yourObject.yourField} </code>
 <p>Where yourObject= your Object extends HckReflect className or the specified HckReflect.identifier property for every passed object</p>
