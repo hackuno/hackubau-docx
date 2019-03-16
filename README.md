@@ -13,7 +13,7 @@ This is a Service to perform susbstitution of placeholders in .docx files (templ
 <br>
 <code> ${yourObject.yourField.yourEventuallyNestedField} </code>  <i> passing in params a List&#60;? extends HckReflect&#62;</i>
 <br>
-<code> ${list_yourObject.yourField1@separator#yourField2.eventuallyNestedField} </code><i> passing a list containing a <i>List&#60;? extends HckReflect&#62;</i>
+<code> ${list_yourObject.yourField1@separator#yourField2.nestedField} </code><i> passing a list containing a <i>List&#60;? extends HckReflect&#62;</i>
 <h5>Where:</h5
  
  <p><u>yourObject=</u><p> 
@@ -32,6 +32,10 @@ This is a Service to perform susbstitution of placeholders in .docx files (templ
  <p><u>yourField=</u><p> 
 <p>&#62;&emsp;Every getMethod names without "get" word. (ex. getName() -\> yourObject.name)
   <br><br>
+ <p><u>yourField2.nestedField=</u><p> 
+<p>&#62;&emsp;Yes, you can go recursively to every nested <Object extends HckReflect> fields!
+  <br><br>
+ 
 <b>You can easly pass your custom Object/List of objects and the engine will retrieve everything!</b>
 
 
