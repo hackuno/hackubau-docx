@@ -35,6 +35,12 @@
 
     <dependencies>
 
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-context</artifactId>
+            <version>4.3.2.RELEASE</version>
+        </dependency>
+
         <!--.docx templates-->
         <!-- https://mvnrepository.com/artifact/org.docx4j/docx4j -->
         <dependency>

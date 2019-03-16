@@ -13,6 +13,7 @@ import org.docx4j.openpackaging.exceptions.Docx4JException;
 import org.docx4j.openpackaging.io3.Save;
 import org.docx4j.openpackaging.packages.WordprocessingMLPackage;
 import org.docx4j.openpackaging.parts.WordprocessingML.MainDocumentPart;
+import org.springframework.stereotype.Service;
 
 import java.io.File;
 import java.io.FileOutputStream;
@@ -27,12 +28,37 @@ import java.util.regex.Pattern;
  * https://github.com/ErisoHV/docx4jExample.git
  */
 
+@Service
 public class DocxService {
 
     Logger logger = LogManager.getLogger(DocxService.class);
 
     private final static String FORMAT = ".docx";
     private final static String MIME_TYPE = "application/vnd.openxmlformats-officedocument.wordprocessingml.document";
+
+    private String SeparatorIdentifier;
+    private String MutlifieldsIdentifier;
+
+    public DocxService() {
+        this.setSeparatorIdentifier("@");
+        this.setMutlifieldsIdentifier("#");
+    }
+
+    public String getSeparatorIdentifier() {
+        return this.SeparatorIdentifier;
+    }
+
+    public void setSeparatorIdentifier(final String separatorIdentifier) {
+        this.SeparatorIdentifier = separatorIdentifier;
+    }
+
+    public String getMutlifieldsIdentifier() {
+        return this.MutlifieldsIdentifier;
+    }
+
+    public void setMutlifieldsIdentifier(final String mutlifieldsIdentifier) {
+        this.MutlifieldsIdentifier = mutlifieldsIdentifier;
+    }
 
     //aggiunto compatibilita' docx salvati con open office
     private static final String MIME_TYPE_OPEN_OFFICE = "application/zip";
@@ -160,6 +186,7 @@ public class DocxService {
 
     public HashMap<String, String> getMappings(List<String> placeHolders, List<? extends HckReflectUtils> objs, List<List<? extends HckReflectUtils>> lists, HashMap<String, String> fixedMappings) {
         HashMap<String, String> map = new HashMap<>();
+
         for (String p : placeHolders) {
             try {
                 List<String> split = Arrays.asList(StringUtils.split(p, "."));
@@ -176,22 +203,22 @@ public class DocxService {
                     }
                 }
 
-                List<String> extraFields = Arrays.asList(StringUtils.split(field, "#"));
+                List<String> extraFields = Arrays.asList(StringUtils.split(field, MutlifieldsIdentifier));
 
 
                 if (StringUtils.startsWith(head, "list_")) {
                     List<String> list_headObj = Arrays.asList(StringUtils.split(head, "_"));
                     if (list_headObj.size() == 2) {
-                        List<String> headObj_separator = Arrays.asList(StringUtils.split(list_headObj.get(1), "@"));
+                        List<String> headObj_separator = Arrays.asList(StringUtils.split(list_headObj.get(1), SeparatorIdentifier));
                         String separator = "\r\n\f";
                         if (headObj_separator.size() == 2) {
                             separator = headObj_separator.get(1);
 
-                            separator=StringUtils.replaceChars(separator,"\\n","\n");
-                            separator=StringUtils.replaceChars(separator,"\\r","\r");
-                            separator=StringUtils.replaceChars(separator,"\\f","\f");
+                            separator = StringUtils.replaceChars(separator, "\\n", "\n");
+                            separator = StringUtils.replaceChars(separator, "\\r", "\r");
+                            separator = StringUtils.replaceChars(separator, "\\f", "\f");
                         }
-                        head=headObj_separator.get(0);
+                        head = headObj_separator.get(0);
 
                         for (List<? extends HckReflectUtils> rList : lists) {
                             if (rList != null && !rList.isEmpty() && StringUtils.equalsIgnoreCase(rList.get(0).getClass().getSimpleName(), head)) {
