@@ -10,9 +10,10 @@ This is a Service to perform susbstitution of placeholders in .docx files (templ
 <code> ${yourObject.yourField.yourEventuallyNestedField} </code>
 <br>
 <code> ${list_yourObject.yourField1@separator#yourField2.yourEventuallyNestedField@separator#yourfield3} </code>
-<p><i>Where yourObject= your Object extends HckReflect className or the specified HckReflect.identifier property for every passed object</i></p>
-<p>Where yourField= name of the getMethod. example, to invoke getName() of Speciality.class you will write "${speciality.name}</p>
-<br>
+<h5>Where:</h5
+  <p>yourObject= your Object extends HckReflect className or the specified HckReflect.identifier property for every passed object</p>
+  <p>yourField= name of the getMethod. example, to invoke getName() of Speciality.class you will write "${speciality.name}</p>
+
 <br><b>You can easly pass your custom Object/List of objects and the engine will retrieve everything!</b>
 
 
