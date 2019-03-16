@@ -15,13 +15,13 @@ This is a Service to perform susbstitution of placeholders in .docx files (templ
 <br>
 <code> ${list_yourObject.yourField1@separator#yourField2.nestedField} </code><i> passing a list containing a <i>List&#60;? extends HckReflect&#62;</i>
 <h5>Where:</h5
- 
+ <BR><BR>
  <code><u>yourObject</u></code> 
-  <p class="lead">&#62;&emsp;Your CustomObject className (must be extending HckReflect)</p><code style="font-size:2px; background-color:#0FF"><i>(es. Dogs.class -> dogs)</i></code>
+  <p class="lead">&#62;&emsp;Your CustomObject className (must be extending HckReflect)</p><code style="font-size:1px; background-color:#222222"><i>(es. Dogs.class -> dogs)</i></code>
   <p>&emsp;&emsp;or<p>
   <p class="lead">&#62;&emsp;Your CustomObject identifier property (ereditated from abstract class HckReflect) for every passed object</p>
   <code style="font-size:2px"><i>(Es. Dogs d = new Dogs(); d.setIdentifier("customName")</i></code>
- <br>
+ <br><br>
  <code><u>list_yourObject</u></code> 
   <p class="lead">&#62;&emsp;Same as yourObject but will search for List<yourObject> and recursively print all of them</p>
    <br>
