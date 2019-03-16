@@ -3,7 +3,7 @@ package hck.services;
 import com.google.common.collect.Lists;
 import com.j256.simplemagic.ContentInfo;
 import com.j256.simplemagic.ContentInfoUtil;
-import hck.interfaces.HckReflectUtils;
+import hck.interfaces.HckReflect;
 import hck.utils.Utility;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.log4j.LogManager;
@@ -36,28 +36,42 @@ public class DocxService {
     private final static String FORMAT = ".docx";
     private final static String MIME_TYPE = "application/vnd.openxmlformats-officedocument.wordprocessingml.document";
 
-    private String SeparatorIdentifier;
-    private String MutlifieldsIdentifier;
+    //char used in .docx template before the personalized separator chars - default @
+    private String separatorIdentifier;
+
+    //char used in .docx template to separate multiple entries of the same object - default #
+    private String mutlifieldsIdentifier;
+
+    private String dateFormat;
 
     public DocxService() {
         this.setSeparatorIdentifier("@");
         this.setMutlifieldsIdentifier("#");
+        this.setDateFormat("dd/MM/yyyy");
+    }
+
+    public String getDateFormat() {
+        return this.dateFormat;
+    }
+
+    public void setDateFormat(final String dateFormat) {
+        this.dateFormat = dateFormat;
     }
 
     public String getSeparatorIdentifier() {
-        return this.SeparatorIdentifier;
+        return this.separatorIdentifier;
     }
 
     public void setSeparatorIdentifier(final String separatorIdentifier) {
-        this.SeparatorIdentifier = separatorIdentifier;
+        this.separatorIdentifier = separatorIdentifier;
     }
 
     public String getMutlifieldsIdentifier() {
-        return this.MutlifieldsIdentifier;
+        return this.mutlifieldsIdentifier;
     }
 
     public void setMutlifieldsIdentifier(final String mutlifieldsIdentifier) {
-        this.MutlifieldsIdentifier = mutlifieldsIdentifier;
+        this.mutlifieldsIdentifier = mutlifieldsIdentifier;
     }
 
     //aggiunto compatibilita' docx salvati con open office
@@ -79,6 +93,10 @@ public class DocxService {
 
     /**
      * This method was copied by https://github.com/ErisoHV/docx4jExample.git on 15/03/2019 and i used it as base for my project
+     * @param template - the .docx template
+     * @param replace - the hash map of key-value to replace
+     * @param outputDocument - the output target file
+     * @return - the out file
      */
     public File generateDocument(File template, HashMap<String, String> replace,
                                  String outputDocument) {
@@ -124,7 +142,19 @@ public class DocxService {
         return rez;
     }
 
-    public File generateDocument(File template, File out, List<? extends HckReflectUtils> objs, List<List<? extends HckReflectUtils>> lists, HashMap<String, String> fixedMappings) {
+    /**
+     *
+     * @param template - the .docx file (Save by openoffice or microsoft word)
+     * @param out - the output file target
+     * @param objs - the non-mandatory objects that you will try to call by your .docx template
+     *             (es. a file .docx containing "${Anagrafica.nome}" will require an obj=(HckReflect)Anagrafica or (HckReflect)obj.identifier="Anagrafica")
+     * @param listsObj - the non-mandatory List of objects that you will try to call by your .docx template
+     *              (es. aa file .docx containing "${list_anagrafica.nome}" will require a listsObj containing a List of (HckReflect)Anagrafica or List of (HckReflect)obj.identifier="Anagrafica")
+     * @param fixedMappings - the non-mandatory fixed String params that you will try to call by your .docx template
+     *                      (es. a file with ${cioppy} wille require an HashMap<"cioppy","bau"> - n.b. the special key today is used for today date.
+     * @return - the out file
+     */
+    public File generateDocument(File template, File out, List<? extends HckReflect> objs, List<List<? extends HckReflect>> listsObj, HashMap<String, String> fixedMappings) {
         try {
 
             String outputDocument = out.getPath();
@@ -155,8 +185,8 @@ public class DocxService {
                         }
 
 
-                        HashMap<String, String> replace = getMappings(placeHolders, objs, lists, fixedMappings);
-                        replace.entrySet().stream().map(x -> x.getKey() + " > " + x.getValue()).forEach(logger::info);
+                        HashMap<String, String> replace = getMappings(placeHolders, objs, listsObj, fixedMappings);
+                        replace.entrySet().stream().map(x -> x.getKey() + " > " + x.getValue()).forEach(logger::debug);
 
                         //3. Replace placeholders
                         VariablePrepare.prepare(wordMLPackage);
@@ -184,12 +214,12 @@ public class DocxService {
         return out;
     }
 
-    public HashMap<String, String> getMappings(List<String> placeHolders, List<? extends HckReflectUtils> objs, List<List<? extends HckReflectUtils>> lists, HashMap<String, String> fixedMappings) {
+    public HashMap<String, String> getMappings(List<String> placeHolders, List<? extends HckReflect> objs, List<List<? extends HckReflect>> lists, HashMap<String, String> fixedMappings) {
         HashMap<String, String> map = new HashMap<>();
 
         for (String p : placeHolders) {
             try {
-                List<String> split = Arrays.asList(StringUtils.split(p, "."));
+                List<String> split = Arrays.asList(StringUtils.split(p, HckReflect.concat));
                 String head = "";
                 String field = "";
                 for (int i = 0; i < split.size(); i++) {
@@ -203,13 +233,13 @@ public class DocxService {
                     }
                 }
 
-                List<String> extraFields = Arrays.asList(StringUtils.split(field, MutlifieldsIdentifier));
+                List<String> extraFields = Arrays.asList(StringUtils.split(field, mutlifieldsIdentifier));
 
 
                 if (StringUtils.startsWith(head, "list_")) {
                     List<String> list_headObj = Arrays.asList(StringUtils.split(head, "_"));
                     if (list_headObj.size() == 2) {
-                        List<String> headObj_separator = Arrays.asList(StringUtils.split(list_headObj.get(1), SeparatorIdentifier));
+                        List<String> headObj_separator = Arrays.asList(StringUtils.split(list_headObj.get(1), separatorIdentifier));
                         String separator = "\r\n\f";
                         if (headObj_separator.size() == 2) {
                             separator = headObj_separator.get(1);
@@ -220,10 +250,10 @@ public class DocxService {
                         }
                         head = headObj_separator.get(0);
 
-                        for (List<? extends HckReflectUtils> rList : lists) {
-                            if (rList != null && !rList.isEmpty() && StringUtils.equalsIgnoreCase(rList.get(0).getClass().getSimpleName(), head)) {
+                        for (List<? extends HckReflect> rList : lists) {
+                            if (rList != null && !rList.isEmpty() && StringUtils.equalsIgnoreCase(rList.get(0).getRightIdentifier(), head)) {
                                 String out = "";
-                                for (HckReflectUtils r : rList) {
+                                for (HckReflect r : rList) {
                                     if (StringUtils.isNotBlank(out)) {
                                         out += separator;
                                     }
@@ -236,7 +266,7 @@ public class DocxService {
                         }
                     }
                 } else {
-                    for (HckReflectUtils r : objs) {
+                    for (HckReflect r : objs) {
                         if (StringUtils.equalsIgnoreCase(r.getClass().getSimpleName(), head)) {
                             map.put(p, getValueByObj(r, extraFields));
                             break;
@@ -247,7 +277,7 @@ public class DocxService {
                 logger.error(e.getMessage(), e);
             }
         }
-        map.put("today", Utility.dateToString(new Date(), "dd/MM/yyyy"));
+        map.put("today", Utility.dateToString(new Date(), dateFormat));
         if (fixedMappings != null) {
             map.putAll(fixedMappings);
         }
@@ -256,10 +286,18 @@ public class DocxService {
         return map;
     }
 
-    private String getValueByObj(HckReflectUtils r, List<String> extraFields) {
+
+    /**
+     *
+     * @param r (HckReflectUtis)obj used to retrieve the getField
+     * @param fieldList all the fields you want to retrieve
+     *                  (with optional separator char, es.: field@\r\n will use \r\n between him and the next field)
+     * @return the fieldList concatenated with separators
+     */
+    private String getValueByObj(HckReflect r, List<String> fieldList) {
         String out = "";
-        for (String extraF : extraFields) {
-            List<String> extr = Arrays.asList(StringUtils.split(extraF, "@"));
+        for (String extraF : fieldList) {
+            List<String> extr = Arrays.asList(StringUtils.split(extraF, getSeparatorIdentifier()));
             String separator = ", ";
             String ff = extraF;
             if (extr.size() == 2) {
@@ -276,6 +314,13 @@ public class DocxService {
 
     }
 
+
+
+
+    /**
+     * @param r - the entire String containing chars as \r or \n oe \f
+     * @return - the string with the correct conversion of \r \n \f for .docx files
+     */
     private static String checkNewLines(Object r) {
         if (r instanceof String) {
             return checkNewLines(r);
@@ -284,8 +329,13 @@ public class DocxService {
         }
     }
 
+
+    /**
+     * 16/03/2019 - Attention: i used this project as a source https://github.com/plutext/docx4j/blob/master/src/samples/docx4j/org/docx4j/samples/VariableReplace.java
+     * @param r - the entire String containing chars as \r or \n oe \f
+     * @return - the string with the correct conversion of \r \n \f for .docx files
+     */
     private static String checkNewLines(String r) {
-//        https://github.com/plutext/docx4j/blob/master/src/samples/docx4j/org/docx4j/samples/VariableReplace.java
         StringTokenizer st = new StringTokenizer(r, "\n\r\f"); // tokenize on the newline character, the carriage-return character, and the form-feed character
         StringBuilder sb = new StringBuilder();
 

@@ -1,7 +1,9 @@
 import com.google.common.collect.Lists;
-import hck.interfaces.HckReflectUtils;
+import hck.interfaces.HckReflect;
 import hck.services.DocxService;
 import org.apache.commons.lang3.StringUtils;
+import org.apache.log4j.LogManager;
+import org.apache.log4j.Logger;
 import org.docx4j.openpackaging.packages.WordprocessingMLPackage;
 import org.docx4j.openpackaging.parts.WordprocessingML.MainDocumentPart;
 import org.junit.jupiter.api.Assertions;
@@ -11,12 +13,16 @@ import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
-public class playTest {
+public class PlayTest {
+
+    Logger logger = LogManager.getLogger(PlayTest.class);
+
 
     @Test
     public void howToUse() {
-        System.out.println("Estendi le classi che vuoi rendere disponibili al template con HckReflectUtils e passale al mio service.");
-        System.out.println("Se devi stampare delle liste di oggetti fai la stessa cosa ma passali come Lista di Lista di oggetti che estendono HckReflectUtils");
+
+        System.out.println("Estendi le classi che vuoi rendere disponibili al template con HckReflect e passale al mio service.");
+        System.out.println("Se devi stampare delle liste di oggetti fai la stessa cosa ma passali come Lista di Lista di oggetti che estendono HckReflect");
         System.out.println("Attenzione, la mia procedura richiama qualunque metodo che inizi con get, quindi puoi farti anche restituire quel che vuoi (es fai un get di una lista che funzioni tipo toString della stessa oppure unisci piu campi , formatta le date, etc etc):");
         System.out.println("Sul word scrivi:");
         System.out.println("${OGGETTO.campoDiCuiInvocareLaGet.eventualeCampoACascata}");
@@ -49,7 +55,7 @@ public class playTest {
 
         List<Anagrafica> lemieAnagrafiche = Lists.newArrayList(a, b);
 
-        List<List<? extends HckReflectUtils>> listaDiListeDiOggetti = new ArrayList<>();
+        List<List<? extends HckReflect>> listaDiListeDiOggetti = new ArrayList<>();
         listaDiListeDiOggetti.add(lemieAnagrafiche);
 
         DocxService serv = new DocxService();
@@ -80,11 +86,14 @@ public class playTest {
         } catch (Exception e) {
             e.printStackTrace();
         }
+
+        logger.info("OUTPUT PATH: "+fout.getAbsolutePath());
+
         Assertions.assertTrue(result);
 
     }
 
-    public class Indirizzo extends HckReflectUtils {
+    public class Indirizzo extends HckReflect {
         String completo;
 
         public Indirizzo() {
@@ -100,10 +109,10 @@ public class playTest {
         }
     }
 
-    public class Anagrafica extends HckReflectUtils {
+    public class Anagrafica extends HckReflect {
         String nome;
         String cognome;
-        playTest.Indirizzo indirizzo;
+        PlayTest.Indirizzo indirizzo;
 
         public Anagrafica() {
 
@@ -129,11 +138,11 @@ public class playTest {
             this.cognome = cognome;
         }
 
-        public playTest.Indirizzo getIndirizzo() {
+        public PlayTest.Indirizzo getIndirizzo() {
             return this.indirizzo;
         }
 
-        public void setIndirizzo(final playTest.Indirizzo indirizzo) {
+        public void setIndirizzo(final PlayTest.Indirizzo indirizzo) {
             this.indirizzo = indirizzo;
         }
     }

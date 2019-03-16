@@ -1,23 +1,36 @@
 package hck.interfaces;
 
 import com.google.common.collect.Lists;
-import hck.annotations.HckReflect;
+import hck.annotations.HckReflecting;
 import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import java.lang.reflect.Array;
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
-import java.util.*;
+import java.util.Arrays;
+import java.util.LinkedList;
+import java.util.List;
 
-public abstract class HckReflectUtils {
+public abstract class HckReflect {
 
-    private static Logger logger = LoggerFactory.getLogger(HckReflectUtils.class);
-    private static final String concat = ".";
+    private static Logger logger = LoggerFactory.getLogger(HckReflect.class);
+    public static String concat = ".";
+    private String identifier = null;
 
+    public String getIdentifier() {
+        return this.identifier;
+    }
 
-    @HckReflect(reflect = false)
+    public void setIdentifier(final String identifier) {
+        this.identifier = identifier;
+    }
+
+    public String getRightIdentifier() {
+        return StringUtils.isNotBlank(identifier) ? identifier : this.getClass().getSimpleName();
+    }
+
+    @HckReflecting(reflect = false)
     public Object getNested(String field) {
         String[] splitted = StringUtils.split(field, concat);
         LinkedList<String> nestedFields = Lists.newLinkedList();
@@ -31,7 +44,7 @@ public abstract class HckReflectUtils {
                 String meth = nestedFields.pollFirst();
                 for (Method m : this.getClass().getMethods()) {
                     if (StringUtils.equalsIgnoreCase(m.getName(), "get" + meth)) {
-                        HckReflectUtils o = (HckReflectUtils) m.invoke(this);
+                        HckReflect o = (HckReflect) m.invoke(this);
                         return o.getNested(nestedFields.stream().reduce("", (x, y) -> StringUtils.isBlank(x) ? y : x + concat + y));
                     }
                 }
@@ -46,7 +59,7 @@ public abstract class HckReflectUtils {
     }
 
 
-    @HckReflect(reflect = false)
+    @HckReflecting(reflect = false)
     public Object get(String field) {
         Object rez = null;
         try {
@@ -61,7 +74,7 @@ public abstract class HckReflectUtils {
         return rez;
     }
 
-    @HckReflect(reflect = false)
+    @HckReflecting(reflect = false)
     public List<String> getAvaiableFields() {
         List<String> campi = Lists.newArrayList();
         try {
@@ -75,18 +88,18 @@ public abstract class HckReflectUtils {
         return campi;
     }
 
-    @HckReflect(reflect = false)
+    @HckReflecting(reflect = false)
     public static LinkedList<String> getAvaiableFieldsNested(Class c, String prefix) {
 
 
-        HckReflect refl = (HckReflect) c.getAnnotation(HckReflect.class);
+        HckReflecting refl = (HckReflecting) c.getAnnotation(HckReflecting.class);
 
         LinkedList<String> lista = Lists.newLinkedList();
         try {
             List<Method> metodi = Arrays.asList(c.getMethods());
             for (Method m : metodi) {
                 String name = m.getName();
-                HckReflect r = m.getAnnotation(HckReflect.class);
+                HckReflecting r = m.getAnnotation(HckReflecting.class);
                 if (r == null || r.reflect()) {
                     if (name.startsWith("get") && m.getParameterCount() == 0 && m.getReturnType() != void.class
                             && !m.getReturnType().isArray()) {
@@ -95,8 +108,8 @@ public abstract class HckReflectUtils {
                         if (refl != null) {
                             for (String s : refl.toReflect()) {
                                 if (StringUtils.equals(s, name)) {
-                                    if (HckReflectUtils.class.isAssignableFrom(subC)) {
-                                        lista.addAll(HckReflectUtils.getAvaiableFieldsNested(subC, name.substring(3) + concat));
+                                    if (HckReflect.class.isAssignableFrom(subC)) {
+                                        lista.addAll(HckReflect.getAvaiableFieldsNested(subC, name.substring(3) + concat));
                                     }
                                 }
                             }
