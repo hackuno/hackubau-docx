@@ -49,18 +49,18 @@ HckReflect class have a property named identifier.<br>
 If you set a value to it, the final identifier of <kbd>yourObject</kbd> will become this <u>identifier</u>, else it will be the <u>CLASS NAME</u>.<br>
 <br>
 
-<code><u>List&#62;? extends HckReflect&#60; objs </code></u>
+<code><u>List&#60;? extends HckReflect&#62; objs </code></u>
 The list of single objects used in the mappings.
 <br>
 The engine will understand by "yourObject identifier" who is the right object and will retrieve values from GET methods of theese objects following placeholder instructions.
 <br>
 
-<code><u> List&#62;List&#62;? extends HckReflect&#60;&#60; objs - in </u></code><br>
+<code><u> List&#60;List&#60;? extends HckReflect&#62;&#62; objs - in </u></code><br>
 The list of multiple objects used in the mappings<br>
 Same as single object but in the .docx file you will prepend the "list_" keyword so the engin will seek for the first List containing a collection of "yourObject identifier" objects and recursively print them GET methods provided by placeholder.
 <br>
 
-<code><u>HashMap&#62;String, String&#60; fixedMappings</code></u>
+<code><u>HashMap&#60;String, String&#62; fixedMappings</code></u>
 The list of key-value that egine will use as-is to replace placeholders that do not match any Object-conditions.
  
  
@@ -79,22 +79,25 @@ The list of key-value that egine will use as-is to replace placeholders that do 
 
 
 <code>
+   <pre>
  public class Address extends HckReflect {
   private String completeAddress;
   private String city;
  
   [...constructors, getter and setters ...]
- }
+ }</pre>
 </code>
-
-
+<br>
+<h4><b> You have just to invoke my service as follow: </b></h4>
+<br>
 <code>
  DocxService service = new DocxService();
  
+ //your .docx template
  File template = [...]
-  template = [...]
+ File fout = new File(...); 
  
- fout = serv.generateDocument(f, fout, Lists.newArrayList(a), listaDiListeDiOggetti, myFixedValues);
+ fout = serv.generateDocument(template, fout, Lists.newArrayList(myobj1,myobj2) obj, List<myObjectList1,myObjectList2> listObj, myFixedValues);
 
  </code>
 
