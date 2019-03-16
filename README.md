@@ -5,32 +5,32 @@
 <h1><b>What is this?</b></h1>
 This is a Service to perform susbstitution of placeholders in .docx files (templates) writing simply something like this in the word template:
 <br>
-<code> ${yourObject.yourField} </code> <i>passing in params a List&#60;? extends HckReflect&#62;</i>
+<code> ${yourObject.yourField} </code> <i> passing in params a List&#60;? extends HckReflect&#62;</i>
 <br>
-<code> ${yourPlaceholder} </code> <i>passing in params a HashMap&#60;String,String&#62;</i>
+<code> ${yourPlaceholder} </code> <i> passing in params a HashMap&#60;String,String&#62;</i>
 <br>
-<code> ${today} </code> <i>special keyword</i>
+<code> ${today} </code> <i> special keyword</i>
 <br>
-<code> ${yourObject.yourField.yourEventuallyNestedField} </code>  <i>passing in params a List&#60;? extends HckReflect&#62;</i>
+<code> ${yourObject.yourField.yourEventuallyNestedField} </code>  <i> passing in params a List&#60;? extends HckReflect&#62;</i>
 <br>
-<code> ${list_yourObject.yourField1@separator#yourField2.eventuallyNestedField} </code> passing in params a <i>List&#60;List&#60;? extends HckReflect&#62;&#62;</i>
+<code> ${list_yourObject.yourField1@separator#yourField2.eventuallyNestedField} </code><i> passing in params a <i>List&#60;List&#60;? extends HckReflect&#62;&#62;</i>
 <h5>Where:</h5
  
  <p><u>yourObject=</u><p> 
-  > <p class="lead">&emsp;Your Object (extending HckReflect) className <i>(es. Dogs.class -> dogs)</i></p>
-  > <p class="lead">&emsp;The specified HckReflect.identifier property for every passed object <i>(Es. Dogs d = new Dogs(); d.setIdentifier("customName")</i></p>
+  <p class="lead">&#60;&emsp;Your Object (extending HckReflect) className <i>(es. Dogs.class -> dogs)</i></p>
+  <p class="lead">&#60;&emsp;The specified HckReflect.identifier property for every passed object <i>(Es. Dogs d = new Dogs(); d.setIdentifier("customName")</i></p>
  
  <p><u>list_yourObject=</u><p> 
-  > <p class="lead">&emsp;Same as yourObject but will search for List<yourObject> and recursively print all of them</p>
+  <p class="lead">&#60;&emsp;Same as yourObject but will search for List<yourObject> and recursively print all of them</p>
    
  <p><u>yourPlaceholder=</u><p> 
-  > <p class="lead">&emsp;Search the value in provided HashMake<key,value></p>
+  <p class="lead">&#60;&emsp;Search the value in provided HashMake<key,value></p>
  
  <p><u>today=</u><p> 
-  > <p class="lead">&emsp;today date</p>
+  <p class="lead">&#60;&emsp;today date</p>
  
  <p><u>yourField=</u><p> 
-<p>&emsp;Every getMethod names without "get" word. (ex. getName() -\> yourObject.name)
+<p>&#60;&emsp;Every getMethod names without "get" word. (ex. getName() -\> yourObject.name)
   
 <b>You can easly pass your custom Object/List of objects and the engine will retrieve everything!</b>
 
