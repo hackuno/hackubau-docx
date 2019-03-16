@@ -5,16 +5,30 @@
 <h1><b>What is this?</b></h1>
 This is a Service to perform susbstitution of placeholders in .docx files (templates) writing simply something like this in the word template:
 <br>
-<code> ${yourObject.yourField} </code>
+<code> ${yourObject.yourField} </code> <code> passing to the service a List<? extends HckReflect></code>
 <br>
-<code> ${yourObject.yourField.yourEventuallyNestedField} </code>
+<code> ${yourPlaceholder} </code> <code> passing to the service an HashMap<String,String></code>
 <br>
-<code> ${list_yourObject.yourField1@separator#yourField2.yourEventuallyNestedField@separator#yourfield3} </code>
+<code> ${today} </code> <code>special keyword</code>
+<br>
+<code> ${yourObject.yourField.yourEventuallyNestedField} </code>  <code> passing to the service a List<? extends HckReflect></code>
+<br>
+<code> ${list_yourObject.yourField1@separator#yourField2.yourEventuallyNestedField@separator#yourfield3} </code>  <code> passing to the service a List<List<? extends HckReflect>></code>
 <h5>Where:</h5
+ 
  <p><u>yourObject=</u><p> 
-  <p class="lead">&emsp;Your Object (extending HckReflect) className <i>(es. Dogs.class -> dogs)</i></p>
-  <p>or</p>
-  <p class="lead">&emsp;The specified HckReflect.identifier property for every passed object <i>(Es. Dogs d = new Dogs(); d.setIdentifier("customName")</i></p>
+  > <p class="lead">&emsp;Your Object (extending HckReflect) className <i>(es. Dogs.class -> dogs)</i></p>
+  > <p class="lead">&emsp;The specified HckReflect.identifier property for every passed object <i>(Es. Dogs d = new Dogs(); d.setIdentifier("customName")</i></p>
+ 
+ <p><u>list_yourObject=</u><p> 
+  > <p class="lead">&emsp;Same as yourObject but will search for List<yourObject> and recursively print all of them</p>
+   
+ <p><u>yourPlaceholder=</u><p> 
+  > <p class="lead">&emsp;Search the value in provided HashMake<key,value></p>
+ 
+ <p><u>today=</u><p> 
+  > <p class="lead">&emsp;today date</p>
+ 
  <p><u>yourField=</u><p> 
 <p>&emsp;Every getMethod names without "get" word. (ex. getName() -\> yourObject.name)
   
