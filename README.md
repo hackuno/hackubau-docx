@@ -16,24 +16,24 @@ This is a Service to perform susbstitution of placeholders in .docx files (templ
 <code> ${list_yourObject.yourField1@separator#yourField2.nestedField} </code><i> passing a list containing a <i>List&#60;? extends HckReflect&#62;</i>
 <h5>Where:</h5
  
- <p><u>yourObject=</u><p> 
+ <code><u>yourObject</u></code> 
   <p class="lead">&#62;&emsp;Your CustomObject className (must be extending HckReflect)<i>(es. Dogs.class -> dogs)</i></p>
   <p>&emsp;&emsp;or<p>
   <p class="lead">&#62;&emsp;Your CustomObject identifier property (ereditated from abstract class HckReflect) for every passed object <i>(Es. Dogs d = new Dogs(); d.setIdentifier("customName")</i></p>
  <br>
- <p><u>list_yourObject=</u><p> 
+ <code><u>list_yourObject</u><code> 
   <p class="lead">&#62;&emsp;Same as yourObject but will search for List<yourObject> and recursively print all of them</p>
    <br>
- <p><u>yourPlaceholder=</u><p> 
+ <code><u>yourPlaceholder</u><code> 
   <p class="lead">&#62;&emsp;Search the value in provided HashMake<key,value></p>
  <br>
- <p><u>today=</u><p> 
+ <code><u>today</u><code> 
   <p class="lead">&#62;&emsp;today date</p>
  <br>
- <p><u>yourField=</u><p> 
+ <code><u>yourField</u><code> 
 <p>&#62;&emsp;Every getMethod names without "get" word. (ex. getName() -\> yourObject.name)
   <br><br>
- <p><u>yourField2.nestedField=</u><p> 
+ <code><u>yourField2.nestedField</u><code> 
 <p>&#62;&emsp;Yes, you can go recursively to every nested <Object extends HckReflect> fields!
   <br><br>
  
