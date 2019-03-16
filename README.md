@@ -1,8 +1,11 @@
 # Hackubau Word Generator by template.docx 
 # Mircrosoft Word (.docx) & OpenOffice (.docx) compatibility
 # maven: hackubau-docx
-Service to perform susbstitution of placeholders in .docx files (templates) writing simply something like this
+Service to perform susbstitution of placeholders in .docx files (templates) writing simply something like this in the word template:
+<br>
+<code> ${yourObject.yourField} </code>
 <code> ${yourObject.yourField.yourEventuallyNestedField} </code>
+<code> ${list_yourObject.yourField1@separator#yourField2.yourEventuallyNestedField@separator#yourfield3} </code>
 <br>You can pass easly your custom Object/List of objects and the engine will retrieve everything!
 
 
