@@ -18,9 +18,8 @@ This is a Service to perform susbstitution of placeholders in .docx files (templ
  
  <kbd><u>yourObject</u></kbd> 
   <p class="lead">&#62;&emsp;Your CustomObject className (must be extending HckReflect)</p>
- <code>	<i>(es. Dogs.class -> dogs)</i></code>	
-  <p>&emsp;&emsp;or<p>
-  <p class="lead">&#62;&emsp;Your CustomObject identifier property (ereditated from abstract class HckReflect) for every passed object</p>
+ <code>	<i>(es. Dogs.class -> dogs)</i></code>
+  <p class="lead">&#62;&emsp;...or Your CustomObject identifier property (ereditated from abstract class HckReflect) for every passed object</p>
   <code><i>(Es. Dogs d = new Dogs(); d.setIdentifier("customName")</i></code>
  <br><br>
  <kbd><u>list_yourObject</u></kbd> 
