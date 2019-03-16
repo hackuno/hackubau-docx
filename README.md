@@ -1,7 +1,7 @@
 # Hackubau Word Generator by template.docx
 <span class="lead"><b><maven: hackubau-docx></b> Mircrosoft Word (.docx) & OpenOffice (.docx) compatibility</span>
 
-
+<br>
 <h1><b>What is this?</b></h1>
 This is a Service to perform susbstitution of placeholders in .docx files (templates) writing simply something like this in the word template:
 <br>
@@ -13,25 +13,25 @@ This is a Service to perform susbstitution of placeholders in .docx files (templ
 <br>
 <code> ${yourObject.yourField.yourEventuallyNestedField} </code>  <i> passing in params a List&#60;? extends HckReflect&#62;</i>
 <br>
-<code> ${list_yourObject.yourField1@separator#yourField2.eventuallyNestedField} </code><i> passing in params a list containing a <i>List&#60;? extends HckReflect&#62;</i>
+<code> ${list_yourObject.yourField1@separator#yourField2.eventuallyNestedField} </code><i> passing a list containing a <i>List&#60;? extends HckReflect&#62;</i>
 <h5>Where:</h5
  
  <p><u>yourObject=</u><p> 
   <p class="lead">&#62;&emsp;Your Object (extending HckReflect) className <i>(es. Dogs.class -> dogs)</i></p>
   <p class="lead">&#62;&emsp;The specified HckReflect.identifier property for every passed object <i>(Es. Dogs d = new Dogs(); d.setIdentifier("customName")</i></p>
- 
+ <br>
  <p><u>list_yourObject=</u><p> 
   <p class="lead">&#62;&emsp;Same as yourObject but will search for List<yourObject> and recursively print all of them</p>
-   
+   <br>
  <p><u>yourPlaceholder=</u><p> 
   <p class="lead">&#62;&emsp;Search the value in provided HashMake<key,value></p>
- 
+ <br>
  <p><u>today=</u><p> 
   <p class="lead">&#62;&emsp;today date</p>
- 
+ <br>
  <p><u>yourField=</u><p> 
 <p>&#62;&emsp;Every getMethod names without "get" word. (ex. getName() -\> yourObject.name)
-  
+  <br><br>
 <b>You can easly pass your custom Object/List of objects and the engine will retrieve everything!</b>
 
 
