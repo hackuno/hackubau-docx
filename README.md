@@ -14,10 +14,10 @@ This is a Service to perform susbstitution of placeholders in .docx files (templ
 <kbd> ${yourObject.yourField.yourEventuallyNestedField} </kbd>  <i> passing in params a List&#60;? extends HckReflect&#62;</i>
 <br>
 <kbd> ${list_yourObject.yourField1@separator#yourField2.nestedField} </kbd><i> passing a list containing a <i>List&#60;? extends HckReflect&#62;</i>
-<h5>Where:</h5
+ <h5>Where:</h5>
  <kbd><u>yourObject</u></kbd> 
-  <span class="lead">&#62;&emsp;Your CustomObject className (must be extending HckReflect)<code>	<i>(es. Dogs.class -> dogs)</i></code></span>
-  <span class="lead">&#62;&emsp;...or Your CustomObject identifier property (ereditated from abstract class HckReflect) for every passed object <code><i>(Es. Dogs d = new Dogs(); d.setIdentifier("customName")</i></code></span>
+  <br><span class="lead">&#62;&emsp;Your CustomObject className (must be extending HckReflect)</span><code>	<i>(es. Dogs.class -> dogs)</i></code><br>
+  <span class="lead">&#62;&emsp;...or Your CustomObject identifier property (ereditated from abstract class HckReflect) for every passed object </span><code><i>(Es. Dogs d = new Dogs(); d.setIdentifier("customName")</i></code>
  <br><br>
  <kbd><u>list_yourObject</u></kbd> 
   <p class="lead">&#62;&emsp;Same as yourObject but will search for List<yourObject> and recursively print all of them</p>
