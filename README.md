@@ -2,16 +2,16 @@
 <h1 class="inline"><b>maven: hackubau-docx</b></h1> <h5 class="inline"><b> Mircrosoft Word (.docx) & OpenOffice (.docx) compatibility</b></h5><br>
 <h1><b>What is this?</b></h1>
 This is a Service to perform susbstitution of placeholders in .docx files (templates) writing simply something like this in the word template:
-<br><br>
+<br>
 <code> ${yourObject.yourField} </code>
-<p>Where yourObject= your Object extends HckReflect className or the specified HckReflect.identifier property for every passed object</p>
-<p>Where yourField= name of the getMethod. example, to invoke getName() of Speciality.class you will write "${speciality.name}</p>
 <br>
 <code> ${yourObject.yourField.yourEventuallyNestedField} </code>
-<br><br>
-<code> ${list_yourObject.yourField1@separator#yourField2.yourEventuallyNestedField@separator#yourfield3} </code>
 <br>
-<br>You can pass easly your custom Object/List of objects and the engine will retrieve everything!
+<code> ${list_yourObject.yourField1@separator#yourField2.yourEventuallyNestedField@separator#yourfield3} </code>
+<p><i>Where yourObject= your Object extends HckReflect className or the specified HckReflect.identifier property for every passed object</i></p>
+<p>Where yourField= name of the getMethod. example, to invoke getName() of Speciality.class you will write "${speciality.name}</p>
+<br>
+<br><b>You can easly pass your custom Object/List of objects and the engine will retrieve everything!</b>
 
 
 <h1 class="lead">Case of use</h1>
