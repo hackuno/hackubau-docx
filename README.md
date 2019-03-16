@@ -1,7 +1,5 @@
 # Hackubau Word Generator by template.docx
-# maven: hackubau-docx
-<h5><b> Mircrosoft Word (.docx) & OpenOffice (.docx) compatibility</b></h5><br>
-<br>
+# maven: hackubau-docx <h5><b> Mircrosoft Word (.docx) & OpenOffice (.docx) compatibility</b></h5><br>
 <h1><b>What is this?</b></h1>
 This is a Service to perform susbstitution of placeholders in .docx files (templates) writing simply something like this in the word template:
 <br><br>
@@ -10,7 +8,7 @@ This is a Service to perform susbstitution of placeholders in .docx files (templ
 <p>Where yourField= name of the getMethod. example, to invoke getName() of Speciality.class you will write "${speciality.name}</p>
 <br>
 <code> ${yourObject.yourField.yourEventuallyNestedField} </code>
-<br>
+<br><br>
 <code> ${list_yourObject.yourField1@separator#yourField2.yourEventuallyNestedField@separator#yourfield3} </code>
 <br>
 <br>You can pass easly your custom Object/List of objects and the engine will retrieve everything!
