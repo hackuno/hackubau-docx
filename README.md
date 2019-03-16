@@ -5,15 +5,15 @@
 <h1><b>What is this?</b></h1>
 This is a Service to perform susbstitution of placeholders in .docx files (templates) writing simply something like this in the word template:
 <br>
-<code> ${yourObject.yourField} </code> <i>List&#60;? extends HckReflect&#62;</i>
+<code> ${yourObject.yourField} </code> <i>passing in params a List&#60;? extends HckReflect&#62;</i>
 <br>
-<code> ${yourPlaceholder} </code> <i> HashMap&#60;String,String&#62;</i>
+<code> ${yourPlaceholder} </code> <i>passing in params a HashMap&#60;String,String&#62;</i>
 <br>
 <code> ${today} </code> <i>special keyword</i>
 <br>
-<code> ${yourObject.yourField.yourEventuallyNestedField} </code>  <i> List&#60;? extends HckReflect&#62;</i>
+<code> ${yourObject.yourField.yourEventuallyNestedField} </code>  <i>passing in params a List&#60;? extends HckReflect&#62;</i>
 <br>
-<code> ${list_yourObject.yourField1@separator#yourField2.eventuallyNestedField} </code>  <i>List&#60;List&#60;? extends HckReflect&#62;&#62;</i>
+<code> ${list_yourObject.yourField1@separator#yourField2.eventuallyNestedField} </code> passing in params a <i>List&#60;List&#60;? extends HckReflect&#62;&#62;</i>
 <h5>Where:</h5
  
  <p><u>yourObject=</u><p> 
