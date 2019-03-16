@@ -34,12 +34,12 @@ This tool will make it so easy that you will be stunned! </h4>
 
 <h4><b><u> MAIN FUNCTIONS: </u></b></h4>
 <br>
-<kdb><b>generateDocument(File template, HashMap&#62;String, String&#60; replace, String outputDocument) - return: The Generated File</b></kbd>
+<kbd>generateDocument(File template, HashMap&#62;String, String&#60; replace, String outputDocument) - return: The Generated File</kbd>
  <i>The simplest way: This will just replace the placeholders <b>${key}</b> found in the .docx with the <b> value </b> mapping provided by the hashMap</i>
  
- <kdb><b>
+ <kbd>
  generateDocument(File template, File out, List&#62;? extends HckReflect&#60; objs, List&#62;List&#62;? extends HckReflect&#60;&#60;listsObj, HashMap&#62;String, String&#60; fixedMappings) - return: The Generated File 
-</b></kbd>
+</kbd>
 <i>The best way: This will read the document to find the placeholders and then, for each of them, choose the right object from the provided parameters (objs, listObj or fixedMappings) and invoke the GET methods specified by the placeholder itself </i>
 
 <h4><b> Details </b></h4>
@@ -49,7 +49,7 @@ HckReflect class have a property named identifier.<br>
 If you set a value to it, the final identifier of <kbd>yourObject</kbd> will become this <u>identifier</u>, else it will be the <u>CLASS NAME</u>.<br>
 <br>
 
-<code><u>List&#62;? extends HckReflect&#60; objs</code></u>
+<code><u>List&#62;? extends HckReflect&#60; objs </code></u>
 The list of single objects used in the mappings.
 <br>
 The engine will understand by "yourObject identifier" who is the right object and will retrieve values from GET methods of theese objects following placeholder instructions.
