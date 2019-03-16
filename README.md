@@ -4,7 +4,9 @@
 Service to perform susbstitution of placeholders in .docx files (templates) writing simply something like this in the word template:
 <br>
 <code> ${yourObject.yourField} </code>
+<br>
 <code> ${yourObject.yourField.yourEventuallyNestedField} </code>
+<br>
 <code> ${list_yourObject.yourField1@separator#yourField2.yourEventuallyNestedField@separator#yourfield3} </code>
 <br>You can pass easly your custom Object/List of objects and the engine will retrieve everything!
 
