@@ -4,7 +4,7 @@
 <br>
 <h1><b>What is this?</b></h1>
 This is a Service to perform susbstitution of placeholders in .docx files (templates) writing simply something like this in the word template:
-<br>
+<br><BR><BR>
 <code> ${yourObject.yourField} </code> <i> You have just to pass to the service params a List containing &#60;YourObject extends HckReflect&#62;</i>
 <br>
 <code> ${yourPlaceholder} </code> <i> passing in params a HashMap&#60;String,String&#62;</i>
@@ -15,26 +15,27 @@ This is a Service to perform susbstitution of placeholders in .docx files (templ
 <br>
 <code> ${list_yourObject.yourField1@separator#yourField2.nestedField} </code><i> passing a list containing a <i>List&#60;? extends HckReflect&#62;</i>
 <h5>Where:</h5
- <BR><BR>
- <code><u>yourObject</u></code> 
-  <p class="lead">&#62;&emsp;Your CustomObject className (must be extending HckReflect)</p><code style="font-size:1px; background-color:#222222"><i>(es. Dogs.class -> dogs)</i></code>
+ 
+ <kbd><u>yourObject</u></kbd> 
+  <p class="lead">&#62;&emsp;Your CustomObject className (must be extending HckReflect)</p>
+ <code>	<i>(es. Dogs.class -> dogs)</i></code>	
   <p>&emsp;&emsp;or<p>
   <p class="lead">&#62;&emsp;Your CustomObject identifier property (ereditated from abstract class HckReflect) for every passed object</p>
-  <code style="font-size:2px"><i>(Es. Dogs d = new Dogs(); d.setIdentifier("customName")</i></code>
+  <code><i>(Es. Dogs d = new Dogs(); d.setIdentifier("customName")</i></code>
  <br><br>
- <code><u>list_yourObject</u></code> 
+ <kbd><u>list_yourObject</u></kbd> 
   <p class="lead">&#62;&emsp;Same as yourObject but will search for List<yourObject> and recursively print all of them</p>
    <br>
- <code><u>yourPlaceholder</u></code> 
+ <kbd><u>yourPlaceholder</u></kbd> 
   <p class="lead">&#62;&emsp;Search the value in provided HashMake<key,value></p>
  <br>
- <code><u>today</u></code> 
+ <kbd><u>today</u></kbd> 
   <p class="lead">&#62;&emsp;today date</p>
  <br>
- <code><u>yourField</u></code> 
+ <kbd><u>yourField</u></kbd> 
 <p>&#62;&emsp;Every getMethod names without "get" word. (ex. getName() -\> yourObject.name)
   <br><br>
- <code><u>yourField2.nestedField</u></code> 
+ <kbd><u>yourField2.nestedField</u></kbd> 
 <p>&#62;&emsp;Yes, you can go recursively to every nested <Object extends HckReflect> fields!
   <br><br>
  
