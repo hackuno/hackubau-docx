@@ -1,7 +1,9 @@
 # Hackubau Word Generator by template.docx 
 # Mircrosoft Word (.docx) & OpenOffice (.docx) compatibility
 # maven: hackubau-docx
-Service to perform susbstitution of placeholders in .docx files (templates). You can pass your custom Object/List of objects!
+Service to perform susbstitution of placeholders in .docx files (templates) writing simply something like this
+<code> ${yourObject.yourField.yourEventuallyNestedField} </code>
+<br>You can pass easly your custom Object/List of objects and the engine will retrieve everything!
 
 
 <h1 class="lead">Case of use</h1>
