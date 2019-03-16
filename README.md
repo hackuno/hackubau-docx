@@ -1,5 +1,5 @@
 # Hackubau Word Generator by template.docx 
-# Mircrosoft Word & OpenOffice complatibles
+# Mircrosoft Word (.docx) & OpenOffice (.docx) compatibility
 # maven: hackubau-docx
 Service to perform susbstitution of placeholders in .docx files (templates). You can pass your custom Object/List of objects!
 
