@@ -2,9 +2,10 @@
 # Mircrosoft Word (.docx) & OpenOffice (.docx) compatibility
 # maven: hackubau-docx
 Service to perform susbstitution of placeholders in .docx files (templates) writing simply something like this in the word template:
-<br>
+<br><br>
 <code> ${yourObject.yourField} </code>
-<p>yourObject= your (HckReflect)Object.class Name or the specified HckReflect.identifier property for every passed object</p>
+<p>Where yourObject= your Object extends HckReflect className or the specified HckReflect.identifier property for every passed object</p>
+<p>Where yourField= name of the getMethod. example, to invoke getName() of Speciality.class you will write "${speciality.name}</p>
 <br>
 <code> ${yourObject.yourField.yourEventuallyNestedField} </code>
 <br>
