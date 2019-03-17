@@ -4,6 +4,12 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
+    <!--Da finire la configurazione e fare un test di utilizzo API da altro software prima di fare il deploy-->
+    <!--https://maven.apache.org/repository/guide-central-repository-upload.html-->
+    <!--https://blog.idrsolutions.com/2015/06/how-to-upload-your-java-artifact-to-maven-central/-->
+    <!--https://www.gnupg.org/gph/en/manual.html#AEN136-->
+    <!--https://blog.sonatype.com/2010/01/how-to-generate-pgp-signatures-with-maven/-->
+
     <groupId>it.hackubau</groupId>
     <artifactId>hackubau-docs</artifactId>
     <version>1.0-RELEASE</version>
