@@ -24,11 +24,11 @@
             <organizationUrl>www.hackubau.it</organizationUrl>
         </developer>
     </developers>
-   <scm>
-      <connection>git@github.com:hackuno/hackubau-docx.git</connection>
-       <developerConnection>git@github.com:hackuno/hackubau-docx.git</developerConnection>
-       <url>https://hackuno.github.io/hackubau-docx/</url>
-   </scm>
+    <scm>
+        <connection>git@github.com:hackuno/hackubau-docx.git</connection>
+        <developerConnection>git@github.com:hackuno/hackubau-docx.git</developerConnection>
+        <url>https://hackuno.github.io/hackubau-docx/</url>
+    </scm>
 
 
     <properties>
@@ -86,7 +86,6 @@
         </dependency>
     </dependencies>
 
-
     <build>
         <plugins>
             <plugin>
@@ -116,6 +115,14 @@
                 <configuration>
                     <additionalJOption>-Xdoclint:none</additionalJOption>
                 </configuration>
+                <executions>
+                    <execution>
+                        <id>attach-javadocs</id>
+                        <goals>
+                            <goal>jar</goal>
+                        </goals>
+                    </execution>
+                </executions>
             </plugin>
         </plugins>
     </build>
