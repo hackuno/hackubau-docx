@@ -20,8 +20,11 @@ public class PlayTest {
     Logger logger = LogManager.getLogger(PlayTest.class);
 
 
+    /**
+     * this is just a suggerimento for some italians pizza.mario.
+     */
     @Test
-    public void howToUse() {
+    public void pizzaMarioTipAndTricks() {
 
         System.out.println("Estendi le classi che vuoi rendere disponibili al template con HckReflect e passale al mio service.");
         System.out.println("Se devi stampare delle liste di oggetti fai la stessa cosa ma passali come Lista di Lista di oggetti che estendono HckReflect");
@@ -29,8 +32,14 @@ public class PlayTest {
         System.out.println("Sul word scrivi:");
         System.out.println("${OGGETTO.campoDiCuiInvocareLaGet.eventualeCampoACascata}");
         System.out.println("${list__OGGETTO@separatore.campoGetDaInvocare#campo2DaInvocare@separatoredacampo1#campo3DaInvocare@separatoredacampo2");
+        System.out.println("Chiama il mio servizio e passagli tutti gli oggetti o liste di oggetti che servono al template per essere completato.");
+        System.out.println("Se manca qualcosa, printerà il placeholder stesso");
     }
 
+    /**
+     * Just a compare with the right output :)
+     * I will make real Junit Tests later... maybe. It depends of your interest in it.
+     */
     @Test
     public void test() {
 
@@ -127,8 +136,15 @@ public class PlayTest {
 
     }
 
-    //HERE I AM CREATING SOME SIMPLE EXAMPLE CLASS THAT EXTENDS HckReflect JUST TO USE THEM IN THE PLAY TEST//
+    /**
+        THEESE CLASSES (Anagrafica AND Indirizzo are just SOME SIMPLE EXAMPLE CLASS THAT EXTENDS HckReflect
+        THESE ARE JUST TO USE THEM IN THE PLAY TEST
+     *
+     */
 
+    /**
+     * Sample HckReflect class to be used in the test
+     */
     public class Indirizzo extends HckReflect {
         String completo;
 
@@ -145,6 +161,9 @@ public class PlayTest {
         }
     }
 
+    /**
+     * Sample HckReflect class to be used in the test
+     */
     public class Anagrafica extends HckReflect {
         String nome;
         String cognome;

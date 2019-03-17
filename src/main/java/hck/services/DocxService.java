@@ -24,8 +24,12 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 /**
- * 15/03/2019 - ATTENTION! The steps in this page marked with comments that start with 1. or 2. or 3. or 4. are copied by the following project:
- * https://github.com/ErisoHV/docx4jExample.git
+ * @author
+ * 15/03/2019 - Marco Guassone <hck@hackubau.it> but with Credits to:
+ * ErisoHV > https://github.com/ErisoHV/docx4jExample.git  (for the core of docx manipulation)
+ * plutext > https://github.com/plutext/docx4j/blob/master/src/samples/docx4j/org/docx4j/samples/VariableReplace.java (for the right replace of \r\n characters in docx)
+ * @apiNote
+ * just call the generateDocument(template, output, List(obj) -optional, List(List of obj) -optional , HashMap -optional) passing all the objects, List of Objects or HashMap that you think you will have to map in the corrispondenting template.
  */
 
 @Service
@@ -33,13 +37,33 @@ public class DocxService {
 
     Logger logger = LogManager.getLogger(DocxService.class);
 
+    /**
+     * the right template format
+     */
     private final static String FORMAT = ".docx";
+
+    /**
+     * the mime type of Microsoft Word .docx files
+     */
     private final static String MIME_TYPE = "application/vnd.openxmlformats-officedocument.wordprocessingml.document";
 
-    //char used in .docx template before the personalized separator chars - default @
+
+    /**
+     * OpenOffice .docx format mime type
+     */
+    private static final String MIME_TYPE_OPEN_OFFICE = "application/zip";
+
+
+    /**
+     * char used in .docx template before the personalized separator chars to identify them
+     * - default @
+     */
     private String separatorIdentifier;
 
-    //char used in .docx template to separate multiple entries of the same object - default #
+    /**
+     * char used in .docx template to separate multiple entries of the same object to identify them
+     * - default #
+     */
     private String mutlifieldsIdentifier;
 
     private String dateFormat;
@@ -50,56 +74,14 @@ public class DocxService {
         this.setDateFormat("dd/MM/yyyy");
     }
 
-    public String getDateFormat() {
-        return this.dateFormat;
-    }
-
-    public void setDateFormat(final String dateFormat) {
-        this.dateFormat = dateFormat;
-    }
-
-    public String getSeparatorIdentifier() {
-        return this.separatorIdentifier;
-    }
-
-    public void setSeparatorIdentifier(final String separatorIdentifier) {
-        this.separatorIdentifier = separatorIdentifier;
-    }
-
-    public String getMutlifieldsIdentifier() {
-        return this.mutlifieldsIdentifier;
-    }
-
-    public void setMutlifieldsIdentifier(final String mutlifieldsIdentifier) {
-        this.mutlifieldsIdentifier = mutlifieldsIdentifier;
-    }
-
-    //aggiunto compatibilita' docx salvati con open office
-    private static final String MIME_TYPE_OPEN_OFFICE = "application/zip";
-
-    public static String getMimeType(File file) {
-        ContentInfo info;
-        try {
-            info = (new ContentInfoUtil()).findMatch(file);
-            if (info != null)
-                return info.getMimeType();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-
-        return null;
-    }
-
-
     /**
-     * This method was copied by https://github.com/ErisoHV/docx4jExample.git on 15/03/2019 and i used it as base for my project
-     * @param template - the .docx template
-     * @param replace - the hash map of key-value to replace
+     * The basic and simpliest method(Credits to https://github.com/ErisoHV/docx4jExample.git that inspired me for the core)
+     * @param template       - the .docx template
+     * @param replace        - the hash map of key-value to replace
      * @param outputDocument - the output target file
      * @return - the out file
      */
-    public File generateDocument(File template, HashMap<String, String> replace,
-                                 String outputDocument) {
+    public File generateDocument(File template, HashMap<String, String> replace, String outputDocument) {
 
         File rez = null;
         if (template != null && replace != null && replace.size() > 0
@@ -143,13 +125,13 @@ public class DocxService {
     }
 
     /**
-     *
-     * @param template - the .docx file (Save by openoffice or microsoft word)
-     * @param out - the output file target
-     * @param objs - the non-mandatory objects that you will try to call by your .docx template
-     *             (es. a file .docx containing "${Anagrafica.nome}" will require an obj=(HckReflect)Anagrafica or (HckReflect)obj.identifier="Anagrafica")
-     * @param listsObj - the non-mandatory List of objects that you will try to call by your .docx template
-     *              (es. aa file .docx containing "${list_anagrafica.nome}" will require a listsObj containing a List of (HckReflect)Anagrafica or List of (HckReflect)obj.identifier="Anagrafica")
+     * The magic is here(this let you replace placeholders with right value just typing in .docx)
+     * @param template      - the .docx file (Save by openoffice or microsoft word)
+     * @param out           - the output file target
+     * @param objs          - the non-mandatory objects that you will try to map from your .docx template
+     *                      (es. a file .docx containing "${anagrafics.nome}" will require an obj=(HckReflect)anagrafics or (HckReflect)obj.identifier="anagrafics")
+     * @param listsObj      - the non-mandatory List of objects that you will try to map from your .docx template
+     *                      (es. aa file .docx containing "${list_anagrafics.name}" will require a listsObj containing a List of (HckReflect)anagrafics or List of (HckReflect)obj.identifier="anagrafics")
      * @param fixedMappings - the non-mandatory fixed String params that you will try to call by your .docx template
      *                      (es. a file with ${cioppy} wille require an HashMap<"cioppy","bau"> - n.b. the special key today is used for today date.
      * @return - the out file
@@ -214,7 +196,15 @@ public class DocxService {
         return out;
     }
 
-    public HashMap<String, String> getMappings(List<String> placeHolders, List<? extends HckReflect> objs, List<List<? extends HckReflect>> lists, HashMap<String, String> fixedMappings) {
+    /**
+     * @param placeHolders  - the list of placeholders found in the .docx files
+     * @param objs          - the optional objects that will be automatically mapped to the right placeholders checking the corrispondence between the first slice of the placeholder and the return of object.getRightIdentifier() method.
+     *                      for example Address.java will find a match with "address.fieldThatYouWant"
+     * @param lists         - the same of objs but this time it is a List of your object to be mapped with list_placeholder that you need to recursively replace on the .docx.
+     * @param fixedMappings - the simple key-value mappings matchings the placeholders.
+     * @return the hashMap of key-value that will be used to replace the placeholders.
+     */
+    private HashMap<String, String> getMappings(List<String> placeHolders, List<? extends HckReflect> objs, List<List<? extends HckReflect>> lists, HashMap<String, String> fixedMappings) {
         HashMap<String, String> map = new HashMap<>();
 
         for (String p : placeHolders) {
@@ -288,8 +278,7 @@ public class DocxService {
 
 
     /**
-     *
-     * @param r (HckReflectUtis)obj used to retrieve the getField
+     * @param r         (HckReflectUtis)obj used to retrieve the getField
      * @param fieldList all the fields you want to retrieve
      *                  (with optional separator char, es.: field@\r\n will use \r\n between him and the next field)
      * @return the fieldList concatenated with separators
@@ -315,8 +304,6 @@ public class DocxService {
     }
 
 
-
-
     /**
      * @param r - the entire String containing chars as \r or \n oe \f
      * @return - the string with the correct conversion of \r \n \f for .docx files
@@ -331,7 +318,27 @@ public class DocxService {
 
 
     /**
-     * 16/03/2019 - Attention: i used this project as a source https://github.com/plutext/docx4j/blob/master/src/samples/docx4j/org/docx4j/samples/VariableReplace.java
+     *
+     * @param file the file wich you want to get the mymeType
+     * @return the String representing the mimeType
+     */
+    private static String getMimeType(File file) {
+        ContentInfo info;
+        try {
+            info = (new ContentInfoUtil()).findMatch(file);
+            if (info != null)
+                return info.getMimeType();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        return null;
+    }
+
+
+
+
+    /**
      * @param r - the entire String containing chars as \r or \n oe \f
      * @return - the string with the correct conversion of \r \n \f for .docx files
      */
@@ -351,5 +358,31 @@ public class DocxService {
         }
         return sb.toString();
     }
+
+
+    public String getDateFormat() {
+        return this.dateFormat;
+    }
+
+    public void setDateFormat(final String dateFormat) {
+        this.dateFormat = dateFormat;
+    }
+
+    public String getSeparatorIdentifier() {
+        return this.separatorIdentifier;
+    }
+
+    public void setSeparatorIdentifier(final String separatorIdentifier) {
+        this.separatorIdentifier = separatorIdentifier;
+    }
+
+    public String getMutlifieldsIdentifier() {
+        return this.mutlifieldsIdentifier;
+    }
+
+    public void setMutlifieldsIdentifier(final String mutlifieldsIdentifier) {
+        this.mutlifieldsIdentifier = mutlifieldsIdentifier;
+    }
+
 
 }

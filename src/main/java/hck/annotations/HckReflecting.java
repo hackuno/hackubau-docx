@@ -7,7 +7,8 @@ import java.lang.annotation.Target;
 
 
 /**
- * this is a helper annotation used just to print out all the possible getters of your HckReflect classes
+ * @author Marco Guassone <hck@hackubau.it>
+ * this is an helper annotation used just to print out all the possible getters of your HckReflect classes
  */
 @Retention(RetentionPolicy.RUNTIME)
 @Target(value = {ElementType.METHOD, ElementType.FIELD, ElementType.PARAMETER,ElementType.TYPE})

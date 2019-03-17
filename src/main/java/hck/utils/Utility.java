@@ -13,6 +13,12 @@ public class Utility {
 
     private static SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
 
+    /**
+     *
+     * @param obj the date
+     * @param formato the date-format you want to print - default: dd/MM/yyyy
+     * @return the String representing the date
+     */
     public static String dateToString(Date obj, String formato) {
         if (obj != null) {
             try {
@@ -26,6 +32,11 @@ public class Utility {
     }
 
 
+    /**
+     *
+     * @param obj the String to clean
+     * @return the string without word-incompatible characters
+     */
     public static String cleanStr(Object obj) {
         String rez = "";
         if (obj != null) {
