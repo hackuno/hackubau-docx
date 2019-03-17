@@ -9,7 +9,7 @@
     <version>1.0-RELEASE</version>
     <packaging>jar</packaging>
     <name>it.hackubau:hackubau-docs</name>
-    <url>www.hackubau.it</url>
+    <url>https://hackuno.github.io/hackubau-docx/</url>
     <licenses>
         <license>
             <name>MIT</name>
@@ -84,10 +84,30 @@
             <version>5.3.1</version>
             <scope>test</scope>
         </dependency>
+
+        <!-- https://mvnrepository.com/artifact/org.apache.maven.plugins/maven-gpg-plugin -->
+        <dependency>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-gpg-plugin</artifactId>
+            <version>1.6</version>
+        </dependency>
+
     </dependencies>
 
     <build>
         <plugins>
+            <!--<plugin>-->
+                <!--<groupId>org.sonatype.plugins</groupId>-->
+                <!--<artifactId>nexus-staging-maven-plugin</artifactId>-->
+                <!--<version>1.1</version>-->
+                <!--<extensions>true</extensions>-->
+                <!--<configuration>-->
+                    <!--&lt;!&ndash; The Base URL of Nexus instance where we want to stage &ndash;&gt;-->
+                    <!--<nexusUrl>http://localhost:8081/nexus/</nexusUrl>-->
+                    <!--&lt;!&ndash; The server "id" element from settings to use authentication from &ndash;&gt;-->
+                    <!--<serverId>local-nexus</serverId>-->
+                <!--</configuration>-->
+            <!--</plugin>-->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
@@ -124,6 +144,19 @@
                     </execution>
                 </executions>
             </plugin>
+            <!--<plugin>-->
+                <!--<groupId>org.apache.maven.plugins</groupId>-->
+                <!--<artifactId>maven-gpg-plugin</artifactId>-->
+                <!--<executions>-->
+                    <!--<execution>-->
+                        <!--<id>sign-artifacts</id>-->
+                        <!--<phase>verify</phase>-->
+                        <!--<goals>-->
+                            <!--<goal>sign</goal>-->
+                        <!--</goals>-->
+                    <!--</execution>-->
+                <!--</executions>-->
+            <!--</plugin>-->
         </plugins>
     </build>
 

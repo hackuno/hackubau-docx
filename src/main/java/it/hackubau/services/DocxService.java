@@ -28,7 +28,7 @@ import java.util.regex.Pattern;
  * 15/03/2019 - Marco Guassone <hck@hackubau.it> but with Credits to:
  * ErisoHV > https://github.com/ErisoHV/docx4jExample.git  (for the core of docx manipulation)
  * plutext > https://github.com/plutext/docx4j/blob/master/src/samples/docx4j/org/docx4j/samples/VariableReplace.java (for the right replace of \r\n characters in docx)
- * @apiNote
+ * @implNote
  * just call the generateDocument(template, output, List(obj) -optional, List(List of obj) -optional , HashMap -optional) passing all the objects, List of Objects or HashMap that you think you will have to map in the corrispondenting template.
  */
 
