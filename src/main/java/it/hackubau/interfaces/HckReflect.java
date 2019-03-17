@@ -1,7 +1,7 @@
-package hck.interfaces;
+package it.hackubau.interfaces;
 
 import com.google.common.collect.Lists;
-import hck.annotations.HckReflecting;
+import it.hackubau.annotations.HckReflecting;
 import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

@@ -1,7 +1,7 @@
 import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;
-import hck.interfaces.HckReflect;
-import hck.services.DocxService;
+import it.hackubau.interfaces.HckReflect;
+import it.hackubau.services.DocxService;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;

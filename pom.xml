@@ -4,11 +4,31 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>hackubau</groupId>
+    <groupId>it.hackubau</groupId>
     <artifactId>hackubau-docs</artifactId>
     <version>1.0-RELEASE</version>
     <packaging>jar</packaging>
-    <name>docx-template-processor</name>
+    <name>it.hackubau:hackubau-docs</name>
+    <url>www.hackubau.it</url>
+    <licenses>
+        <license>
+            <name>MIT</name>
+            <url>https://github.com/hackuno/hackubau-docx/blob/master/LICENSE</url>
+        </license>
+    </licenses>
+    <developers>
+        <developer>
+            <name>Marco Guassone</name>
+            <email>hck@hackubau.it</email>
+            <organization>hackubau</organization>
+            <organizationUrl>www.hackubau.it</organizationUrl>
+        </developer>
+    </developers>
+   <scm>
+      <connection>git@github.com:hackuno/hackubau-docx.git</connection>
+       <developerConnection>git@github.com:hackuno/hackubau-docx.git</developerConnection>
+       <url>https://hackuno.github.io/hackubau-docx/</url>
+   </scm>
 
 
     <properties>

@@ -1,10 +1,10 @@
-package hck.services;
+package it.hackubau.services;
 
 import com.google.common.collect.Lists;
 import com.j256.simplemagic.ContentInfo;
 import com.j256.simplemagic.ContentInfoUtil;
-import hck.interfaces.HckReflect;
-import hck.utils.Utility;
+import it.hackubau.interfaces.HckReflect;
+import it.hackubau.utils.Utility;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;

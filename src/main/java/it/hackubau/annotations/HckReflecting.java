@@ -1,4 +1,4 @@
-package hck.annotations;
+package it.hackubau.annotations;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;
