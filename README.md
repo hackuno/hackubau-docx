@@ -36,9 +36,10 @@ This tool will make it so easy that you will be stunned! </h4>
 <br><br>
 The complete documentation is under writing, please be patient and write to me <hck@hackubau.it> if you want to start now and you have questions.
 <br>
-I will promote soon the stagin version to release version, but in meantime you can import the project from the
+I will promote from staging to release repository.
 <br>
-<b> staging sonatype repository:</b>  https://oss.sonatype.org/service/local/staging/deploy/maven2
+In meantime you can import the project from the staging sonatype repository: <br>
+<code>https://oss.sonatype.org/service/local/staging/deploy/maven2</code>
 <br>
 <pre>
 <code>
