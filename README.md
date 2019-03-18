@@ -1,5 +1,5 @@
 # Hackubau Word Generator by template.docx
-<span class="lead"><b><maven: hackubau-docx></b> Mircrosoft Word (.docx) & OpenOffice (.docx) compatibility</span>
+<maven: hackubau-docx> Mircrosoft Word (.docx) & OpenOffice (.docx) compatibility
 
 <br>
 <h1><b>What is this?</b></h1>
