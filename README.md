@@ -1,7 +1,7 @@
 # Hackubau Word Generator by template.docx
 <span class="lead"> <b> &#60;maven: hackubau-docx&#62; Mircrosoft Word (.docx) & OpenOffice (.docx) compatibility </span>
-<a class="btn" href="https://hackuno.github.io/hackubau-docx/docs">Documentation JavaDocs Here</a>
 
+<a class="" href="https://hackuno.github.io/hackubau-docx/docs">Documentation JavaDocs Here</a>
 
 <br>
 <h1><b>What is this?</b></h1>
