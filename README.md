@@ -1,5 +1,23 @@
 # Hackubau Word Generator by template.docx
-<span class="lead"><b><maven: hackubau-docx></b> Mircrosoft Word (.docx) & OpenOffice (.docx) compatibility</span>
+<span class="lead"> <b> &#60;maven: hackubau-docx&#62; Mircrosoft Word (.docx) & OpenOffice (.docx) compatibility </span>
+
+<br><br>
+The documentation is under writing, please be patient and write to me <hck@hackubau.it> if you want to start now and you have questions.
+<br>
+I will promote soon the stagin version to release version, but in meantime you can import the project with:
+<br>
+<pre>
+<code>
+<dependency>
+  <groupId>it.hackubau</groupId>
+  <artifactId>hackubau-docs</artifactId>
+  <version>1.0-RELEASE</version>
+</dependency>
+</code>
+</pre>
+<br>
+
+
 
 <br>
 <h1><b>What is this?</b></h1>
