@@ -8,11 +8,11 @@ I will promote soon the stagin version to release version, but in meantime you c
 <br>
 <pre>
 <code>
-<dependency>
-  <groupId>it.hackubau</groupId>
-  <artifactId>hackubau-docs</artifactId>
-  <version>1.0-RELEASE</version>
-</dependency>
+&#60;dependency&#62;
+  &#60;groupId&#62;it.hackubau&#60;/groupId&#62;
+  &#60;artifactId&#62;hackubau-docs&#60;/artifactId&#62;
+  &#60;version&#62;1.0-RELEASE&#60;/version&#62;
+&#60;/dependency&#62;
 </code>
 </pre>
 <br>
