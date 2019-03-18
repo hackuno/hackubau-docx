@@ -17,7 +17,6 @@ import java.util.List;
  * a) This class allow you to call "getMethods()" just typing get("methods")
  * b) If you have nested HckReflect classes you can also inside the nested childs: getNested("method.child1Method.child2Method");
  * c) You can use the identifier property to specify the string that you will use as object placeholder in the .docx template.
- * @implNote
  * just extend your class with this.
  * if you need you are free to call the setIdentifier("newPlaceholder") so in the .docx you will write: ${placeholder.methodToinvoke[...]}
  */

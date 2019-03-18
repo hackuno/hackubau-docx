@@ -4,7 +4,9 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <!--Da finire la configurazione e fare un test di utilizzo API da altro software prima di fare il deploy-->
+    <!--MY GPG PULIC KEY-->
+    <!--http://keys.gnupg.net/pks/lookup?search=hackubau&fingerprint=on&op=index-->
+    <!--HOW TO DEPLOY TO MAVEN CENTRAL REPOSITORY-->
     <!--https://maven.apache.org/repository/guide-central-repository-upload.html-->
     <!--https://blog.idrsolutions.com/2015/06/how-to-upload-your-java-artifact-to-maven-central/-->
     <!--https://www.gnupg.org/gph/en/manual.html#AEN136-->
@@ -35,6 +37,7 @@
         <developerConnection>git@github.com:hackuno/hackubau-docx.git</developerConnection>
         <url>https://hackuno.github.io/hackubau-docx/</url>
     </scm>
+    <description>Service to perform susbstitution of placeholders in .docx files (templates). You can pass your custom Object/List of objects</description>
 
 
     <properties>
@@ -100,23 +103,19 @@
 
     </dependencies>
 
+
+    <distributionManagement>
+        <snapshotRepository>
+            <id>ossrh</id>
+            <url>https://oss.sonatype.org/content/repositories/snapshots</url>
+        </snapshotRepository>
+    </distributionManagement>
     <build>
         <plugins>
-            <!--<plugin>-->
-                <!--<groupId>org.sonatype.plugins</groupId>-->
-                <!--<artifactId>nexus-staging-maven-plugin</artifactId>-->
-                <!--<version>1.1</version>-->
-                <!--<extensions>true</extensions>-->
-                <!--<configuration>-->
-                    <!--&lt;!&ndash; The Base URL of Nexus instance where we want to stage &ndash;&gt;-->
-                    <!--<nexusUrl>http://localhost:8081/nexus/</nexusUrl>-->
-                    <!--&lt;!&ndash; The server "id" element from settings to use authentication from &ndash;&gt;-->
-                    <!--<serverId>local-nexus</serverId>-->
-                <!--</configuration>-->
-            <!--</plugin>-->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.8.0</version>
                 <configuration>
                     <source>8</source>
                     <target>8</target>
@@ -126,11 +125,12 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-source-plugin</artifactId>
+                <version>2.2.1</version>
                 <executions>
                     <execution>
                         <id>attach-sources</id>
                         <goals>
-                            <goal>jar</goal>
+                            <goal>jar-no-fork</goal>
                         </goals>
                     </execution>
                 </executions>
@@ -138,6 +138,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-javadoc-plugin</artifactId>
+                <version>3.1.0</version>
                 <configuration>
                     <additionalJOption>-Xdoclint:none</additionalJOption>
                 </configuration>
@@ -150,19 +151,32 @@
                     </execution>
                 </executions>
             </plugin>
-            <!--<plugin>-->
-                <!--<groupId>org.apache.maven.plugins</groupId>-->
-                <!--<artifactId>maven-gpg-plugin</artifactId>-->
-                <!--<executions>-->
-                    <!--<execution>-->
-                        <!--<id>sign-artifacts</id>-->
-                        <!--<phase>verify</phase>-->
-                        <!--<goals>-->
-                            <!--<goal>sign</goal>-->
-                        <!--</goals>-->
-                    <!--</execution>-->
-                <!--</executions>-->
-            <!--</plugin>-->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-gpg-plugin</artifactId>
+                <version>1.6</version>
+                <executions>
+                    <execution>
+                        <id>sign-artifacts</id>
+                        <phase>verify</phase>
+                        <goals>
+                            <goal>sign</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <groupId>org.sonatype.plugins</groupId>
+                <artifactId>nexus-staging-maven-plugin</artifactId>
+                <version>1.6.7</version>
+                <extensions>true</extensions>
+                <configuration>
+                    <serverId>ossrh</serverId>
+                    <nexusUrl>https://oss.sonatype.org/</nexusUrl>
+                    <autoReleaseAfterClose>false</autoReleaseAfterClose>
+                </configuration>
+            </plugin>
+
         </plugins>
     </build>
 
