@@ -250,7 +250,7 @@ Mario, Unknow-Unknow, 12
 Pippo, The crazy one-Many many crazy, 13
 </code></pre>
 
-<h3>Of course you can mix up as many lists , objects and key-values as you wany</h3>
+<h5>Of course you can mix up as many lists , objects and key-values as you wany</h5>
 
 
 
@@ -386,10 +386,7 @@ Mario, Unknow-Unknow, 12
 Pippo, The crazy one-Many many crazy, 13
 </code></pre>
 
-
-<br/><br/>
-Please write to me <hck@hackubau.it> if you have any questions.
-<br/><br/>
+<h1>POM.XML or others package managers at:</h1>
 [![Maven Central](https://img.shields.io/maven-central/v/it.hackubau/hackubau-docs.svg?label=Maven%20Central)](https://search.maven.org/search?q=g:%22it.hackubau%22%20AND%20a:%22hackubau-docs%22)
 <br/>
 [![Java Docs](https://img.shields.io/maven-central/v/it.hackubau/hackubau-docs.svg?label=Java%20Docs)](https://hackuno.github.io/hackubau-docx/docs)
@@ -407,4 +404,6 @@ Please write to me <hck@hackubau.it> if you have any questions.
 &#60;/dependency&#62;
 </code>
 </pre>
+<br/><br/>
+Please write to me <hck@hackubau.it> if you have any questions.
 
