@@ -11,7 +11,7 @@ Please write to me <hck@hackubau.it> if you have any questions.
 <br><br>
 <pre>
 <code>
-<a href="https://search.maven.org/search?q=g:%22it.hackubau%22%20AND%20a:%22hackubau-docs%22">[[ Here you can find gradle, groovy and others package managers entries ]]</a>
+<a href="https://search.maven.org/search?q=g:%22it.hackubau%22%20AND%20a:%22hackubau-docs%22"> &#60;&#60; Here you can find gradle, groovy and others package managers entries &#62;&#62;</a>
 <br>
 <b> MAVEN pom.xml </b>
 <br>
@@ -243,7 +243,7 @@ Giorgio, Mario, Pippo
 <p>For example if you have to print the list of someone's childs but you want specificy more fields and choose a personalized separator</p>
 
 <CODE>
-<pre><b><u>template.docx (n.b. "list_", "@" and "#" are keywords)</u></b>
+<pre><b><u>template.docx </u></b> (n.b. "list_", "@" and "#" are keywords)
 
 Theese are your childrens:
 ${list_anagrafics@\r\n.name#mother.name#mother.surname@-#age}
