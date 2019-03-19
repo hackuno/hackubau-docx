@@ -1,5 +1,5 @@
 # Hackubau Word Generator by template.docx
-<span class="lead"> <b> <a href="https://search.maven.org/search?q=g:it.hackubau"> maven sonatype central repository: hackubau-docx </a> Mircrosoft Word (.docx) & OpenOffice (.docx) compatibility </span>
+<span class="lead"> <b> <a href="https://search.maven.org/search?q=g:it.hackubau"> maven central repository: hackubau-docs </a> Mircrosoft Word (.docx) & OpenOffice (.docx) compatibility </span>
 
 <a class="" href="https://hackuno.github.io/hackubau-docx/docs">Documentation JavaDocs Here</a>
 
@@ -7,39 +7,36 @@
 <h1><b>What is this?</b></h1>
 This is a Service to perform susbstitution of placeholders in .docx files (templates) writing simply something like this in the word template:
 <br><br>
-<kbd> ${yourObject.yourField} </kbd> <i> You have just to pass to the service params a List containing &#60;YourObject extends HckReflect&#62;</i>
+<kbd> ${yourObject.yourField} </kbd> 
 <br>
-<kbd> ${yourPlaceholder} </kbd> <i> passing in params a HashMap&#60;String,String&#62;</i>
+<kbd> ${yourPlaceholder} </kbd> 
 <br>
 <kbd> ${today} </kbd> <i> special keyword</i>
 <br>
-<kbd> ${yourObject.yourField.yourEventuallyNestedField} </kbd>  <i> passing in params a List&#60;? extends HckReflect&#62;</i>
+<kbd> ${yourObject.yourField.yourEventuallyNestedField} </kbd>
 <br>
-<kbd> ${list_yourObject.yourField1@separator#yourField2.nestedField} </kbd><i> passing a list containing a <i>List&#60;? extends HckReflect&#62;</i>
-   
+<kbd> ${list_yourObject.yourField1@separator#yourField2.nestedField} </kbd>
+
 <b>You can easly pass your custom Object/List of objects and the engine will retrieve everything!</b>
 
 <center> &#62; Check the detailed GUIDE scrolling down. &#60; </center> 
-
  
 <h1 class="lead">When is it usefull?</h1>
 
 <h4 class="lead">Do you have to create Word(.docx) files starting from a template and substituting custom placeholders with right values?<br>
 This tool will make it so easy that you will be stunned! </h4>
 
-<h3 class="lead">Hey, but i need an ad easy way to retrieve my Nested Objects properties, List of Objects and String values and place them together in my .docx files without write a line of code!</h3>
+<sample>Hey, but i need an ad easy way to retrieve my Nested Objects properties, List of Objects and String values and place them together in my .docx files without write a line of code!</sample>
 <h4 class="lead">You will have just to make your objects extending my HckReflect.class and pass them all to my service!</h4>
 <h5 class="lead">The remaining is just about .docx template! Demand it to your customers.</h5>
 
 
 <br><br>
-The complete documentation is under writing, please be patient and write to me <hck@hackubau.it> if you want to start now and you have questions.
-<br>
-I will promote from staging to release repository.
+Please write to me <hck@hackubau.it> if you have any questions.
 <br>
 In meantime you can import the project from the staging sonatype repository: <br>
-<code>https://oss.sonatype.org/service/local/staging/deploy/maven2</code>
-<br>
+<code><a href="https://search.maven.org/artifact/it.hackubau/hackubau-docs/1.0-RELEASE/jar">https://search.maven.org/artifact/it.hackubau/hackubau-docs/1.0-RELEASE/jar</a> (here you can find the reference for maven,gradle,groovy and others package managers)</code>
+<br><b> [![Maven Central](https://img.shields.io/maven-central/v/it.hackubau/hackubau-docs.svg?label=Maven%20Central)](https://search.maven.org/search?q=g:%22it.hackubau%22%20AND%20a:%22hackubau-docs%22) </b>
 <pre>
 <code>
 &#60;dependency&#62;
@@ -50,7 +47,6 @@ In meantime you can import the project from the staging sonatype repository: <br
 </code>
 </pre>
 <br>
-
 
 
 
