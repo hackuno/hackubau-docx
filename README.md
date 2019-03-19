@@ -9,21 +9,6 @@ Please write to me <hck@hackubau.it> if you have any questions.
 <br/>
 [![Java Docs](https://img.shields.io/maven-central/v/it.hackubau/hackubau-docs.svg?label=Java%20Docs)](https://hackuno.github.io/hackubau-docx/docs)
 <br/><br/>
-<pre>
-<code>
-<a href="https://search.maven.org/search?q=g:%22it.hackubau%22%20AND%20a:%22hackubau-docs%22"> &#60;&#60; Here you can find gradle, groovy and others package managers entries &#62;&#62;</a>
-<br/>
-<b> MAVEN pom.xml </b>
-<br/>
-&#60;dependency&#62;
-  &#60;groupId&#62;it.hackubau&#60;/groupId&#62;
-  &#60;artifactId&#62;hackubau-docs&#60;/artifactId&#62;
-  &#60;version&#62;1.0-RELEASE&#60;/version&#62;
-&#60;/dependency&#62;
-</code>
-</pre>
-<br/>
-
 
 
 <br/>
@@ -47,39 +32,32 @@ This is a Service to perform susbstitution of placeholders in .docx files (templ
  
  
 <h2><b>API - Step by step guide</b></h2>
-
- <ul style="list-style-type:circle;">
+<h5><i><u>It is <b>STRONGLY RECOMMENDED</b> to follow EVERY steps starting by step 1 (it will take just about 5 min, seriously!)</u></i></h5>
+<h5><i>I recommend this just because the guide have been wrote as a lessons-pack with growing-complexity-concepts.</i></h5>
+ <ol>
   <li> <a href="#m0">Today keyword</a></li>
   <li> <a href="#m1">HashMap key-value mappings</a></li>
   <li> <a href="#m2">Object mappings</a></li>
   <li> <a href="#m2.1">Object mappings with personalized identifiers</a></li>
   <li> <a href="#m3">List&#60;Object&#62; mappings with recursively printing</a></li>
   <li> <a href="#m3.1">List&#60;Object&#62; mappings - concatenate fields and set a separator </a></li>
-</ul>
+</ol>
 
 
 <h3 id="m0">(0) Today keyword</h3>
-
+This is just a real banality.
 <pre><code>
 <b><u>template.docx</u></b>
-
 Today is the ${today}.
-
 </code></pre>
-<br/>
 <pre><code>
 <b><u>java (pseudocode) </u></b>
-
 //just invoke the service - today is a coded value used for the italian pizza-mario date
 docxService.generateDocument(template.docx, output.docx, null,null,null);
-
 </code></pre>
-<br/>
 <pre><code>
 <b><u>out.docx </u></b>
-
 Today is the 19/03/2019
-
 </code></pre>
 <br/>
 
@@ -344,4 +322,25 @@ Pippo, The crazy one-Many many crazy, 13
 </code></pre>
 <br/>
 
+
+<br/><br/>
+Please write to me <hck@hackubau.it> if you have any questions.
+<br/><br/>
+[![Maven Central](https://img.shields.io/maven-central/v/it.hackubau/hackubau-docs.svg?label=Maven%20Central)](https://search.maven.org/search?q=g:%22it.hackubau%22%20AND%20a:%22hackubau-docs%22)
+<br/>
+[![Java Docs](https://img.shields.io/maven-central/v/it.hackubau/hackubau-docs.svg?label=Java%20Docs)](https://hackuno.github.io/hackubau-docx/docs)
+<br/><br/>
+<pre>
+<code>
+<a href="https://search.maven.org/search?q=g:%22it.hackubau%22%20AND%20a:%22hackubau-docs%22"> &#60;&#60; Here you can find gradle, groovy and others package managers entries &#62;&#62;</a>
+<br/>
+<b> MAVEN pom.xml </b>
+<br/>
+&#60;dependency&#62;
+  &#60;groupId&#62;it.hackubau&#60;/groupId&#62;
+  &#60;artifactId&#62;hackubau-docs&#60;/artifactId&#62;
+  &#60;version&#62;1.0-RELEASE&#60;/version&#62;
+&#60;/dependency&#62;
+</code>
+</pre>
 
