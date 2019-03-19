@@ -148,10 +148,8 @@ docxService.generateDocument(template.docx, outputFile, <b>myObjects</b> ,null,n
 This is the document of Giorgio.
 Giorgio happiness level is: Cioppi Bau!!
 
-</pre>
-</CODE>
-
-
+</code></pre>
+<br/>
 
 
 
