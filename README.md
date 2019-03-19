@@ -55,13 +55,14 @@ This tool will make it so easy that you will be stunned! </h4>
 
 <h4><b><u> MAIN FUNCTIONS: </u></b></h4>
 <br>
-<sample>generateDocument(File template, HashMap&#60;String, String&#62; replace, outputFile) - return: The Generated File</sample>
+generateDocument(File template, HashMap&#60;String, String&#62; replace, outputFile)
+<br>return: The Generated File
 <br>
 <i>The simplest way: This will just replace the placeholders <b>${key}</b> found in the .docx with the <b> value </b> mapping provided by the hashMap</i>
- 
- <sample>
- generateDocument(File template, File out, List&#60;? extends HckReflect&#62; objs, List&#60;List&#60;? extends HckReflect&#62;&#62;listsObj, HashMap&#60;String, String&#62; fixedMappings) - return: The Generated File 
-</sample><br>
+<br><br>
+generateDocument(File template, File out, List&#60;? extends HckReflect&#62; objs, List&#60;List&#60;? extends HckReflect&#62;&#62;listsObj, HashMap&#60;String, String&#62; fixedMappings)
+<br>return: The Generated File 
+<br>
 <i>The best way: This will read the document to find the placeholders and then, for each of them, choose the right object from the provided parameters (objs, listObj or fixedMappings) and invoke the GET methods specified by the placeholder itself </i>
 <BR><BR>
 <h4><b> How does it work? Step by step guide</b></h4>
