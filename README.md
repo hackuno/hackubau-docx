@@ -1,6 +1,9 @@
 # Hackubau Word Generator by template.docx
+
+
+[![Maven Central](https://img.shields.io/maven-central/v/it.hackubau/hackubau-docs.svg?label=Maven%20Central)](https://search.maven.org/search?q=g:%22it.hackubau%22%20AND%20a:%22hackubau-docs%22)
+<br>
 <span class="lead">
- [![Maven Central](https://img.shields.io/maven-central/v/it.hackubau/hackubau-docs.svg?label=Maven%20Central)](https://search.maven.org/search?q=g:%22it.hackubau%22%20AND%20a:%22hackubau-docs%22)
  <b> Mircrosoft Word (.docx) & OpenOffice (.docx) compatibility </b></span>
 
 <a class="" href="https://hackuno.github.io/hackubau-docx/docs">Documentation JavaDocs Here</a>
@@ -37,7 +40,7 @@ This tool will make it so easy that you will be stunned! </h4>
 Please write to me <hck@hackubau.it> if you have any questions.
 <br>
 [![Maven Central](https://img.shields.io/maven-central/v/it.hackubau/hackubau-docs.svg?label=Maven%20Central)](https://search.maven.org/search?q=g:%22it.hackubau%22%20AND%20a:%22hackubau-docs%22)
-<br>
+<br><br>
 <pre>
 <code>
 &#60;dependency&#62;
