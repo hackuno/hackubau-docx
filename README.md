@@ -11,7 +11,7 @@ Please write to me <hck@hackubau.it> if you have any questions.
 <br><br>
 <pre>
 <code>
-<a href="https://search.maven.org/search?q=g:%22it.hackubau%22%20AND%20a:%22hackubau-docs%22"--Here you can find gradle, groovy and others package managers entries--</a>
+<a href="https://search.maven.org/search?q=g:%22it.hackubau%22%20AND%20a:%22hackubau-docs%22"[[ Here you can find gradle, groovy and others package managers entries ]]</a>
 <br>
 <b> MAVEN pom.xml </b>
 <br>
@@ -57,7 +57,7 @@ This tool will make it so easy that you will be stunned! </h4>
 
 <h1 class="lead">API specifications</h1>
 
-<h4><b><u> MAIN FUNCTIONS: </u></b></h4>
+<h4><b><u>public service methods: </u></b></h4>
 <br>
 <p style="font-size:2px;">generateDocument(File template, HashMap&#60;String, String&#62; replace, outputFile)</p>
 <p> generateDocument(File template, File out, List&#60;? extends HckReflect&#62; objs, List&#60;List&#60;? extends HckReflect&#62;&#62;listsObj, HashMap&#60;String, String&#62; fixedMappings)</p>
@@ -65,10 +65,10 @@ This tool will make it so easy that you will be stunned! </h4>
 <BR><BR>
  
  
-<h2><b> How does it work? Step by step guide</b></h2>
+<h1><b>Step by step guide</b></h1>
 
 
-<h3>1)Simple HashMap key-value substitution </h3>
+<h3>Mode 1)HashMap key-value mappings</h3>
 
 <CODE>
 <pre><b><u>template.docx</u></b>
@@ -94,7 +94,7 @@ Giorgio happiness level is: cioppi bau!
 </pre>
 </CODE>
 
-<h3>2)Simple Object GET-METHODS mappings </h3>
+<h3>Mode 2.0)Object mappings </h3>
 
 <CODE>
 <pre><b><u>template.docx</u></b>
@@ -103,10 +103,11 @@ This is the document of ${anagrafics.name}.
 ${anagrafics.name} happiness level is: ${anagrafics.happiness.actualLevel}!
 
 </pre></CODE><br><CODE><pre>
-<b><u>java (pseudocode) (n.b. the classes must extends HckReflect) </u></b>
+<b><u>java (pseudocode)</u></b>
 
 //instantiating my object that i want to use in .docx template (it must be extending HckReflect)
 Anagrafics giorgio = new Anagrafics();
+giorgio.setName("Giorgio");
 
 //creating the giorgio's happiness value - (it is another object so it must be extending HckReflect too if i want to use it in .docx template)
 Happiness happy = new Happiness("Cioppy Bau!");
@@ -125,6 +126,45 @@ docxService.generateDocument(template.docx, outputFile, <b>myObjects</b> ,null,n
 
 This is the document of Giorgio.
 Giorgio happiness level is: Cioppi Bau!!
+
+</pre>
+</CODE>
+
+<h3>Mode 2.1)Object mappings with personalized identifiers </h3>
+<p>It become usefull when you have more thant 1 object of the same class to be mapped in the document</p>
+
+<CODE>
+<pre><b><u>template.docx</u></b>
+
+This is the document of ${father.name}, the father of ${child.name}
+
+</pre></CODE><br><CODE><pre>
+<b><u>java (pseudocode)</u></b>
+
+//instantiating my objects that i want to use in .docx template (it must be extending HckReflect)
+Anagrafics fatherObj = new Anagrafics();
+Anagrafics childrenObj = new Anagrafics();
+
+fatherObj.setName("Mario");
+childrenObj.setName("Robinhood");
+
+//N.B. identifier propery is ereditated by HckReflect, now i am setting a personalized identifier wich will be used in the .docx mapping
+fatherObj.setIdentifier("father");
+childrenObj.setIdentifier("child");
+
+
+///preparing my list of objects
+List&#60;HckReflect&#62; myObjects = Lists.newArrayList();
+myObjects.add(fatherObj);
+myObjects.add(childrenObj);
+
+docxService.generateDocument(template.docx, outputFile, <b>myObjects</b> ,null,null)
+
+</pre></CODE><br><CODE><pre>
+<b><u>out.docx </u></b>
+
+This is the document of Mario, the father of Robinhood
+
 
 </pre>
 </CODE>
