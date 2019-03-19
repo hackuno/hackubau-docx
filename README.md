@@ -387,9 +387,11 @@ Pippo, The crazy one-Many many crazy, 13
 </code></pre>
 
 <h1>POM.XML or others package managers at:</h1>
+
 [![Maven Central](https://img.shields.io/maven-central/v/it.hackubau/hackubau-docs.svg?label=Maven%20Central)](https://search.maven.org/search?q=g:%22it.hackubau%22%20AND%20a:%22hackubau-docs%22)
 <br/>
 [![Java Docs](https://img.shields.io/maven-central/v/it.hackubau/hackubau-docs.svg?label=Java%20Docs)](https://hackuno.github.io/hackubau-docx/docs)
+
 <br/><br/>
 <pre>
 <code>
