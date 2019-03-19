@@ -4,8 +4,8 @@ Mircrosoft Word (.docx) & OpenOffice (.docx) compatibility</span>
  
 <br><br>
 Please write to me <hck@hackubau.it> if you have any questions.
-<br>
-[![Maven Central](https://img.shields.io/maven-central/v/it.hackubau/hackubau-docs.svg?label=Maven%20Central)](https://search.maven.org/search?q=g:%22it.hackubau%22%20AND%20a:%22hackubau-docs%22)
+<br><br>
+[![Maven Central](https://img.shields.io/maven-central/v/it.hackubau/hackubau-docs.svg?label=Maven%20Central)](https://search.maven.org/search?q=g:%22it.hackubau%22%20AND%20a:%22hackubau-docs%22) (check here if you need gradle, groovy or others entries)
 <br>
 [![Java Docs](https://img.shields.io/maven-central/v/it.hackubau/hackubau-docs.svg?label=Java%20Docs)](https://hackuno.github.io/hackubau-docx/docs)
 <br><br>
@@ -55,7 +55,7 @@ This tool will make it so easy that you will be stunned! </h4>
 
 <h4><b><u> MAIN FUNCTIONS: </u></b></h4>
 <br>
-generateDocument(File template, HashMap&#60;String, String&#62; replace, outputFile)
+<p style="font-size:2px;">generateDocument(File template, HashMap&#60;String, String&#62; replace, outputFile)</p>
 <br>
 <br>
 <i>The simplest way: This will just replace the placeholders <b>${key}</b> found in the .docx with the <b> value </b> mapping provided by the hashMap</i>
@@ -65,7 +65,9 @@ generateDocument(File template, File out, List&#60;? extends HckReflect&#62; obj
 <br>
 <i>The best way: This will read the document to find the placeholders and then, for each of them, choose the right object from the provided parameters (objs, listObj or fixedMappings) and invoke the GET methods specified by the placeholder itself </i>
 <BR><BR>
-<h4><b> How does it work? Step by step guide</b></h4>
+ 
+ 
+<h2><b> How does it work? Step by step guide</b></h2>
 
 
 <h3>1)Simple HashMap key-value substitution </h3>
