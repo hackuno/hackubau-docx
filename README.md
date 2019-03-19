@@ -11,7 +11,10 @@ Please write to me <hck@hackubau.it> if you have any questions.
 <br><br>
 <pre>
 <code>
-<a href="https://search.maven.org/search?q=g:%22it.hackubau%22%20AND%20a:%22hackubau-docs%22">Here you can find gradle, groovy and others package managers entries</a>
+<a href="https://search.maven.org/search?q=g:%22it.hackubau%22%20AND%20a:%22hackubau-docs%22"--Here you can find gradle, groovy and others package managers entries--</a>
+<br>
+<b> MAVEN pom.xml </b>
+<br>
 &#60;dependency&#62;
   &#60;groupId&#62;it.hackubau&#60;/groupId&#62;
   &#60;artifactId&#62;hackubau-docs&#60;/artifactId&#62;
@@ -57,9 +60,7 @@ This tool will make it so easy that you will be stunned! </h4>
 <h4><b><u> MAIN FUNCTIONS: </u></b></h4>
 <br>
 <p style="font-size:2px;">generateDocument(File template, HashMap&#60;String, String&#62; replace, outputFile)</p>
-<br>
 <p> generateDocument(File template, File out, List&#60;? extends HckReflect&#62; objs, List&#60;List&#60;? extends HckReflect&#62;&#62;listsObj, HashMap&#60;String, String&#62; fixedMappings)</p>
-<br>
 <i>This will read the document to find the placeholders and then, for each of them, choose the right object from the provided parameters (objs, listObj or fixedMappings) and invoke the GET methods specified by the placeholder itself </i>
 <BR><BR>
  
@@ -73,27 +74,59 @@ This tool will make it so easy that you will be stunned! </h4>
 <pre><b><u>template.docx</u></b>
 
 This is the document of ${name}.
-
 ${name} happiness level is: ${happiness}!
 
 </pre></CODE><br><CODE><pre>
 <b><u>java (pseudocode) </u></b>
 
-HashMap&#60;String, String&#62 map;
-map.put("name","giorgio");
-map.put("happiness","cioppy bau");
-docxService.generateDocument(template.docx, ; maps, output.docx);
+HashMap&#60;String, String&#62; maps;
+maps.put("name","giorgio");
+maps.put("happiness","cioppy bau");
+
+docxService.generateDocument(template.docx, maps, output.docx);
 
 </pre></CODE><br><CODE><pre>
 <b><u>out.docx </u></b>
 
 This is the document of Giorgio.
-
 Giorgio happiness level is: cioppi bau!
 
 </pre>
 </CODE>
 
+<h3>2)Simple Object GET-METHODS mappings </h3>
 
+<CODE>
+<pre><b><u>template.docx</u></b>
+
+This is the document of ${anagrafics.name}.
+${anagrafics.name} happiness level is: ${anagrafics.happiness.actualLevel}!
+
+</pre></CODE><br><CODE><pre>
+<b><u>java (pseudocode) (n.b. the classes must extends HckReflect) </u></b>
+
+//instantiating my object that i want to use in .docx template (it must be extending HckReflect)
+Anagrafics giorgio = new Anagrafics();
+
+//creating the giorgio's happiness value - (it is another object so it must be extending HckReflect too if i want to use it in .docx template)
+Happiness happy = new Happiness("Cioppy Bau!");
+
+//setting giorgio's happiness property
+giorgio.setHappiness(happy);
+
+///preparing my list of objects
+List&#60;HckReflect&#62; myObjects = Lists.newArrayList();
+myObjects.add(giorgio);
+
+docxService.generateDocument(template.docx, outputFile, <b>myObjects</b> ,null,null)
+
+</pre></CODE><br><CODE><pre>
+<b><u>out.docx </u></b>
+
+This is the document of Giorgio.
+Giorgio happiness level is: Cioppi Bau!!
+
+</pre>
+</CODE>
 
 
