@@ -84,7 +84,7 @@ This tool will make it so easy that you will be stunned! </h4>
 This is the document of ${name}.
 ${name} happiness level is: ${happiness}!
 
-</CODE></pre><br><CODE><pre>
+</CODE></pre><br><pre><CODE>
 <b><u>java (pseudocode) </u></b>
 
 HashMap&#60;String, String&#62; maps;
@@ -93,7 +93,7 @@ maps.put("happiness","cioppy bau");
 
 docxService.generateDocument(template.docx, maps, output.docx);
 
-</pre></CODE><br><CODE><pre>
+</CODE></pre><br><CODE><pre>
 <b><u>out.docx </u></b>
 
 This is the document of Giorgio.
