@@ -1,5 +1,7 @@
 # Hackubau Word Generator by template.docx
-<span class="lead"> <b> <a href="https://search.maven.org/search?q=g:it.hackubau"> maven central repository: hackubau-docs </a> Mircrosoft Word (.docx) & OpenOffice (.docx) compatibility </span>
+<span class="lead">
+ [![Maven Central](https://img.shields.io/maven-central/v/it.hackubau/hackubau-docs.svg?label=Maven%20Central)](https://search.maven.org/search?q=g:%22it.hackubau%22%20AND%20a:%22hackubau-docs%22)
+ <b> Mircrosoft Word (.docx) & OpenOffice (.docx) compatibility </b></span>
 
 <a class="" href="https://hackuno.github.io/hackubau-docx/docs">Documentation JavaDocs Here</a>
 
@@ -34,9 +36,8 @@ This tool will make it so easy that you will be stunned! </h4>
 <br><br>
 Please write to me <hck@hackubau.it> if you have any questions.
 <br>
-In meantime you can import the project from the staging sonatype repository: <br>
-<code><a href="https://search.maven.org/artifact/it.hackubau/hackubau-docs/1.0-RELEASE/jar">https://search.maven.org/artifact/it.hackubau/hackubau-docs/1.0-RELEASE/jar</a> (here you can find the reference for maven,gradle,groovy and others package managers)</code>
-<br><b> [![Maven Central](https://img.shields.io/maven-central/v/it.hackubau/hackubau-docs.svg?label=Maven%20Central)](https://search.maven.org/search?q=g:%22it.hackubau%22%20AND%20a:%22hackubau-docs%22) </b>
+[![Maven Central](https://img.shields.io/maven-central/v/it.hackubau/hackubau-docs.svg?label=Maven%20Central)](https://search.maven.org/search?q=g:%22it.hackubau%22%20AND%20a:%22hackubau-docs%22)
+<br>
 <pre>
 <code>
 &#60;dependency&#62;
@@ -47,10 +48,6 @@ In meantime you can import the project from the staging sonatype repository: <br
 </code>
 </pre>
 <br>
-
-
-
-
 
 <h1 class="lead">API specifications</h1>
 
