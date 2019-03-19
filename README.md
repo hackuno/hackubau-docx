@@ -8,8 +8,6 @@ Please write to me <hck@hackubau.it> if you have any questions.
 [![Maven Central](https://img.shields.io/maven-central/v/it.hackubau/hackubau-docs.svg?label=Maven%20Central)](https://search.maven.org/search?q=g:%22it.hackubau%22%20AND%20a:%22hackubau-docs%22)
 <br/>
 [![Java Docs](https://img.shields.io/maven-central/v/it.hackubau/hackubau-docs.svg?label=Java%20Docs)](https://hackuno.github.io/hackubau-docx/docs)
-<br/><br/>
-
 
 <br/>
 <h1><b>What is this?</b></h1>
@@ -64,52 +62,34 @@ Today is the 19/03/2019
 
 
 
-<h3 id="m1">(Mode 1) HashMap key-value mappings</h3>
+<h3 id="m1">(Modality 1) HashMap key-value mappings</h3>
 
 <pre><code>
 <b><u>template.docx</u></b>
-
 This is the document of ${name}.
 ${name} happiness level is: ${happiness}!
-
 </code></pre>
-<br/>
 <pre><code>
 <b><u>java (pseudocode) </u></b>
-
 HashMap&#60;String, String&#62; maps;
 maps.put("name","giorgio");
 maps.put("happiness","cioppy bau");
 
 docxService.generateDocument(template.docx, maps, output.docx);
-
 </code></pre>
-<br/>
 <pre><code>
 <b><u>out.docx </u></b>
-
 This is the document of Giorgio.
 Giorgio happiness level is: cioppi bau!
-
 </code></pre>
-<br/>
-
-
-
-
-
-
 
 <h3 id="m2">Mode 2.0) Object mappings </h3>
 
 <pre><code>
 <b><u>template.docx</u></b>
-
 This is the document of ${anagrafics.name}.
 ${anagrafics.name} happiness level is: ${anagrafics.happiness.actualLevel}!
-
 </code></pre>
-<br/>
 <pre><code>
 <b><u>java (pseudocode)</u></b>
 
@@ -128,35 +108,20 @@ List&#60;HckReflect&#62; myObjects = Lists.newArrayList();
 myObjects.add(giorgio);
 
 docxService.generateDocument(template.docx, outputFile, <b>myObjects</b> ,null,null)
-
 </code></pre>
-<br/>
 
 <pre><code>
 <b><u>out.docx</u></b>
-
 This is the document of Giorgio.
 Giorgio happiness level is: Cioppi Bau!!
-
 </code></pre>
-<br/>
-
-
-
-
-
-
-
 
 <h3 id="m2.1">Mode 2.1) Object mappings with personalized identifiers </h3>
 <p>It become usefull when you have more thant 1 object of the same class to be mapped in the document</p>
 
 <pre><code><b><u>template.docx</u></b>
-
 This is the document of ${father.name}, the father of ${child.name}
-
 </code></pre>
-<br/>
 <pre><code>
 <b><u>java (pseudocode)</u></b>
 
@@ -178,14 +143,10 @@ myObjects.add(fatherObj);
 myObjects.add(childrenObj);
 
 docxService.generateDocument(template.docx, outputFile, <b>myObjects</b> ,null,null)
-
 </code></pre>
-<br/>
 <pre><code>
 <b><u>out.docx </u></b>
-
 This is the document of Mario, the father of Robinhood
-
 </code>
 </pre>
 
@@ -198,21 +159,16 @@ This is the document of Mario, the father of Robinhood
 
 <b>Special Keywords glossary:</b>
 <code><pre>
-
 list_:
   Place this keyword before your object identifier.
   It will say to the engine that we want to print a list of objects.
-  
 </pre></code>
 
 <pre><code>
 <b><u>template.docx</u></b>
-
 Theese are your childrens:
 ${list_anagrafics.name}
-
 </code></pre>
-<br/>
 <pre><code>
 <b><u>java (pseudocode)</u></b>
 
@@ -233,15 +189,11 @@ List&#60;HckReflect&#62; myListObjectsList = Lists.newArrayList();
 myListObjectsList.add(yourChilds);
 
 docxService.generateDocument(template.docx, outputFile,null, <b>myListObjectsList</b> ,null)
-
 </code></pre>
-<br/>
 <pre><code>
 <b><u>out.docx </u></b>
-
 Theese are your childrens:
 Giorgio, Mario, Pippo
-
 </code>
 </pre>
 
