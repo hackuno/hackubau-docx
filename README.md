@@ -1,12 +1,26 @@
 # Hackubau Word Generator by template.docx
-
-
-[![Maven Central](https://img.shields.io/maven-central/v/it.hackubau/hackubau-docs.svg?label=Maven%20Central)](https://search.maven.org/search?q=g:%22it.hackubau%22%20AND%20a:%22hackubau-docs%22)
-<br>
 <span class="lead">
- <b> Mircrosoft Word (.docx) & OpenOffice (.docx) compatibility </b></span>
+Mircrosoft Word (.docx) & OpenOffice (.docx) compatibility</span>
+ 
+<br><br>
+Please write to me <hck@hackubau.it> if you have any questions.
+<br>
+[![Maven Central](https://img.shields.io/maven-central/v/it.hackubau/hackubau-docs.svg?label=Maven%20Central)](https://search.maven.org/search?q=g:%22it.hackubau%22%20AND%20a:%22hackubau-docs%22)
+[![Maven Central](https://img.shields.io/maven-central/v/it.hackubau/hackubau-docs.svg?label=Java%20Docs)](https://hackuno.github.io/hackubau-docx/docs)
+<br><br>
+<pre>
+<code>
+&#60;dependency&#62;
+  &#60;groupId&#62;it.hackubau&#60;/groupId&#62;
+  &#60;artifactId&#62;hackubau-docs&#60;/artifactId&#62;
+  &#60;version&#62;1.0-RELEASE&#60;/version&#62;
+&#60;/dependency&#62;
+</code>
+</pre>
+<br>
+<br>
 
-<a class="" href="https://hackuno.github.io/hackubau-docx/docs">Documentation JavaDocs Here</a>
+
 
 <br>
 <h1><b>What is this?</b></h1>
@@ -35,22 +49,6 @@ This tool will make it so easy that you will be stunned! </h4>
 <h4 class="lead">You will have just to make your objects extending my HckReflect.class and pass them all to my service!</h4>
 <h5 class="lead">The remaining is just about .docx template! Demand it to your customers.</h5>
 
-
-<br><br>
-Please write to me <hck@hackubau.it> if you have any questions.
-<br>
-[![Maven Central](https://img.shields.io/maven-central/v/it.hackubau/hackubau-docs.svg?label=Maven%20Central)](https://search.maven.org/search?q=g:%22it.hackubau%22%20AND%20a:%22hackubau-docs%22)
-<br><br>
-<pre>
-<code>
-&#60;dependency&#62;
-  &#60;groupId&#62;it.hackubau&#60;/groupId&#62;
-  &#60;artifactId&#62;hackubau-docs&#60;/artifactId&#62;
-  &#60;version&#62;1.0-RELEASE&#60;/version&#62;
-&#60;/dependency&#62;
-</code>
-</pre>
-<br>
 
 <h1 class="lead">API specifications</h1>
 
