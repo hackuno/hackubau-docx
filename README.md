@@ -301,10 +301,7 @@ you.setAddress(new Address("Milan"));
 
 //simple hashmap key value
 HashMap&#60;String, String&#62; <b>maps</b>;
-maps.put("cioppy","bau");
-
-</code>
-</pre>
+maps.put("cioppy","bau");</code></pre>
 <pre><i>(wait - Just to show to you how Game.class is defined in my mind)
 class Game extends HckReflect{
   String name;
