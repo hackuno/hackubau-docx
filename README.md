@@ -45,19 +45,16 @@ This is a Service to perform susbstitution of placeholders in .docx files (templ
 
 <h3 id="m0">(0) Today keyword</h3>
 This is just a real banality.
-<pre><code>
-<b><u>template.docx</u></b>
+<pre><code><b><u>template.docx</u></b>
 Today is the ${today}.
 </code></pre>
 <pre><code>
 <b><u>java (pseudocode) </u></b>
 //just invoke the service - today is a coded value used for the italian pizza-mario date
-docxService.generateDocument(template.docx, output.docx, null,null,null);
-</code></pre>
+docxService.generateDocument(template.docx, output.docx, null,null,null);</code></pre>
 <pre><code>
 <b><u>out.docx </u></b>
-Today is the 19/03/2019
-</code></pre>
+Today is the 19/03/2019</code></pre>
 <br/>
 
 
