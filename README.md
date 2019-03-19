@@ -30,7 +30,7 @@ This is a Service to perform susbstitution of placeholders in .docx files (templ
  
  
 <h2><b>API - Step by step guide</b></h2>
-<h5><i><u>It is <b>STRONGLY RECOMMENDED</b> to follow EVERY steps starting by step 1 (it will take just about 5 min, seriously!)</u></i></h5>
+<h5><i><u>It is &nbsp;&nbsp;<b>STRONGLY RECOMMENDED</b>&nbsp;&nbsp; to follow EVERY steps starting by step 1 (it will take just about 5 min, seriously!)</u></i></h5>
 <h5><i>I recommend this just because the guide have been wrote as a lessons-pack with growing-complexity-concepts.</i></h5>
  <ol>
   <li> <a href="#m0">Today keyword</a></li>
@@ -154,10 +154,10 @@ This is the document of Mario, the father of Robinhood
 <p>For example if you have to print the list of someone's childs</p>
 
 <b>Special Keywords glossary:</b>
-<code><pre><b>list_</b>
+<pre><code><b>list_</b>
   Place this keyword before your object identifier.
   It will say to the engine that we want to print a list of objects.
-</pre></code>
+</code></pre>
 
 <pre><code><b><u>template.docx</u></b>
 Theese are your childrens:
@@ -196,7 +196,7 @@ Giorgio, Mario, Pippo
 <p>For example if you have to print the list of someone's childs but you want specificy more fields and choose a personalized separator</p>
 
 <b>Special Keywords glossary:</b>
-<code><pre><b>list_</b>
+<pre><code><b>list_</b>
   Place this keyword before your object identifier.
   It will say to the engine that we want to print a list of objects.
 
@@ -209,7 +209,7 @@ Giorgio, Mario, Pippo
   It say to the engine what char you want as separator. 
   Place it after the field you want to retrieve and write your separator chars after it
   If you don't specify a separator, it use the default one's.
-</pre></code>
+</code></pre>
  
  
 <pre><code><b><u>template.docx</u></b> 
@@ -260,7 +260,7 @@ Pippo, The crazy one-Many many crazy, 13
 <h3 id="m4">(Modality 4) HardCore mode - all mixed together very very randomly!</h3>
 
 <b>Special Keywords glossary:</b>
-<code><pre><b>list_</b>
+<pre><code><b>list_</b>
   Place this keyword before your object identifier.
   It will say to the engine that we want to print a list of objects.
 
@@ -273,7 +273,7 @@ Pippo, The crazy one-Many many crazy, 13
   It say to the engine what char you want as separator. 
   Place it after the field you want to retrieve and write your separator chars after it
   If you don't specify a separator, it use the default one's.
-</pre></code>
+</code></pre>
  
  
 <pre><code><b><u>template.docx</u></b> 
