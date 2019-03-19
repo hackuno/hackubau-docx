@@ -77,13 +77,14 @@ This tool will make it so easy that you will be stunned! </h4>
 
 <h3>Mode 1) HashMap key-value mappings</h3>
 
+<pre>
 <CODE>
-<pre><b><u>template.docx</u></b>
+<b><u>template.docx</u></b>
 
 This is the document of ${name}.
 ${name} happiness level is: ${happiness}!
 
-</pre></CODE><br><CODE><pre>
+</CODE></pre><br><CODE><pre>
 <b><u>java (pseudocode) </u></b>
 
 HashMap&#60;String, String&#62; maps;
