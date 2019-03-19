@@ -197,7 +197,7 @@ This is the document of Mario, the father of Robinhood
 
 
 
-<h3>Mode 3.0) List<Object> mappings with recursively printing</h3>
+<h3>Mode 3.0) List&#60;Object&#62; mappings with recursively printing</h3>
 <p>For example if you have to print the list of someone's childs</p>
 
 <CODE>
@@ -239,11 +239,11 @@ Giorgio, Mario, Pippo
 
 
 
-<h3>Mode 3.1) List<Object> mappings - concatenate fields and set a separator </h3>
+<h3>Mode 3.1) List&#60;Object&#62; mappings - concatenate fields and set a separator </h3>
 <p>For example if you have to print the list of someone's childs but you want specificy more fields and choose a personalized separator</p>
 
 <CODE>
-<pre><b><u>template.docx </u></b> (n.b. "list_", "@" and "#" are keywords)
+<pre><b><u>template.docx (n.b. "list_", "@" and "#" are keywords)</u></b> 
 
 Theese are your childrens:
 ${list_anagrafics@\r\n.name#mother.name#mother.surname@-#age}
