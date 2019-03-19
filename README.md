@@ -48,8 +48,13 @@ This is a Service to perform susbstitution of placeholders in .docx files (templ
  
 <h2><b>API - Step by step guide</b></h2>
 
-<ul>
- <li> <a href="#m1">1) HashMap key-value mappings</a></li>
+ <ul style="list-style-type:circle;">
+  <li> <a href="#m1">HashMap key-value mappings</a></li>
+  <li> <a href="#m2">Object mappings</a></li>
+  <li> <a href="#m2.1">Object mappings with personalized identifiers</a></li>
+  <li> <a href="#m3">List&#60;Object&#62; mappings with recursively printing</a></li>
+  <li> <a href="#m3.1">List&#60;Object&#62; mappings - concatenate fields and set a separator </a></li>
+</ul>
 
 
 
@@ -90,7 +95,7 @@ Giorgio happiness level is: cioppi bau!
 
 
 
-<h3>Mode 2.0) Object mappings </h3>
+<h3 id="m2">Mode 2.0) Object mappings </h3>
 
 <pre><code>
 <b><u>template.docx</u></b>
@@ -138,7 +143,7 @@ Giorgio happiness level is: Cioppi Bau!!
 
 
 
-<h3>Mode 2.1) Object mappings with personalized identifiers </h3>
+<h3 id="m2.1">Mode 2.1) Object mappings with personalized identifiers </h3>
 <p>It become usefull when you have more thant 1 object of the same class to be mapped in the document</p>
 
 <pre><code><b><u>template.docx</u></b>
@@ -183,7 +188,7 @@ This is the document of Mario, the father of Robinhood
 
 
 
-<h3>Mode 3.0) List&#60;Object&#62; mappings with recursively printing</h3>
+<h3 id="m3">Mode 3.0) List&#60;Object&#62; mappings with recursively printing</h3>
 <p>For example if you have to print the list of someone's childs</p>
 
 <pre><code>
@@ -229,7 +234,7 @@ Giorgio, Mario, Pippo
 
 
 
-<h3>Mode 3.1) List&#60;Object&#62; mappings - concatenate fields and set a separator </h3>
+<h3 id="m3.1">Mode 3.1) List&#60;Object&#62; mappings - concatenate fields and set a separator </h3>
 <p>For example if you have to print the list of someone's childs but you want specificy more fields and choose a personalized separator</p>
 
 <pre><code>
