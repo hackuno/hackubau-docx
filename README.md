@@ -49,12 +49,39 @@ This is a Service to perform susbstitution of placeholders in .docx files (templ
 <h2><b>API - Step by step guide</b></h2>
 
  <ul style="list-style-type:circle;">
+  <li> <a href="#m0">Today keyword</a></li>
   <li> <a href="#m1">HashMap key-value mappings</a></li>
   <li> <a href="#m2">Object mappings</a></li>
   <li> <a href="#m2.1">Object mappings with personalized identifiers</a></li>
   <li> <a href="#m3">List&#60;Object&#62; mappings with recursively printing</a></li>
   <li> <a href="#m3.1">List&#60;Object&#62; mappings - concatenate fields and set a separator </a></li>
 </ul>
+
+
+<h3 id="m0">(0) Today keyword</h3>
+
+<pre><code>
+<b><u>template.docx</u></b>
+
+Today is the ${today}.
+
+</code></pre>
+<br/>
+<pre><code>
+<b><u>java (pseudocode) </u></b>
+
+//just invoke the service - today is a coded value used for the italian pizza-mario date
+docxService.generateDocument(template.docx, output.docx, null,null,null);
+
+</code></pre>
+<br/>
+<pre><code>
+<b><u>out.docx </u></b>
+
+Today is the 19/03/2019
+
+</code></pre>
+<br/>
 
 
 
@@ -191,6 +218,15 @@ This is the document of Mario, the father of Robinhood
 <h3 id="m3">Mode 3.0) List&#60;Object&#62; mappings with recursively printing</h3>
 <p>For example if you have to print the list of someone's childs</p>
 
+<b>Special Keywords glossary:</b>
+<code><pre>
+
+list_:
+  Place this keyword before your object identifier.
+  It will say to the engine that we want to print a list of objects.
+  
+</pre></code>
+
 <pre><code>
 <b><u>template.docx</u></b>
 
@@ -237,8 +273,27 @@ Giorgio, Mario, Pippo
 <h3 id="m3.1">Mode 3.1) List&#60;Object&#62; mappings - concatenate fields and set a separator </h3>
 <p>For example if you have to print the list of someone's childs but you want specificy more fields and choose a personalized separator</p>
 
+<b>Special Keywords glossary:</b>
+<code><pre>
+
+list_:
+  Place this keyword before your object identifier.
+  It will say to the engine that we want to print a list of objects.
+
+#:
+  When you are dealing with lists, you can ask the engine to print multiple field for every single record.
+  This is the placeholder that you have to place between every field you want to print.
+  
+@:
+  This is the separator keyword. 
+  It say to the engine what char you want as separator. 
+  Place it after the field you want to retrieve and write your separator chars after it
+  If you don't specify a separator, it use the default one's.
+</pre></code>
+ 
+ 
 <pre><code>
-<b><u>template.docx (n.b. "list_", "@" and "#" are keywords)</u></b> 
+<b><u>template.docx</u></b> 
 
 Theese are your childrens:
 ${list_anagrafics@\r\n.name#mother.name#mother.surname@-#age}
