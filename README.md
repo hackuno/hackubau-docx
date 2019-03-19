@@ -39,6 +39,7 @@ This is a Service to perform susbstitution of placeholders in .docx files (templ
   <li> <a href="#m2.1">Object mappings with personalized identifiers</a></li>
   <li> <a href="#m3">List&#60;Object&#62; mappings with recursively printing</a></li>
   <li> <a href="#m3.1">List&#60;Object&#62; mappings - concatenate fields and set a separator </a></li>
+  <li> <a href="#m4">Just modality randomly mixed together, not really important to see, it'sjust if you need more brain complexity.</a></li>
 </ol>
 
 
@@ -292,7 +293,7 @@ ${list_anagrafics@\r\n.name#mother.name#mother.surname@-#age}
 </code></pre>
 <pre><code><b><u>java (pseudocode)</u></b>
 
-//instantiating all the objects that i want to use in .docx template (it must be extending HckReflect)
+//instantiating all the objects that i want to use in .docx template (them must be extending HckReflect)
 Anagrafics me = new Anagrafics("me");
 Anagrafics you = new Anagrafics("Jonny");
 Anagrafics fath = new Anagrafics("Roberto");
@@ -306,6 +307,8 @@ HashMap&#60;String, String&#62; <b>maps</b>;
 maps.put("cioppy","bau");
 
 </code>
+</pre>
+<pre>
 <i>
 (wait - Just to show you how can be defined Game class)
 class Game extends HckReflect{
@@ -314,7 +317,10 @@ class Game extends HckReflect{
   getName(){return name};
   getFancyName(){return "+*+*"+name+"*+*+";}
 }</i>
-</code>
+(ok, continue)
+</pre>
+<pre>
+<code>
 Game favGame = new Game();
 g.setName("undertale");
 me.setFavouriteGame(favGame);
@@ -365,7 +371,7 @@ List&#60;HckReflect&#62; <b>myListObjectsList</b> = Lists.newArrayList();
 myListObjectsList.add(yourChilds);
 myListObjectsList.add(bestWordsList);
 
-docxService.generateDocument(template.docx, outputFile,<b>myListOfObj</b>, <b>myListObjectsList</b> ,null)
+docxService.generateDocument(template.docx, outputFile,<b>myListOfObj</b>, <b>myListObjectsList</b> ,<b>maps</b>)
 
 </code></pre>
 <pre><code><b><u>out.docx </u></b>
