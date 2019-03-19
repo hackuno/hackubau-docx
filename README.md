@@ -64,8 +64,7 @@ Today is the 19/03/2019
 
 <h3 id="m1">(Modality 1) HashMap key-value mappings</h3>
 
-<pre><code>
-<b><u>template.docx</u></b>
+<pre><code><b><u>template.docx</u></b>
 This is the document of ${name}.
 ${name} happiness level is: ${happiness}!
 </code></pre>
@@ -77,16 +76,14 @@ maps.put("happiness","cioppy bau");
 
 docxService.generateDocument(template.docx, maps, output.docx);
 </code></pre>
-<pre><code>
-<b><u>out.docx </u></b>
+<pre><code><b><u>out.docx </u></b>
 This is the document of Giorgio.
 Giorgio happiness level is: cioppi bau!
 </code></pre>
 
-<h3 id="m2">Mode 2.0) Object mappings </h3>
+<h3 id="m2">(Modality 2.0) Object mappings </h3>
 
-<pre><code>
-<b><u>template.docx</u></b>
+<pre><code><b><u>template.docx</u></b>
 This is the document of ${anagrafics.name}.
 ${anagrafics.name} happiness level is: ${anagrafics.happiness.actualLevel}!
 </code></pre>
@@ -110,13 +107,12 @@ myObjects.add(giorgio);
 docxService.generateDocument(template.docx, outputFile, <b>myObjects</b> ,null,null)
 </code></pre>
 
-<pre><code>
-<b><u>out.docx</u></b>
+<pre><code><b><u>out.docx</u></b>
 This is the document of Giorgio.
 Giorgio happiness level is: Cioppi Bau!!
 </code></pre>
 
-<h3 id="m2.1">Mode 2.1) Object mappings with personalized identifiers </h3>
+<h3 id="m2.1">(Modality 2.1) Object mappings with personalized identifiers </h3>
 <p>It become usefull when you have more thant 1 object of the same class to be mapped in the document</p>
 
 <pre><code><b><u>template.docx</u></b>
@@ -144,8 +140,7 @@ myObjects.add(childrenObj);
 
 docxService.generateDocument(template.docx, outputFile, <b>myObjects</b> ,null,null)
 </code></pre>
-<pre><code>
-<b><u>out.docx </u></b>
+<pre><code><b><u>out.docx </u></b>
 This is the document of Mario, the father of Robinhood
 </code>
 </pre>
@@ -154,23 +149,20 @@ This is the document of Mario, the father of Robinhood
 
 
 
-<h3 id="m3">Mode 3.0) List&#60;Object&#62; mappings with recursively printing</h3>
+<h3 id="m3">(Modality 3.0) List&#60;Object&#62; mappings with recursively printing</h3>
 <p>For example if you have to print the list of someone's childs</p>
 
 <b>Special Keywords glossary:</b>
-<code><pre>
-list_:
+<code><pre><b>list_</b>
   Place this keyword before your object identifier.
   It will say to the engine that we want to print a list of objects.
 </pre></code>
 
-<pre><code>
-<b><u>template.docx</u></b>
+<pre><code><b><u>template.docx</u></b>
 Theese are your childrens:
 ${list_anagrafics.name}
 </code></pre>
-<pre><code>
-<b><u>java (pseudocode)</u></b>
+<pre><code><b><u>java (pseudocode)</u></b>
 
 //instantiating my objects that i want to use in .docx template (it must be extending HckReflect)
 Anagrafics child1 = new Anagrafics("Giorgio");
@@ -189,9 +181,7 @@ List&#60;HckReflect&#62; myListObjectsList = Lists.newArrayList();
 myListObjectsList.add(yourChilds);
 
 docxService.generateDocument(template.docx, outputFile,null, <b>myListObjectsList</b> ,null)
-</code></pre>
-<pre><code>
-<b><u>out.docx </u></b>
+</code></pre><pre><code><b><u>out.docx </u></b>
 Theese are your childrens:
 Giorgio, Mario, Pippo
 </code>
@@ -200,21 +190,20 @@ Giorgio, Mario, Pippo
 
 
 
-<h3 id="m3.1">Mode 3.1) List&#60;Object&#62; mappings - concatenate fields and set a separator </h3>
+
+<h3 id="m3.1">(Modality 3.1) List&#60;Object&#62; mappings - concatenate fields and set a separator </h3>
 <p>For example if you have to print the list of someone's childs but you want specificy more fields and choose a personalized separator</p>
 
 <b>Special Keywords glossary:</b>
-<code><pre>
-
-list_:
+<code><pre><b>list_</b>
   Place this keyword before your object identifier.
   It will say to the engine that we want to print a list of objects.
 
-#:
+<b>#</b>
   When you are dealing with lists, you can ask the engine to print multiple field for every single record.
   This is the placeholder that you have to place between every field you want to print.
   
-@:
+<b>@</b>
   This is the separator keyword. 
   It say to the engine what char you want as separator. 
   Place it after the field you want to retrieve and write your separator chars after it
@@ -222,16 +211,11 @@ list_:
 </pre></code>
  
  
-<pre><code>
-<b><u>template.docx</u></b> 
-
+<pre><code><b><u>template.docx</u></b> 
 Theese are your childrens:
 ${list_anagrafics@\r\n.name#mother.name#mother.surname@-#age}
-
 </code></pre>
-<br/>
-<pre><code>
-<b><u>java (pseudocode)</u></b>
+<pre><code><b><u>java (pseudocode)</u></b>
 
 //instantiating my objects that i want to use in .docx template (it must be extending HckReflect)
 Anagrafics child1 = new Anagrafics("Giorgio");
@@ -261,18 +245,149 @@ myListObjectsList.add(yourChilds);
 docxService.generateDocument(template.docx, outputFile,null, <b>myListObjectsList</b> ,null)
 
 </code></pre>
-<br/>
-<pre><code>
-<b><u>out.docx </u></b>
-
+<pre><code><b><u>out.docx </u></b>
 Theese are your childrens:
 Giorgio, Lisa-asiL, 10
 Mario, Unknow-Unknow, 12
 Pippo, The crazy one-Many many crazy, 13
+</code></pre>
 
+<h3>Of course you can mix up as many lists , objects and key-values as you wany</h3>
+
+
+
+<h3 id="m4">(Modality 4) HardCore mode - all mixed together very very randomly!</h3>
+
+<b>Special Keywords glossary:</b>
+<code><pre><b>list_</b>
+  Place this keyword before your object identifier.
+  It will say to the engine that we want to print a list of objects.
+
+<b>#</b>
+  When you are dealing with lists, you can ask the engine to print multiple field for every single record.
+  This is the placeholder that you have to place between every field you want to print.
+  
+<b>@</b>
+  This is the separator keyword. 
+  It say to the engine what char you want as separator. 
+  Place it after the field you want to retrieve and write your separator chars after it
+  If you don't specify a separator, it use the default one's.
+</pre></code>
+ 
+ 
+<pre><code><b><u>template.docx</u></b> 
+Today is ${today}.
+
+In my hashmap cioppy stay for ${cioppy}
+
+Your city is ${you.address.city}
+
+I think that ${Anagrafics.favouriteGame.fancyName} is one of the best game evvah!
+
+Theese are the best words of the world:
+${list_bestWords@\r\n.description@---#author}
+
+Theese are the children of ${father.name}:
+${list_anagrafics@\r\n.name#mother.name#mother.surname@-#age}
+</code></pre>
+<pre><code><b><u>java (pseudocode)</u></b>
+
+//instantiating all the objects that i want to use in .docx template (it must be extending HckReflect)
+Anagrafics me = new Anagrafics("me");
+Anagrafics you = new Anagrafics("Jonny");
+Anagrafics fath = new Anagrafics("Roberto");
+
+fath.setIdentifier("father");
+you.setIdentifier("you");
+you.setAddress(new Address("Milan"));
+
+//simple hashmap key value
+HashMap&#60;String, String&#62; <b>maps</b>;
+maps.put("cioppy","bau");
+
+</code>
+<i>
+(wait - Just to show you how can be defined Game class)
+class Game extends HckReflect{
+  String name;
+  setName(String name){this.name=name};
+  getName(){return name};
+  getFancyName(){return "+*+*"+name+"*+*+";}
+}</i>
+</code>
+Game favGame = new Game();
+g.setName("undertale");
+me.setFavouriteGame(favGame);
+
+//building the "list_bestWords" mapping object
+
+Words w1 = new Words("bau","me");
+Words w2 = new Words("cioppy","barik");
+Words w3 = new Words("cioppi","me");
+
+//i am setting the desired personalized identifier to the first element of my list (the one that will be checked by the engine)
+w1.setIdentifier("bestWords");
+
+List&#60;HckReflect&#62; bestWordsList = Lists.newArrayList();
+bestWordsList.add(w1);
+bestWordsList.add(w2);
+bestWordsList.add(w3);
+
+
+//and here the same childrens of the previous example...
+Anagrafics child1 = new Anagrafics("Giorgio");
+Anagrafics child2 = new Anagrafics("Mario");
+Anagrafics child3 = new Anagrafics("Pippo");
+
+//Mother class must be extending HckReflect because i want to call it in .docx
+child1.setMother(new Mother("Lisa","asiL"));
+child2.setMother(new Mother("Unknow","Unknow"));
+child3.setMother(new Mother("The crazy one","Many many crazy"));
+
+child1.setAge(10);
+child2.setAge(12);
+child3.setAge(13);
+
+//now just prepare the List of childs
+List&#60;HckReflect&#62; yourChilds = Lists.newArrayList();
+yourChilds.add(child1);
+yourChilds.add(child2);
+yourChilds.add(child3);
+
+//now list of single objects
+List&#60;HckReflect&#62; <b>myListOfObj</b> = Lists.newArrayList();
+myListOfObj.add(me);
+myListOfObj.add(you);
+myListOfObj.add();
+
+//and here preparing my list of *list of objects*
+List&#60;HckReflect&#62; <b>myListObjectsList</b> = Lists.newArrayList();
+myListObjectsList.add(yourChilds);
+myListObjectsList.add(bestWordsList);
+
+docxService.generateDocument(template.docx, outputFile,<b>myListOfObj</b>, <b>myListObjectsList</b> ,null)
 
 </code></pre>
-<br/>
+<pre><code><b><u>out.docx </u></b>
+Today is 20/03/2019
+
+In my hashmap cioppy stay for bau
+
+Your city is Milan
+
+I think that +*+*Undertale*+*+ is one of the best game evvah!
+
+Theese are the best words of the world:
+bau---me
+cioppy---barik
+cioppi---me
+
+Theese are the childrens of Roberto:
+
+Giorgio, Lisa-asiL, 10
+Mario, Unknow-Unknow, 12
+Pippo, The crazy one-Many many crazy, 13
+</code></pre>
 
 
 <br/><br/>
