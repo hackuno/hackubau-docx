@@ -134,7 +134,7 @@ Happiness happy = new Happiness("Cioppy Bau!");
 //setting giorgio's happiness property
 giorgio.setHappiness(happy);
 
-///preparing my list of objects
+//preparing my list of objects
 List&#60;HckReflect&#62; myObjects = Lists.newArrayList();
 myObjects.add(giorgio);
 
@@ -142,8 +142,9 @@ docxService.generateDocument(template.docx, outputFile, <b>myObjects</b> ,null,n
 
 </code></pre>
 <br/>
+
 <pre><code>
-<b><u>out.docx </u></b>
+<b><u>out.docx</u></b>
 
 This is the document of Giorgio.
 Giorgio happiness level is: Cioppi Bau!!
