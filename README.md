@@ -94,16 +94,16 @@ maps.put("happiness","cioppy bau");
 
 docxService.generateDocument(template.docx, maps, output.docx);
 
-</CODE></pre><br/><CODE><pre>
+</code></pre>
+<br/>
+<pre><code>
 <b><u>out.docx </u></b>
 
 This is the document of Giorgio.
 Giorgio happiness level is: cioppi bau!
 
-</pre>
-</CODE>
-
-
+</code></pre>
+<br/>
 
 
 
