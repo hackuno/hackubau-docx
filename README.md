@@ -84,7 +84,9 @@ This tool will make it so easy that you will be stunned! </h4>
 This is the document of ${name}.
 ${name} happiness level is: ${happiness}!
 
-</CODE></pre><br><pre><CODE>
+</CODE></pre>
+<br>
+<pre><CODE>
 <b><u>java (pseudocode) </u></b>
 
 HashMap&#60;String, String&#62; maps;
