@@ -11,7 +11,7 @@ Please write to me <hck@hackubau.it> if you have any questions.
 <br><br>
 <pre>
 <code>
-<a href="https://search.maven.org/search?q=g:%22it.hackubau%22%20AND%20a:%22hackubau-docs%22"[[ Here you can find gradle, groovy and others package managers entries ]]</a>
+<a href="https://search.maven.org/search?q=g:%22it.hackubau%22%20AND%20a:%22hackubau-docs%22">[[ Here you can find gradle, groovy and others package managers entries ]]</a>
 <br>
 <b> MAVEN pom.xml </b>
 <br>
@@ -68,7 +68,14 @@ This tool will make it so easy that you will be stunned! </h4>
 <h1><b>Step by step guide</b></h1>
 
 
-<h3>Mode 1)HashMap key-value mappings</h3>
+
+
+
+
+
+
+
+<h3>Mode 1) HashMap key-value mappings</h3>
 
 <CODE>
 <pre><b><u>template.docx</u></b>
@@ -94,7 +101,15 @@ Giorgio happiness level is: cioppi bau!
 </pre>
 </CODE>
 
-<h3>Mode 2.0)Object mappings </h3>
+
+
+
+
+
+
+
+
+<h3>Mode 2.0) Object mappings </h3>
 
 <CODE>
 <pre><b><u>template.docx</u></b>
@@ -130,7 +145,16 @@ Giorgio happiness level is: Cioppi Bau!!
 </pre>
 </CODE>
 
-<h3>Mode 2.1)Object mappings with personalized identifiers </h3>
+
+
+
+
+
+
+
+
+
+<h3>Mode 2.1) Object mappings with personalized identifiers </h3>
 <p>It become usefull when you have more thant 1 object of the same class to be mapped in the document</p>
 
 <CODE>
@@ -153,7 +177,7 @@ fatherObj.setIdentifier("father");
 childrenObj.setIdentifier("child");
 
 
-///preparing my list of objects
+///preparing my *list of objects*
 List&#60;HckReflect&#62; myObjects = Lists.newArrayList();
 myObjects.add(fatherObj);
 myObjects.add(childrenObj);
@@ -169,4 +193,100 @@ This is the document of Mario, the father of Robinhood
 </pre>
 </CODE>
 
+
+
+
+
+<h3>Mode 3.0) List<Object> mappings with recursively printing</h3>
+<p>For example if you have to print the list of someone's childs</p>
+
+<CODE>
+<pre><b><u>template.docx</u></b>
+
+Theese are your childrens:
+${list_anagrafics.name}
+
+</pre></CODE><br><CODE><pre>
+<b><u>java (pseudocode)</u></b>
+
+//instantiating my objects that i want to use in .docx template (it must be extending HckReflect)
+Anagrafics child1 = new Anagrafics("Giorgio");
+Anagrafics child2 = new Anagrafics("Mario");
+Anagrafics child3 = new Anagrafics("Pippo");
+
+//now just prepare the List of childs
+List&#60;HckReflect&#62; yourChilds = Lists.newArrayList();
+yourChilds.add(child1);
+yourChilds.add(child2);
+yourChilds.add(child3);
+
+
+//and here preparing my list of *list of objects*
+List&#60;HckReflect&#62; myListObjectsList = Lists.newArrayList();
+myListObjectsList.add(yourChilds);
+
+docxService.generateDocument(template.docx, outputFile,null, <b>myListObjectsList</b> ,null)
+
+</pre></CODE><br><CODE><pre>
+<b><u>out.docx </u></b>
+
+Theese are your childrens:
+Giorgio, Mario, Pippo
+
+</pre>
+</CODE>
+
+
+
+
+<h3>Mode 3.1) List<Object> mappings - concatenate fields and set a separator </h3>
+<p>For example if you have to print the list of someone's childs but you want specificy more fields and choose a personalized separator</p>
+
+<CODE>
+<pre><b><u>template.docx (n.b. "list_", "@" and "#" are keywords)</u></b>
+
+Theese are your childrens:
+${list_anagrafics@\r\n.name#mother.name#mother.surname@-#age}
+
+</pre></CODE><br><CODE><pre>
+<b><u>java (pseudocode)</u></b>
+
+//instantiating my objects that i want to use in .docx template (it must be extending HckReflect)
+Anagrafics child1 = new Anagrafics("Giorgio");
+Anagrafics child2 = new Anagrafics("Mario");
+Anagrafics child3 = new Anagrafics("Pippo");
+
+//Mother class must be extending HckReflect because i want to call it in .docx
+child1.setMother(new Mother("Lisa","asiL"));
+child2.setMother(new Mother("Unknow","Unknow"));
+child3.setMother(new Mother("The crazy one","Many many crazy"));
+
+child1.setAge(10);
+child2.setAge(12);
+child3.setAge(13);
+
+//now just prepare the List of childs
+List&#60;HckReflect&#62; yourChilds = Lists.newArrayList();
+yourChilds.add(child1);
+yourChilds.add(child2);
+yourChilds.add(child3);
+
+
+//and here preparing my list of *list of objects*
+List&#60;HckReflect&#62; myListObjectsList = Lists.newArrayList();
+myListObjectsList.add(yourChilds);
+
+docxService.generateDocument(template.docx, outputFile,null, <b>myListObjectsList</b> ,null)
+
+</pre></CODE><br><CODE><pre>
+<b><u>out.docx </u></b>
+
+Theese are your childrens:
+Giorgio, Lisa-asiL, 10
+Mario, Unknow-Unknow, 12
+Pippo, The crazy one-Many many crazy, 13
+
+
+</pre>
+</CODE>
 
