@@ -41,41 +41,20 @@ This is a Service to perform susbstitution of placeholders in .docx files (templ
 <kbd> ${list_yourObject.yourField1@separator#yourField2.nestedField} </kbd>
 
 <b>You can easly pass your custom Object/List of objects and the engine will retrieve everything!</b>
-
-<center> &#62; Check the detailed GUIDE scrolling down. &#60; </center> 
+<i>The engine will read the document to find the placeholders and then, for each of them, choose the right object from the provided parameters (objs, listObj or fixedMappings) and invoke the GET methods specified by the placeholder itself </i>
  
-
-<h1 class="lead">When is it usefull?</h1>
-
-<h4 class="lead">Do you have to create Word(.docx) files starting from a template and substituting custom placeholders with right values?<br/>
-This tool will make it so easy that you will be stunned! </h4>
-
-<sample>Hey, but i need an ad easy way to retrieve my Nested Objects properties, List of Objects and String values and place them together in my .docx files without write a line of code!</sample>
-<h4 class="lead">You will have just to make your objects extending my HckReflect.class and pass them all to my service!</h4>
-<h5 class="lead">The remaining is just about .docx template! Demand it to your customers.</h5>
-
-
-<h1 class="lead">API specifications</h1>
-
-<h4><b><u>public service methods: </u></b></h4>
-<br/>
-<p style="font-size:2px;">generateDocument(File template, HashMap&#60;String, String&#62; replace, outputFile)</p>
-<p> generateDocument(File template, File out, List&#60;? extends HckReflect&#62; objs, List&#60;List&#60;? extends HckReflect&#62;&#62;listsObj, HashMap&#60;String, String&#62; fixedMappings)</p>
-<i>This will read the document to find the placeholders and then, for each of them, choose the right object from the provided parameters (objs, listObj or fixedMappings) and invoke the GET methods specified by the placeholder itself </i>
-<br/><br/>
+<h1 class="lead">Let me see!</h1>
  
  
-<h1><b>Step by step guide</b></h1>
+<h2><b>API - Step by step guide</b></h2>
+
+<ul>
+ <li> <a href="#m1">1) HashMap key-value mappings</a></li>
 
 
 
 
-
-
-
-
-
-<h3>Mode 1) HashMap key-value mappings</h3>
+<h3 id="m1">(Mode 1) HashMap key-value mappings</h3>
 
 <pre><code>
 <b><u>template.docx</u></b>
