@@ -308,17 +308,14 @@ maps.put("cioppy","bau");
 
 </code>
 </pre>
-<pre>
-<i>
-(wait - Just to show you how can be defined Game class)
+<pre><i>(wait - Just to show to you how Game.class is defined in my mind)
 class Game extends HckReflect{
   String name;
   setName(String name){this.name=name};
   getName(){return name};
   getFancyName(){return "+*+*"+name+"*+*+";}
 }</i>
-(ok, continue)
-</pre>
+(ok, you can continue now)</pre>
 <pre>
 <code>
 Game favGame = new Game();
