@@ -113,13 +113,15 @@ Giorgio happiness level is: cioppi bau!
 
 <h3>Mode 2.0) Object mappings </h3>
 
-<CODE>
-<pre><b><u>template.docx</u></b>
+<pre><code>
+<b><u>template.docx</u></b>
 
 This is the document of ${anagrafics.name}.
 ${anagrafics.name} happiness level is: ${anagrafics.happiness.actualLevel}!
 
-</pre></CODE><br/><CODE><pre>
+</code></pre>
+<br/>
+<pre><code>
 <b><u>java (pseudocode)</u></b>
 
 //instantiating my object that i want to use in .docx template (it must be extending HckReflect)
@@ -138,7 +140,9 @@ myObjects.add(giorgio);
 
 docxService.generateDocument(template.docx, outputFile, <b>myObjects</b> ,null,null)
 
-</pre></CODE><br/><CODE><pre>
+</code></pre>
+<br/>
+<pre><code>
 <b><u>out.docx </u></b>
 
 This is the document of Giorgio.
@@ -159,12 +163,13 @@ Giorgio happiness level is: Cioppi Bau!!
 <h3>Mode 2.1) Object mappings with personalized identifiers </h3>
 <p>It become usefull when you have more thant 1 object of the same class to be mapped in the document</p>
 
-<CODE>
-<pre><b><u>template.docx</u></b>
+<pre><code><b><u>template.docx</u></b>
 
 This is the document of ${father.name}, the father of ${child.name}
 
-</pre></CODE><br/><CODE><pre>
+</code></pre>
+<br/>
+<pre><code>
 <b><u>java (pseudocode)</u></b>
 
 //instantiating my objects that i want to use in .docx template (it must be extending HckReflect)
@@ -186,14 +191,15 @@ myObjects.add(childrenObj);
 
 docxService.generateDocument(template.docx, outputFile, <b>myObjects</b> ,null,null)
 
-</pre></CODE><br/><CODE><pre>
+</code></pre>
+<br/>
+<pre><code>
 <b><u>out.docx </u></b>
 
 This is the document of Mario, the father of Robinhood
 
-
+</code>
 </pre>
-</CODE>
 
 
 
@@ -202,13 +208,15 @@ This is the document of Mario, the father of Robinhood
 <h3>Mode 3.0) List&#60;Object&#62; mappings with recursively printing</h3>
 <p>For example if you have to print the list of someone's childs</p>
 
-<CODE>
-<pre><b><u>template.docx</u></b>
+<pre><code>
+<b><u>template.docx</u></b>
 
 Theese are your childrens:
 ${list_anagrafics.name}
 
-</pre></CODE><br/><CODE><pre>
+</code></pre>
+<br/>
+<pre><code>
 <b><u>java (pseudocode)</u></b>
 
 //instantiating my objects that i want to use in .docx template (it must be extending HckReflect)
@@ -229,14 +237,16 @@ myListObjectsList.add(yourChilds);
 
 docxService.generateDocument(template.docx, outputFile,null, <b>myListObjectsList</b> ,null)
 
-</pre></CODE><br/><CODE><pre>
+</code></pre>
+<br/>
+<pre><code>
 <b><u>out.docx </u></b>
 
 Theese are your childrens:
 Giorgio, Mario, Pippo
 
+</code>
 </pre>
-</CODE>
 
 
 
@@ -244,13 +254,15 @@ Giorgio, Mario, Pippo
 <h3>Mode 3.1) List&#60;Object&#62; mappings - concatenate fields and set a separator </h3>
 <p>For example if you have to print the list of someone's childs but you want specificy more fields and choose a personalized separator</p>
 
-<CODE>
-<pre><b><u>template.docx (n.b. "list_", "@" and "#" are keywords)</u></b> 
+<pre><code>
+<b><u>template.docx (n.b. "list_", "@" and "#" are keywords)</u></b> 
 
 Theese are your childrens:
 ${list_anagrafics@\r\n.name#mother.name#mother.surname@-#age}
 
-</pre></CODE><br/><CODE><pre>
+</code></pre>
+<br/>
+<pre><code>
 <b><u>java (pseudocode)</u></b>
 
 //instantiating my objects that i want to use in .docx template (it must be extending HckReflect)
@@ -280,7 +292,9 @@ myListObjectsList.add(yourChilds);
 
 docxService.generateDocument(template.docx, outputFile,null, <b>myListObjectsList</b> ,null)
 
-</pre></CODE><br/><CODE><pre>
+</code></pre>
+<br/>
+<pre><code>
 <b><u>out.docx </u></b>
 
 Theese are your childrens:
@@ -289,6 +303,7 @@ Mario, Unknow-Unknow, 12
 Pippo, The crazy one-Many many crazy, 13
 
 
-</pre>
-</CODE>
+</code></pre>
+<br/>
+
 
