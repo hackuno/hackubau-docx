@@ -5,12 +5,13 @@ Mircrosoft Word (.docx) & OpenOffice (.docx) compatibility</span>
 <br><br>
 Please write to me <hck@hackubau.it> if you have any questions.
 <br><br>
-[![Maven Central](https://img.shields.io/maven-central/v/it.hackubau/hackubau-docs.svg?label=Maven%20Central)](https://search.maven.org/search?q=g:%22it.hackubau%22%20AND%20a:%22hackubau-docs%22) (check here if you need gradle, groovy or others entries)
+[![Maven Central](https://img.shields.io/maven-central/v/it.hackubau/hackubau-docs.svg?label=Maven%20Central)](https://search.maven.org/search?q=g:%22it.hackubau%22%20AND%20a:%22hackubau-docs%22)
 <br>
 [![Java Docs](https://img.shields.io/maven-central/v/it.hackubau/hackubau-docs.svg?label=Java%20Docs)](https://hackuno.github.io/hackubau-docx/docs)
 <br><br>
 <pre>
 <code>
+<a href="https://search.maven.org/search?q=g:%22it.hackubau%22%20AND%20a:%22hackubau-docs%22">Here you can find gradle, groovy and others package managers entries</a>
 &#60;dependency&#62;
   &#60;groupId&#62;it.hackubau&#60;/groupId&#62;
   &#60;artifactId&#62;hackubau-docs&#60;/artifactId&#62;
@@ -57,13 +58,9 @@ This tool will make it so easy that you will be stunned! </h4>
 <br>
 <p style="font-size:2px;">generateDocument(File template, HashMap&#60;String, String&#62; replace, outputFile)</p>
 <br>
+<p> generateDocument(File template, File out, List&#60;? extends HckReflect&#62; objs, List&#60;List&#60;? extends HckReflect&#62;&#62;listsObj, HashMap&#60;String, String&#62; fixedMappings)</p>
 <br>
-<i>The simplest way: This will just replace the placeholders <b>${key}</b> found in the .docx with the <b> value </b> mapping provided by the hashMap</i>
-<br><br>
-generateDocument(File template, File out, List&#60;? extends HckReflect&#62; objs, List&#60;List&#60;? extends HckReflect&#62;&#62;listsObj, HashMap&#60;String, String&#62; fixedMappings)
-<br>
-<br>
-<i>The best way: This will read the document to find the placeholders and then, for each of them, choose the right object from the provided parameters (objs, listObj or fixedMappings) and invoke the GET methods specified by the placeholder itself </i>
+<i>This will read the document to find the placeholders and then, for each of them, choose the right object from the provided parameters (objs, listObj or fixedMappings) and invoke the GET methods specified by the placeholder itself </i>
 <BR><BR>
  
  
@@ -79,25 +76,15 @@ This is the document of ${name}.
 
 ${name} happiness level is: ${happiness}!
 
-</pre>
-</CODE>
-
-<br>
-
-<CODE>
-<pre><b><u>java (pseudocode) </u></b>
+</pre></CODE><br><CODE><pre>
+<b><u>java (pseudocode) </u></b>
 
 HashMap&#60;String, String&#62 map;
 map.put("name","giorgio");
 map.put("happiness","cioppy bau");
 docxService.generateDocument(template.docx, ; maps, output.docx);
 
-</pre>
-</CODE>
-
-<br>
-
-<CODE><pre>
+</pre></CODE><br><CODE><pre>
 <b><u>out.docx </u></b>
 
 This is the document of Giorgio.
