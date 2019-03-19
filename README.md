@@ -2,19 +2,19 @@
 <span class="lead">
 Mircrosoft Word (.docx) & OpenOffice (.docx) compatibility</span>
  
-<br><br>
+<br/><br/>
 Please write to me <hck@hackubau.it> if you have any questions.
-<br><br>
+<br/><br/>
 [![Maven Central](https://img.shields.io/maven-central/v/it.hackubau/hackubau-docs.svg?label=Maven%20Central)](https://search.maven.org/search?q=g:%22it.hackubau%22%20AND%20a:%22hackubau-docs%22)
-<br>
+<br/>
 [![Java Docs](https://img.shields.io/maven-central/v/it.hackubau/hackubau-docs.svg?label=Java%20Docs)](https://hackuno.github.io/hackubau-docx/docs)
-<br><br>
+<br/><br/>
 <pre>
 <code>
 <a href="https://search.maven.org/search?q=g:%22it.hackubau%22%20AND%20a:%22hackubau-docs%22"> &#60;&#60; Here you can find gradle, groovy and others package managers entries &#62;&#62;</a>
-<br>
+<br/>
 <b> MAVEN pom.xml </b>
-<br>
+<br/>
 &#60;dependency&#62;
   &#60;groupId&#62;it.hackubau&#60;/groupId&#62;
   &#60;artifactId&#62;hackubau-docs&#60;/artifactId&#62;
@@ -22,22 +22,22 @@ Please write to me <hck@hackubau.it> if you have any questions.
 &#60;/dependency&#62;
 </code>
 </pre>
-<br>
+<br/>
 
 
 
-<br>
+<br/>
 <h1><b>What is this?</b></h1>
 This is a Service to perform susbstitution of placeholders in .docx files (templates) writing simply something like this in the word template:
-<br><br>
+<br/><br/>
 <kbd> ${yourObject.yourField} </kbd> 
-<br>
+<br/>
 <kbd> ${yourPlaceholder} </kbd> 
-<br>
+<br/>
 <kbd> ${today} </kbd>
-<br>
+<br/>
 <kbd> ${yourObject.yourField.yourEventuallyNestedField} </kbd>
-<br>
+<br/>
 <kbd> ${list_yourObject.yourField1@separator#yourField2.nestedField} </kbd>
 
 <b>You can easly pass your custom Object/List of objects and the engine will retrieve everything!</b>
@@ -47,7 +47,7 @@ This is a Service to perform susbstitution of placeholders in .docx files (templ
 
 <h1 class="lead">When is it usefull?</h1>
 
-<h4 class="lead">Do you have to create Word(.docx) files starting from a template and substituting custom placeholders with right values?<br>
+<h4 class="lead">Do you have to create Word(.docx) files starting from a template and substituting custom placeholders with right values?<br/>
 This tool will make it so easy that you will be stunned! </h4>
 
 <sample>Hey, but i need an ad easy way to retrieve my Nested Objects properties, List of Objects and String values and place them together in my .docx files without write a line of code!</sample>
@@ -58,11 +58,11 @@ This tool will make it so easy that you will be stunned! </h4>
 <h1 class="lead">API specifications</h1>
 
 <h4><b><u>public service methods: </u></b></h4>
-<br>
+<br/>
 <p style="font-size:2px;">generateDocument(File template, HashMap&#60;String, String&#62; replace, outputFile)</p>
 <p> generateDocument(File template, File out, List&#60;? extends HckReflect&#62; objs, List&#60;List&#60;? extends HckReflect&#62;&#62;listsObj, HashMap&#60;String, String&#62; fixedMappings)</p>
 <i>This will read the document to find the placeholders and then, for each of them, choose the right object from the provided parameters (objs, listObj or fixedMappings) and invoke the GET methods specified by the placeholder itself </i>
-<BR><BR>
+<br/><br/>
  
  
 <h1><b>Step by step guide</b></h1>
@@ -77,16 +77,15 @@ This tool will make it so easy that you will be stunned! </h4>
 
 <h3>Mode 1) HashMap key-value mappings</h3>
 
-<pre>
-<CODE>
+<pre><code>
 <b><u>template.docx</u></b>
 
 This is the document of ${name}.
 ${name} happiness level is: ${happiness}!
 
-</CODE></pre>
-<br>
-<pre><CODE>
+</code></pre>
+<br/>
+<pre><code>
 <b><u>java (pseudocode) </u></b>
 
 HashMap&#60;String, String&#62; maps;
@@ -95,7 +94,7 @@ maps.put("happiness","cioppy bau");
 
 docxService.generateDocument(template.docx, maps, output.docx);
 
-</CODE></pre><br><CODE><pre>
+</CODE></pre><br/><CODE><pre>
 <b><u>out.docx </u></b>
 
 This is the document of Giorgio.
@@ -120,7 +119,7 @@ Giorgio happiness level is: cioppi bau!
 This is the document of ${anagrafics.name}.
 ${anagrafics.name} happiness level is: ${anagrafics.happiness.actualLevel}!
 
-</pre></CODE><br><CODE><pre>
+</pre></CODE><br/><CODE><pre>
 <b><u>java (pseudocode)</u></b>
 
 //instantiating my object that i want to use in .docx template (it must be extending HckReflect)
@@ -139,7 +138,7 @@ myObjects.add(giorgio);
 
 docxService.generateDocument(template.docx, outputFile, <b>myObjects</b> ,null,null)
 
-</pre></CODE><br><CODE><pre>
+</pre></CODE><br/><CODE><pre>
 <b><u>out.docx </u></b>
 
 This is the document of Giorgio.
@@ -165,7 +164,7 @@ Giorgio happiness level is: Cioppi Bau!!
 
 This is the document of ${father.name}, the father of ${child.name}
 
-</pre></CODE><br><CODE><pre>
+</pre></CODE><br/><CODE><pre>
 <b><u>java (pseudocode)</u></b>
 
 //instantiating my objects that i want to use in .docx template (it must be extending HckReflect)
@@ -187,7 +186,7 @@ myObjects.add(childrenObj);
 
 docxService.generateDocument(template.docx, outputFile, <b>myObjects</b> ,null,null)
 
-</pre></CODE><br><CODE><pre>
+</pre></CODE><br/><CODE><pre>
 <b><u>out.docx </u></b>
 
 This is the document of Mario, the father of Robinhood
@@ -209,7 +208,7 @@ This is the document of Mario, the father of Robinhood
 Theese are your childrens:
 ${list_anagrafics.name}
 
-</pre></CODE><br><CODE><pre>
+</pre></CODE><br/><CODE><pre>
 <b><u>java (pseudocode)</u></b>
 
 //instantiating my objects that i want to use in .docx template (it must be extending HckReflect)
@@ -230,7 +229,7 @@ myListObjectsList.add(yourChilds);
 
 docxService.generateDocument(template.docx, outputFile,null, <b>myListObjectsList</b> ,null)
 
-</pre></CODE><br><CODE><pre>
+</pre></CODE><br/><CODE><pre>
 <b><u>out.docx </u></b>
 
 Theese are your childrens:
@@ -251,7 +250,7 @@ Giorgio, Mario, Pippo
 Theese are your childrens:
 ${list_anagrafics@\r\n.name#mother.name#mother.surname@-#age}
 
-</pre></CODE><br><CODE><pre>
+</pre></CODE><br/><CODE><pre>
 <b><u>java (pseudocode)</u></b>
 
 //instantiating my objects that i want to use in .docx template (it must be extending HckReflect)
@@ -281,7 +280,7 @@ myListObjectsList.add(yourChilds);
 
 docxService.generateDocument(template.docx, outputFile,null, <b>myListObjectsList</b> ,null)
 
-</pre></CODE><br><CODE><pre>
+</pre></CODE><br/><CODE><pre>
 <b><u>out.docx </u></b>
 
 Theese are your childrens:
