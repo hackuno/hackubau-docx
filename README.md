@@ -56,43 +56,51 @@ This tool will make it so easy that you will be stunned! </h4>
 <h4><b><u> MAIN FUNCTIONS: </u></b></h4>
 <br>
 generateDocument(File template, HashMap&#60;String, String&#62; replace, outputFile)
-<br>return: The Generated File
+<br>
 <br>
 <i>The simplest way: This will just replace the placeholders <b>${key}</b> found in the .docx with the <b> value </b> mapping provided by the hashMap</i>
 <br><br>
 generateDocument(File template, File out, List&#60;? extends HckReflect&#62; objs, List&#60;List&#60;? extends HckReflect&#62;&#62;listsObj, HashMap&#60;String, String&#62; fixedMappings)
-<br>return: The Generated File 
+<br>
 <br>
 <i>The best way: This will read the document to find the placeholders and then, for each of them, choose the right object from the provided parameters (objs, listObj or fixedMappings) and invoke the GET methods specified by the placeholder itself </i>
 <BR><BR>
 <h4><b> How does it work? Step by step guide</b></h4>
 
 
-<h3>1)Simple HashMap substitution </h3>
+<h3>1)Simple HashMap key-value substitution </h3>
 
 <CODE>
-<pre>
-<b><u>template.docx</u></b>
+<pre><b><u>template.docx</u></b>
 
-This is the document of ${name}
+This is the document of ${name}.
+
+${name} happiness level is: ${happiness}!
 
 </pre>
 </CODE>
-<br>
-<CODE>
-<pre>
-<b><u>java (pseudocode) </u></b>
 
-docxService.generateDocument(template.docx, HashMap&#60;"name", "Giorgio"&#62; maps, output.docx);
+<br>
+
+<CODE>
+<pre><b><u>java (pseudocode) </u></b>
+
+HashMap&#60;String, String&#62 map;
+map.put("name","giorgio");
+map.put("happiness","cioppy bau");
+docxService.generateDocument(template.docx, ; maps, output.docx);
 
 </pre>
 </CODE>
+
 <br>
-<CODE>
-<pre>
+
+<CODE><pre>
 <b><u>out.docx </u></b>
 
-This is the document of Giorgio
+This is the document of Giorgio.
+
+Giorgio happiness level is: cioppi bau!
 
 </pre>
 </CODE>
