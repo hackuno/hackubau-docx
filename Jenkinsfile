@@ -28,9 +28,16 @@ pipeline {
 
     stage('Database migration') {
       steps {
-        flywayrunner(installationName: 'flyway', flywayCommand: 'migrate', url: 'jdbc:sqlserver://localhost:1433;DatabaseName=bau', locations: 'sql', commandLineArgs: '-configFiles=flyway.conf', credentialsId: '123')
+        flywayrunner(installationName: 'flyway', flywayCommand: 'migrate', url: 'jdbc:sqlserver://localhost:1433;DatabaseName=bau', locations: 'sql', commandLineArgs: '-configFiles=DevOps/flyway.conf', credentialsId: '123')
       }
     }
+
+    stage('Deploy with ansible') {
+                steps {
+                  ansiblePlaybook 'playbook.yml'
+                }
+              }
+
 
   }
 }

@@ -1,0 +1,15 @@
+---
+- name: Deploy With Ansible
+  hosts: localhost
+  connection: local
+  become: yes
+
+  tasks:
+    - name: Bau
+      debug:
+        msg: bau
+
+    - name: update
+      apt:
+        name: nano
+        state: present
