@@ -10,6 +10,7 @@ pipeline {
     stage('Build') {
       steps {
         sh 'mvn clean package -DskipTests'
+        archiveArtifacts(artifacts: 'target/*.war;target/*.jar;target/*.pom;target/*quality*.properties', onlyIfSuccessful: true)
       }
     }
 
@@ -20,12 +21,6 @@ pipeline {
           junit 'target/surefire-reports/*.xml'
         }
 
-      }
-    }
-
-    stage('') {
-      steps {
-        echo 'Fingo un deploy'
       }
     }
 
