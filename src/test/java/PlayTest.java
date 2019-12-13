@@ -99,6 +99,8 @@ public class PlayTest {
 
         assertTrue(checkEqualWords(fout,control));
         assertFalse(checkEqualWords(fout,failingControl));
+        assertTrue(false);
+
 
     }
 
