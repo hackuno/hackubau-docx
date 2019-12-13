@@ -7,13 +7,17 @@ import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
 import org.docx4j.openpackaging.packages.WordprocessingMLPackage;
 import org.docx4j.openpackaging.parts.WordprocessingML.MainDocumentPart;
-import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
+
 
 import java.io.File;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+
+import static junit.framework.Assert.assertFalse;
+import static junit.framework.Assert.assertTrue;
+
 
 public class PlayTest {
 
@@ -24,7 +28,7 @@ public class PlayTest {
      * this is just a suggerimento for some italians pizza.mario.
      */
     @Test
-    public void pizzaMarioTipAndTricks() {
+    public void JUnitTest_PizzaMarioTipAndTricks() {
 
         System.out.println("Estendi le classi che vuoi rendere disponibili al template con HckReflect e passale al mio service.");
         System.out.println("Se devi stampare delle liste di oggetti fai la stessa cosa ma passali come Lista di Lista di oggetti che estendono HckReflect");
@@ -41,7 +45,7 @@ public class PlayTest {
      * I will make real Junit Tests later... maybe. It depends of your interest in it.
      */
     @Test
-    public void test() {
+    public void Test_t1() {
 
         //just instantiate a random (HckReflect)  object
         Anagrafica a = new Anagrafica();
@@ -93,8 +97,8 @@ public class PlayTest {
 
         logger.info("OUTPUT PATH: "+fout.getAbsolutePath());
 
-        Assertions.assertTrue(checkEqualWords(fout,control));
-        Assertions.assertFalse(checkEqualWords(fout,failingControl));
+        assertTrue(checkEqualWords(fout,control));
+        assertFalse(checkEqualWords(fout,failingControl));
 
     }
 
