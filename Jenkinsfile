@@ -4,6 +4,7 @@ pipeline {
     stage('Init') {
       steps {
         echo 'Inizio a buildare Hackubau Docx'
+        sh 'mvn clean -U'
       }
     }
 
