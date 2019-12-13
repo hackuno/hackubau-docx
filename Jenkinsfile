@@ -26,6 +26,12 @@ pipeline {
       }
     }
 
+    stage('Manual Approvation') {
+      steps {
+        input 'Procedi al deploy in quality'
+      }
+    }
+
     stage('Database migration') {
       steps {
         sh 'sudo flyway -configFiles=DevOps/flyway.conf migrate'
@@ -35,12 +41,6 @@ pipeline {
     stage('Deploy with ansible') {
       steps {
         ansiblePlaybook(playbook: 'DevOps/playbook.yml', inventory: 'DevOps/hosts')
-      }
-    }
-
-    stage('') {
-      steps {
-        input 'Procedi al deploy in quality'
       }
     }
 
