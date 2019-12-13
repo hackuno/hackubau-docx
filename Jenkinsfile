@@ -8,11 +8,22 @@ pipeline {
     }
 
     stage('Build') {
-      steps {
-        sh 'mvn clean package -DskipTests'
-        archiveArtifacts(artifacts: 'target\\*.jar', onlyIfSuccessful: true)
-        archiveArtifacts(artifacts: 'pom.xml', onlyIfSuccessful: true)
-        archiveArtifacts(artifacts: 'src\\main\\resources\\*', onlyIfSuccessful: true)
+      parallel {
+        stage('Build') {
+          steps {
+            sh 'mvn clean package -DskipTests'
+            archiveArtifacts(artifacts: 'target\\*.jar', onlyIfSuccessful: true)
+            archiveArtifacts(artifacts: 'pom.xml', onlyIfSuccessful: true)
+            archiveArtifacts(artifacts: 'src\\main\\resources\\*', onlyIfSuccessful: true)
+          }
+        }
+
+        stage('Test1') {
+          steps {
+            sh 'mvn test'
+          }
+        }
+
       }
     }
 
