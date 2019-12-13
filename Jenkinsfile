@@ -44,7 +44,7 @@ pipeline {
                  artifacts: [
                                 [artifactId: 'hackubau-docs-1.0-RELEASE',
                                  classifier: '',
-                                 file: "target/hackubau-docs-1.0-RELEASE.jar"
+                                 file: "target/hackubau-docs-1.0-RELEASE.jar",
                                  type: 'jar']
                             ])
                 }
