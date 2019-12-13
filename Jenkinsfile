@@ -38,5 +38,11 @@ pipeline {
       }
     }
 
+    stage('') {
+      steps {
+        input 'Procedi al deploy in quality'
+      }
+    }
+
   }
 }
