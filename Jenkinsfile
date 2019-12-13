@@ -36,7 +36,7 @@ pipeline {
               steps {
                 nexusArtifactUploader(nexusVersion: 'nexus3',
                  protocol: 'http',
-                 nexusUrl: 'http://localhost:8081/repository/maven-releases/',
+                 nexusUrl: 'http://localhost:8081/repository/maven-releases',
                  groupId: 'it.hackubau',
                  version: '1',
                  repository: 'it.hackubau',
