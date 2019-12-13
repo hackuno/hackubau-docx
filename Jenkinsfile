@@ -28,7 +28,7 @@ pipeline {
 
     stage('Manual Approvation') {
       steps {
-        input 'Procedi al deploy in quality'
+        input 'Procedi al deploy in quality?'
       }
     }
 
