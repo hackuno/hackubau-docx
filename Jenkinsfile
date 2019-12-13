@@ -15,8 +15,17 @@ pipeline {
 
     stage('Test') {
       steps {
-        sh 'mvn surefire-report:report'
-        junit 'target/surefire-reports/*.xml'
+        warnError(message: 'Errore nei test - release instabile') {
+          sh 'mvn surefire-report:report'
+          junit 'target/surefire-reports/*.xml'
+        }
+
+      }
+    }
+
+    stage('') {
+      steps {
+        echo 'Fingo un deploy'
       }
     }
 
