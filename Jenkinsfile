@@ -40,7 +40,7 @@ pipeline {
                  credentialsId: '4dfa3a50-c33c-4539-bc7f-b4e5558c056d', artifacts: [
                                                                         [artifactId: 'hackubau-docs-1.0-RELEASE',
                                                                          classifier: '',
-                                                                         file: 'target/hackubau-docs-1.0-RELEASE.jar',
+                                                                         filePath: "target/hackubau-docs-1.0-RELEASE.jar"
                                                                          type: 'jar']
                                                                     ])
                 }
