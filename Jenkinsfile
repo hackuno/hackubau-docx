@@ -28,7 +28,7 @@ pipeline {
 
     stage('Database migration') {
       steps {
-        sh 'flyway migrate -configFiles=DevOps/flyway.conf'
+        sh 'sudo flyway -configFiles=DevOps/flyway.conf migrate'
       }
     }
 
