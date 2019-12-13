@@ -4,27 +4,15 @@ pipeline {
     stage('Init') {
       steps {
         echo 'Inizio a buildare Hackubau Docx'
-        sh 'mvn clean -U'
       }
     }
 
     stage('Build') {
-      parallel {
-        stage('Build') {
-          steps {
-            sh 'mvn clean package -DskipTests'
-            archiveArtifacts(artifacts: 'target\\*.jar', onlyIfSuccessful: true)
-            archiveArtifacts(artifacts: 'pom.xml', onlyIfSuccessful: true)
-            archiveArtifacts(artifacts: 'src\\main\\resources\\*', onlyIfSuccessful: true)
-          }
-        }
-
-        stage('Test1') {
-          steps {
-            sh 'mvn test'
-          }
-        }
-
+      steps {
+        sh 'mvn clean package -DskipTests'
+        archiveArtifacts(artifacts: 'target\\*.jar', onlyIfSuccessful: true)
+        archiveArtifacts(artifacts: 'pom.xml', onlyIfSuccessful: true)
+        archiveArtifacts(artifacts: 'src\\main\\resources\\*', onlyIfSuccessful: true)
       }
     }
 
