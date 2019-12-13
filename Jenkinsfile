@@ -26,5 +26,11 @@ pipeline {
       }
     }
 
+    stage('Database migration') {
+      steps {
+        flywayrunner(installationName: 'flyway', flywayCommand: 'migrate', url: 'jdbc:sqlserver://localhost:1433;DatabaseName=bau', locations: 'sql', commandLineArgs: '-configFiles=flyway.conf', credentialsId: '123')
+      }
+    }
+
   }
 }
