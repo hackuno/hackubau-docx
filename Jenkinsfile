@@ -53,13 +53,13 @@ pipeline {
     stage('Database migration') {
       steps {
         sh 'cd sql'
-        sh 'sudo flyway -configFiles=../DevOps/flyway.conf migrate'
+        sh 'flyway -configFiles=/DevOps/flyway.conf migrate'
       }
     }
 
     stage('Deploy with ansible') {
       steps {
-        ansiblePlaybook(playbook: 'DevOps/playbook.yml', inventory: 'DevOps/hosts')
+        ansiblePlaybook(playbook: '/DevOps/playbook.yml', inventory: '/DevOps/hosts')
       }
     }
 
