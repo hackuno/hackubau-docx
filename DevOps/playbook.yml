@@ -18,7 +18,7 @@
     - maven_artifact:
         group_id: it.hackubau
         artifact_id: hackubau-docs
-        repository_url: 'http://localhost:8081/repository/maven-releases/repository/it.hackubau/hackubau-docs-1.0-RELEASE/1/hackubau-docs-1.0-RELEASE-1.jar'
+        repository_url: 'http://localhost:8081/repository/maven-releases/repository/hck'
         username: admin
         password: qqQQ11!!
         dest: /tmp/bau.jar
