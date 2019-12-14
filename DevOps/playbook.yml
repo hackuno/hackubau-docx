@@ -11,7 +11,7 @@
 
     - name: update
       apt:
-        name: nano
+        name: python-lxml
         state: present
 
     # Download an artifact from a private repository requiring authentication
