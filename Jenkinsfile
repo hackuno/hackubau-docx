@@ -1,14 +1,9 @@
 pipeline {
-  agent {
-  dockerfile {
-  args '-t jdk8-mvn-node-fly-ans'
-  }
-
-  }
+  agent { dockerfile true}
   stages {
     stage('Init') {
       steps {
-        echo 'Inizio a buildare Hackubau Docx'
+        echo 'Inizio a buildare Hackubau Docx jdk8-mvn-node-fly-ans'
       }
     }
 
@@ -57,14 +52,14 @@ pipeline {
 
     stage('Database migration') {
       steps {
-        sh 'cd /sql'
-        sh 'sudo flyway -configFiles=/DevOps/flyway.conf migrate'
+        sh 'cd sql'
+        sh 'sudo flyway -configFiles=DevOps/flyway.conf migrate'
       }
     }
 
     stage('Deploy with ansible') {
       steps {
-        ansiblePlaybook(playbook: '/DevOps/playbook.yml', inventory: '/DevOps/hosts')
+        ansiblePlaybook(playbook: 'DevOps/playbook.yml', inventory: 'DevOps/hosts')
       }
     }
 
