@@ -2,6 +2,7 @@ pipeline {
   agent {
     dockerfile {
       filename 'Dockerfile'
+      args '--user 1001:1001 --read-only --cap-drop all --security-opt no-new-privileges'
     }
   }
   stages {
