@@ -4,6 +4,7 @@ pipeline {
       filename 'DevOps/Dockerfile_jenkins'
       args '--user 1001:1001 --read-only --cap-drop all --security-opt no-new-privileges'
     }
+
   }
   stages {
     stage('Init') {
@@ -34,43 +35,39 @@ pipeline {
 
       }
     }
+
     stage('Build Docker') {
-          agent any
-          steps {
-              sh 'sudo docker build . --tag hck:${BUILD_NUMBER}'
-              sh 'sudo docker run hck:${BUILD_NUMBER}'
-              sh 'sudo docker login -u mguassone -p qqQQ11!! localhost:8081/docker-hck'
-              sh 'sudo docker push hck:${BUILD_NUMBER}'
-            }
-
-
+      agent any
+      steps {
+        sh 'sudo docker build . --tag hck:${BUILD_NUMBER}'
+        sh 'sudo docker run hck:${BUILD_NUMBER}'
+        sh 'sudo docker login -u mguassone -p qqQQ11!! localhost:8081/docker-hck'
+        sh 'sudo docker push hck:${BUILD_NUMBER}'
+      }
     }
+
     stage('Manual Approvation') {
-          steps {
-            input 'Procedi al deploy in quality?'
-          }
+      steps {
+        input 'Procedi al deploy in quality?'
+      }
     }
+
     stage('Nexus Upload') {
       steps {
-        nexusArtifactUploader(nexusVersion: 'nexus3', protocol: 'http',
-        nexusUrl: 'localhost:8081/repository/hck',
-        groupId: 'it.hackubau',
-        version: '${BUILD_NUMBER}', repository: 'hck',
-        credentialsId: '4dfa3a50-c33c-4539-bc7f-b4e5558c056d',
-        artifacts: [
-                    [   artifactId: 'hackubau-docs',
-                        classifier: '',
-                        file: "target/hackubau-docs-1.0-RELEASE.jar",
-                        type: 'jar'],
-                        [   artifactId: 'hackubau-docs_sql_migration',
-                            classifier: '',
-                            file: "sql.zip",
-                            type: 'zip'],
-                        [   artifactId: 'hackubau_docs_DevOps',
-                            classifier: '',
-                            file: "DevOps.zip",
-                            type: 'zip']
-                    ])
+        nexusArtifactUploader(nexusVersion: 'nexus3', protocol: 'http', nexusUrl: 'localhost:8081/repository/hck', groupId: 'it.hackubau', version: '${BUILD_NUMBER}', repository: 'hck', credentialsId: '4dfa3a50-c33c-4539-bc7f-b4e5558c056d', artifacts: [
+                              [   artifactId: 'hackubau-docs',
+                                  classifier: '',
+                                  file: "target/hackubau-docs-1.0-RELEASE.jar",
+                                  type: 'jar'],
+                                  [   artifactId: 'hackubau-docs_sql_migration',
+                                      classifier: '',
+                                      file: "sql.zip",
+                                      type: 'zip'],
+                                  [   artifactId: 'hackubau_docs_DevOps',
+                                      classifier: '',
+                                      file: "DevOps.zip",
+                                      type: 'zip']
+                              ])
         }
       }
 
@@ -88,7 +85,7 @@ pipeline {
 
     }
     environment {
-      NEXUS_URL='172.17.0.1:8081'
+      NEXUS_URL = '172.17.0.1:8081'
       FLYWAY_URL = 'jdbc:sqlserver://172.17.0.1:1433;DatabaseName=bau'
       ENV_QUALIFIER = 'dev'
     }
