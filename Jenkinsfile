@@ -1,5 +1,8 @@
 pipeline {
-  agent { dockerfile true}
+  agent {
+  dockerfile true
+  tag 'jdk8-mvn-node-fly-ans'
+  }
   stages {
     stage('Init') {
       steps {
