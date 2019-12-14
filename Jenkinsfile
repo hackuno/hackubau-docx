@@ -1,7 +1,7 @@
 pipeline {
   agent {
     dockerfile {
-      filename 'Dockerfile'
+      filename 'DevOps/Dockerfile_jenkins'
       args '--user 1001:1001 --read-only --cap-drop all --security-opt no-new-privileges'
     }
   }
@@ -33,6 +33,17 @@ pipeline {
         }
 
       }
+    }
+    stage('Build Docker') {
+          agent any
+          steps {
+              sh 'sudo docker build . --tag hck:${BUILD_NUMBER}'
+              sh 'sudo docker run hck:${BUILD_NUMBER}'
+              sh 'sudo docker login -u mguassone -p qqQQ11!! localhost:8081/docker-hck'
+              sh 'sudo docker push hck:${BUILD_NUMBER}'
+            }
+
+          }
     }
     stage('Manual Approvation') {
           steps {

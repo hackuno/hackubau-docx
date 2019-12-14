@@ -1,0 +1,13 @@
+version: '1' 
+services: 
+  hck:
+    build: . 
+    ports: 
+    - "9280:9280"
+    image: cioppy
+
+  bau:
+    build: .
+    ports:
+    - "9281:9281"
+    image: bau
