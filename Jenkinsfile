@@ -25,13 +25,13 @@ pipeline {
 
       }
     }
-
+/*
     stage('Manual Approvation') {
       steps {
         input 'Procedi al deploy in quality?'
       }
     }
-
+*/
     stage('Nexus Upload') {
               steps {
                 nexusArtifactUploader(nexusVersion: 'nexus3',
@@ -53,7 +53,7 @@ pipeline {
     stage('Database migration') {
       steps {
         sh 'cd sql'
-        sh 'flyway -configFiles=/DevOps/flyway.conf migrate'
+        sh 'sudo flyway -configFiles=/DevOps/flyway.conf migrate'
       }
     }
 
