@@ -37,12 +37,12 @@ pipeline {
                 nexusArtifactUploader(nexusVersion: 'nexus3',
                  protocol: 'http',
                  nexusUrl: 'localhost:8081/repository/maven-releases',
-                 groupId: '',
+                 groupId: 'it.hackubau',
                  version: '1',
                  repository: 'it.hackubau',
                  credentialsId: '4dfa3a50-c33c-4539-bc7f-b4e5558c056d',
                  artifacts: [
-                                [artifactId: 'hackubau-docs-1.0-RELEASE',
+                                [artifactId: 'hackubau-docs',
                                  classifier: '',
                                  file: "target/hackubau-docs-1.0-RELEASE.jar",
                                  type: 'jar']
