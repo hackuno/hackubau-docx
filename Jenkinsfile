@@ -42,7 +42,7 @@ pipeline {
     stage('Nexus Upload') {
       steps {
         nexusArtifactUploader(nexusVersion: 'nexus3', protocol: 'http',
-        nexusUrl: 'localhost:8081/repository/maven-releases',
+        nexusUrl: 'localhost:8081/repository/hck',
         groupId: 'it.hackubau',
         version: '${BUILD_NUMBER}', repository: 'hck',
         credentialsId: '4dfa3a50-c33c-4539-bc7f-b4e5558c056d',
@@ -51,11 +51,11 @@ pipeline {
                         classifier: '',
                         file: "target/hackubau-docs-1.0-RELEASE.jar",
                         type: 'jar'],
-                        [   artifactId: 'hackubau-docs',
+                        [   artifactId: 'hackubau-docs_sql_migration',
                             classifier: '',
                             file: "sql.zip",
                             type: 'zip'],
-                        [   artifactId: 'hackubau-docs',
+                        [   artifactId: 'hackubau_docs_DevOps',
                             classifier: '',
                             file: "DevOps.zip",
                             type: 'zip']
