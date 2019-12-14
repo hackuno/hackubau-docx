@@ -1,5 +1,9 @@
 pipeline {
-  agent { dockerfile true}
+  agent {
+  dockerfile true
+  args '-u root:sudo'
+  /*-v $HOME/workspace/myproject:/myproject*/
+  }
   stages {
     stage('Init') {
       steps {
