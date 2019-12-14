@@ -4,18 +4,11 @@ pipeline {
       filename 'Dockerfile'
       args '-u root:sudo'
     }
-
   }
   stages {
     stage('Init') {
       steps {
         echo 'Inizio a buildare Hackubau Docx: ${BUILD_TAG} --name jdk8-mvn-node-fly-ans'
-      }
-    }
-    stage('delete files from workspace') {
-      steps {
-        sh 'ls -l'
-        sh 'sudo rm -rf ./*'
       }
     }
 
