@@ -43,7 +43,7 @@ pipeline {
               sh 'sudo docker push hck:${BUILD_NUMBER}'
             }
 
-          }
+
     }
     stage('Manual Approvation') {
           steps {
