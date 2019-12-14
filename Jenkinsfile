@@ -37,7 +37,7 @@ pipeline {
                 nexusArtifactUploader(nexusVersion: 'nexus3',
                  protocol: 'http',
                  nexusUrl: 'http://localhost:8081/repository/maven-releases',
-                 groupId: 'it.hackubau',
+                 groupId: '',
                  version: '1',
                  repository: 'it.hackubau',
                  credentialsId: '4dfa3a50-c33c-4539-bc7f-b4e5558c056d',
