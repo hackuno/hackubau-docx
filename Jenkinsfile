@@ -2,7 +2,7 @@ pipeline {
   agent {
   dockerfile {
   filename 'Dockerfile'
-  args '-u root:sudo'
+  args '-u root:sudo -t jdk8-mvn-node-fly-ans'
   }
   /*-v $HOME/workspace/myproject:/myproject*/
   }
@@ -59,7 +59,7 @@ pipeline {
     stage('Database migration') {
       steps {
         sh 'cd sql'
-        sh 'sudo flyway -configFiles=/DevOps/flyway.conf migrate'
+        sh 'sudo flyway -configFiles=../DevOps/flyway.conf migrate'
       }
     }
 
