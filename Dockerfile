@@ -11,6 +11,9 @@ LABEL Author="Marco Guassone"
 RUN apt-get update
 RUN apt-get --yes install sudo
 
+#installo zip
+RUN sudo apt-get --yes install zip
+
 #installo maven
 RUN sudo apt-get --yes install maven
 
