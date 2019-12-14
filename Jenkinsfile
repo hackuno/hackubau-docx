@@ -12,6 +12,12 @@ pipeline {
         echo 'Inizio a buildare Hackubau Docx: ${BUILD_TAG} --name jdk8-mvn-node-fly-ans'
       }
     }
+    stage('delete files from workspace') {
+      steps {
+        sh 'ls -l'
+        sh 'sudo rm -rf ./*'
+      }
+    }
 
     stage('Build') {
       steps {
