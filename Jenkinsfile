@@ -16,8 +16,8 @@ pipeline {
     stage('Build') {
       steps {
         sh 'mvn clean package -DskipTests'
-        zip dir: 'sql', glob: '', zipFile: 'sql.zip'
-        zip dir: 'DevOps', glob: '', zipFile: 'DevOps.zip'
+        sh 'zip -r sql.zip sql'
+        sh 'zip -r DevOps.zip DevOps'
         archiveArtifacts(artifacts: 'target\\*.jar', onlyIfSuccessful: true)
         archiveArtifacts(artifacts: 'pom.xml', onlyIfSuccessful: true)
         archiveArtifacts(artifacts: 'src\\main\\resources\\*', onlyIfSuccessful: true)
