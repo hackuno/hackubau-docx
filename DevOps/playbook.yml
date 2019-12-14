@@ -20,7 +20,7 @@
         artifact_id: hackubau-docs
         version: "1"
         #repository_url: 'http://localhost:8081/repository/maven-releases/repository/hck'
-        repository_url: 'http://${NEXUS_URL}/repository/maven-releases/repository/hck'
+        repository_url: "http://{{ lookup('env','NEXUS_URL') }}/repository/maven-releases/repository/hck"
         username: admin
         password: qqQQ11!!
         dest: /tmp/bau.jar

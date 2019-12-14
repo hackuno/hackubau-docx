@@ -78,7 +78,7 @@ pipeline {
     }
     environment {
       NEXUS_URL='172.17.0.1:8081'
-      DB_URL = '172.17.0.1:1433'
+      FLYWAY_URL = 'jdbc:sqlserver://172.17.0.1:1433;DatabaseName=bau'
       ENV_QUALIFIER = 'dev'
     }
   }
