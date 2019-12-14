@@ -51,9 +51,13 @@ pipeline {
                         classifier: '',
                         file: "target/hackubau-docs-1.0-RELEASE.jar",
                         type: 'jar'],
-                        [   artifactId: 'sql',
+                        [   artifactId: 'hackubau-docs',
                             classifier: '',
                             file: "sql.zip",
+                            type: 'zip'],
+                        [   artifactId: 'hackubau-docs',
+                            classifier: '',
+                            file: "DevOps.zip",
                             type: 'zip']
                     ])
         }
