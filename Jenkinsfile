@@ -2,7 +2,7 @@ pipeline {
   agent {
     dockerfile {
       filename 'Dockerfile'
-      args '-u jenkins:sudo --name jdk8-mvn-node-fly-ans'
+      args '-u root:jenkins --name jdk8-mvn-node-fly-ans'
     }
 
   }
