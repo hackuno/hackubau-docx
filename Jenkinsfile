@@ -2,14 +2,14 @@ pipeline {
   agent {
     dockerfile {
       filename 'Dockerfile'
-      args '-u root:jenkins --name jdk8-mvn-node-fly-ans'
+      args '-u root:jenkins'
     }
 
   }
   stages {
     stage('Init') {
       steps {
-        echo 'Inizio a buildare Hackubau Docx: ${BUILD_TAG}'
+        echo 'Inizio a buildare Hackubau Docx: ${BUILD_TAG} --name jdk8-mvn-node-fly-ans'
       }
     }
 
