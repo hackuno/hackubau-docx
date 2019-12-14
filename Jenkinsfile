@@ -16,11 +16,13 @@ pipeline {
     stage('Build') {
       steps {
         sh 'mvn clean package -DskipTests'
+        zip dir: 'sql', glob: '', zipFile: 'sql.zip'
+        zip dir: 'DevOps', glob: '', zipFile: 'DevOps.zip'
         archiveArtifacts(artifacts: 'target\\*.jar', onlyIfSuccessful: true)
         archiveArtifacts(artifacts: 'pom.xml', onlyIfSuccessful: true)
         archiveArtifacts(artifacts: 'src\\main\\resources\\*', onlyIfSuccessful: true)
-        archiveArtifacts(artifacts: 'sql\\*', onlyIfSuccessful: true)
-        archiveArtifacts(artifacts: 'DevOps\\*', onlyIfSuccessful: true)
+        archiveArtifacts(artifacts: 'sql.zip', onlyIfSuccessful: true)
+        archiveArtifacts(artifacts: 'DevOps.zip', onlyIfSuccessful: true)
       }
     }
 
@@ -49,7 +51,11 @@ pipeline {
                     [   artifactId: 'hackubau-docs',
                         classifier: '',
                         file: "target/hackubau-docs-1.0-RELEASE.jar",
-                        type: 'jar']
+                        type: 'jar'],
+                        [   artifactId: 'sql',
+                            classifier: '',
+                            file: "sql.zip",
+                            type: 'zip']
                     ])
         }
       }
