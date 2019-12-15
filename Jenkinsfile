@@ -2,7 +2,6 @@ pipeline {
   agent {
     dockerfile {
       filename 'DevOps/Dockerfile_jenkins'
-      args '-u 1:1'
     }
   }
   stages {
