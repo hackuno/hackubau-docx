@@ -35,10 +35,10 @@ pipeline {
     }
     stage('Build Docker') {
           steps {
-              sh 'sudo docker build . --tag hck:$BUILD_NUMBER'
-              sh 'sudo docker run hck:$BUILD_NUMBER'
-              sh 'sudo docker login -u mguassone -p qqQQ11!! localhost:8081/docker-hck'
-              sh 'sudo docker push hck:$BUILD_NUMBER'
+              sh 'docker build . --tag hck:$BUILD_NUMBER'
+              sh 'docker run hck:$BUILD_NUMBER'
+              sh 'docker login -u mguassone -p qqQQ11!! localhost:8081/docker-hck'
+              sh 'docker push hck:$BUILD_NUMBER'
             }
     }
     stage('Manual Approvation') {
