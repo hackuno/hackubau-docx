@@ -72,7 +72,7 @@ pipeline {
 
       stage('Database migration') {
         steps {
-          sh 'sudo flyway -configFiles=DevOps/flyway.conf -locations=filesystem:sql migrate'
+          sh 'flyway -configFiles=DevOps/flyway.conf -locations=filesystem:sql migrate'
         }
       }
 
