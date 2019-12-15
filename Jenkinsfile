@@ -2,7 +2,7 @@ pipeline {
   agent {
     dockerfile {
       filename 'DevOps/Dockerfile_jenkins'
-      args '-t ${BUILD_TAG}'
+      args '--name ${BUILD_TAG}'
     }
   }
   stages {
