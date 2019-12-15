@@ -35,7 +35,6 @@ pipeline {
       }
     }
     stage('Build Docker') {
-          agent any
           steps {
               sh 'sudo docker build . --tag hck:$BUILD_NUMBER'
               sh 'sudo docker run hck:$BUILD_NUMBER'
