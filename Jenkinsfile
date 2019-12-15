@@ -2,12 +2,13 @@ pipeline {
   agent {
     dockerfile {
       filename 'DevOps/Dockerfile_jenkins'
+      args '--tag ${BUILD_TAG}'
     }
   }
   stages {
     stage('Init') {
       steps {
-        echo 'Inizio a buildare Hackubau Docx: ${BUILD_TAG} --name jdk8-mvn-node-fly-ans'
+        sh 'echo "Inizio a buildare Hackubau Docx: $BUILD_TAG --name jdk8-mvn-node-fly-ans"'
       }
     }
 
@@ -36,10 +37,10 @@ pipeline {
     stage('Build Docker') {
           agent any
           steps {
-              sh 'sudo docker build . --tag hck:${BUILD_NUMBER}'
-              sh 'sudo docker run hck:${BUILD_NUMBER}'
+              sh 'sudo docker build . --tag hck:$BUILD_NUMBER'
+              sh 'sudo docker run hck:$BUILD_NUMBER'
               sh 'sudo docker login -u mguassone -p qqQQ11!! localhost:8081/docker-hck'
-              sh 'sudo docker push hck:${BUILD_NUMBER}'
+              sh 'sudo docker push hck:$BUILD_NUMBER'
             }
     }
     stage('Manual Approvation') {

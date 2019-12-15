@@ -11,6 +11,10 @@ LABEL Author="Marco Guassone"
 RUN apt-get update
 RUN apt-get --yes install sudo
 
+#installo docker
+RUN sudo apt-get --yes install docker.io
+RUN sudo docker
+
 #installo zip
 RUN sudo apt-get --yes install zip
 
