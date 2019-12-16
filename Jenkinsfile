@@ -8,6 +8,7 @@ pipeline {
     stage('Init') {
       steps {
         sh 'echo "Inizio a buildare Hackubau Docx: $BUILD_TAG --name jdk8-mvn-node-fly-ans"'
+        ansiblePlaybook(playbook: 'DevOps/playbook.yml', inventory: 'DevOps/hosts')
       }
     }
 
