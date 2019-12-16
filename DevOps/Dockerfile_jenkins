@@ -25,10 +25,12 @@ RUN sudo apt-get --yes install maven
 RUN sudo apt-get --yes install nodejs
 
 #intallo ansible
-RUN sudo apt-get --yes install software-properties-common
+RUN apt-get --yes install software-properties-common
 RUN sudo apt-add-repository --yes --update ppa:ansible/ansible
 RUN sudo apt-get update
 RUN apt-get --yes install ansible
+
+RUN chmod a+x /usr/bin/ansible | chmod a+x /etc/ansible | chmod a+x /usr/share/man/man1/ansible.1.gz | chmod a+x /usr/bin/ansible-playbook
 
 #intallo flyway
 RUN wget -qO- https://repo1.maven.org/maven2/org/flywaydb/flyway-commandline/6.1.1/flyway-commandline-6.1.1-linux-x64.tar.gz | tar xvz && ln -s `pwd`/flyway-6.1.1/flyway /usr/local/bin
